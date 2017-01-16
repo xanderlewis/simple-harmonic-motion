@@ -1,0 +1,447 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
+		C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F11E2D42A400CED588 /* PhysicsScene.swift */; };
+		C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */; };
+		C0C636F71E2D42A400CED588 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0C636F51E2D42A400CED588 /* Main.storyboard */; };
+		C0C636F91E2D42A400CED588 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C0C636F81E2D42A400CED588 /* Assets.xcassets */; };
+		C0C636FC1E2D42A400CED588 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C0C636FA1E2D42A400CED588 /* LaunchScreen.storyboard */; };
+		C0C637071E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637061E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift */; };
+		C0C637121E2D434A00CED588 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637111E2D434A00CED588 /* Body.swift */; };
+		C0C637141E2D434E00CED588 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637131E2D434E00CED588 /* Spring.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C0C637031E2D42A400CED588 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C0C636E01E2D42A400CED588 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C0C636E71E2D42A400CED588;
+			remoteInfo = "Simple Harmonic Motion";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C636EB1E2D42A400CED588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		C0C636F11E2D42A400CED588 /* PhysicsScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsScene.swift; sourceTree = "<group>"; };
+		C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhysicsViewController.swift; sourceTree = "<group>"; };
+		C0C636F61E2D42A400CED588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		C0C636F81E2D42A400CED588 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		C0C636FB1E2D42A400CED588 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		C0C636FD1E2D42A400CED588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0C637021E2D42A400CED588 /* Simple Harmonic MotionTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Simple Harmonic MotionTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0C637061E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Simple_Harmonic_MotionTests.swift; sourceTree = "<group>"; };
+		C0C637081E2D42A400CED588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C0C637111E2D434A00CED588 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
+		C0C637131E2D434E00CED588 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		C0C636E51E2D42A400CED588 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0C636FF1E2D42A400CED588 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		C0C636DF1E2D42A400CED588 = {
+			isa = PBXGroup;
+			children = (
+				C0C636EA1E2D42A400CED588 /* Simple Harmonic Motion */,
+				C0C637051E2D42A400CED588 /* Simple Harmonic MotionTests */,
+				C0C636E91E2D42A400CED588 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		C0C636E91E2D42A400CED588 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */,
+				C0C637021E2D42A400CED588 /* Simple Harmonic MotionTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C0C636EA1E2D42A400CED588 /* Simple Harmonic Motion */ = {
+			isa = PBXGroup;
+			children = (
+				C0C636EB1E2D42A400CED588 /* AppDelegate.swift */,
+				C0C636F11E2D42A400CED588 /* PhysicsScene.swift */,
+				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
+				C0C636F51E2D42A400CED588 /* Main.storyboard */,
+				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
+				C0C636FA1E2D42A400CED588 /* LaunchScreen.storyboard */,
+				C0C636FD1E2D42A400CED588 /* Info.plist */,
+				C0C637151E2D435900CED588 /* Physics Model */,
+			);
+			path = "Simple Harmonic Motion";
+			sourceTree = "<group>";
+		};
+		C0C637051E2D42A400CED588 /* Simple Harmonic MotionTests */ = {
+			isa = PBXGroup;
+			children = (
+				C0C637061E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift */,
+				C0C637081E2D42A400CED588 /* Info.plist */,
+			);
+			path = "Simple Harmonic MotionTests";
+			sourceTree = "<group>";
+		};
+		C0C637151E2D435900CED588 /* Physics Model */ = {
+			isa = PBXGroup;
+			children = (
+				C0C637111E2D434A00CED588 /* Body.swift */,
+				C0C637131E2D434E00CED588 /* Spring.swift */,
+			);
+			name = "Physics Model";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		C0C636E71E2D42A400CED588 /* Simple Harmonic Motion */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0C6370B1E2D42A400CED588 /* Build configuration list for PBXNativeTarget "Simple Harmonic Motion" */;
+			buildPhases = (
+				C0C636E41E2D42A400CED588 /* Sources */,
+				C0C636E51E2D42A400CED588 /* Frameworks */,
+				C0C636E61E2D42A400CED588 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Simple Harmonic Motion";
+			productName = "Simple Harmonic Motion";
+			productReference = C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */;
+			productType = "com.apple.product-type.application";
+		};
+		C0C637011E2D42A400CED588 /* Simple Harmonic MotionTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = C0C6370E1E2D42A400CED588 /* Build configuration list for PBXNativeTarget "Simple Harmonic MotionTests" */;
+			buildPhases = (
+				C0C636FE1E2D42A400CED588 /* Sources */,
+				C0C636FF1E2D42A400CED588 /* Frameworks */,
+				C0C637001E2D42A400CED588 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				C0C637041E2D42A400CED588 /* PBXTargetDependency */,
+			);
+			name = "Simple Harmonic MotionTests";
+			productName = "Simple Harmonic MotionTests";
+			productReference = C0C637021E2D42A400CED588 /* Simple Harmonic MotionTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		C0C636E01E2D42A400CED588 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0820;
+				LastUpgradeCheck = 0820;
+				ORGANIZATIONNAME = "Xander Lewis";
+				TargetAttributes = {
+					C0C636E71E2D42A400CED588 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = HM6LX4RR5X;
+						ProvisioningStyle = Automatic;
+					};
+					C0C637011E2D42A400CED588 = {
+						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = HM6LX4RR5X;
+						ProvisioningStyle = Automatic;
+						TestTargetID = C0C636E71E2D42A400CED588;
+					};
+				};
+			};
+			buildConfigurationList = C0C636E31E2D42A400CED588 /* Build configuration list for PBXProject "Simple Harmonic Motion" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = C0C636DF1E2D42A400CED588;
+			productRefGroup = C0C636E91E2D42A400CED588 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				C0C636E71E2D42A400CED588 /* Simple Harmonic Motion */,
+				C0C637011E2D42A400CED588 /* Simple Harmonic MotionTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		C0C636E61E2D42A400CED588 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C636F71E2D42A400CED588 /* Main.storyboard in Resources */,
+				C0C636F91E2D42A400CED588 /* Assets.xcassets in Resources */,
+				C0C636FC1E2D42A400CED588 /* LaunchScreen.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0C637001E2D42A400CED588 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		C0C636E41E2D42A400CED588 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */,
+				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
+				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
+				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
+				C0C637121E2D434A00CED588 /* Body.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		C0C636FE1E2D42A400CED588 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				C0C637071E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C0C637041E2D42A400CED588 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C0C636E71E2D42A400CED588 /* Simple Harmonic Motion */;
+			targetProxy = C0C637031E2D42A400CED588 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		C0C636F51E2D42A400CED588 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0C636F61E2D42A400CED588 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		C0C636FA1E2D42A400CED588 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				C0C636FB1E2D42A400CED588 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		C0C637091E2D42A400CED588 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		C0C6370A1E2D42A400CED588 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		C0C6370C1E2D42A400CED588 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HM6LX4RR5X;
+				INFOPLIST_FILE = "Simple Harmonic Motion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-Motion";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		C0C6370D1E2D42A400CED588 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = HM6LX4RR5X;
+				INFOPLIST_FILE = "Simple Harmonic Motion/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-Motion";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		C0C6370F1E2D42A400CED588 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = HM6LX4RR5X;
+				INFOPLIST_FILE = "Simple Harmonic MotionTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-MotionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Harmonic Motion.app/Simple Harmonic Motion";
+			};
+			name = Debug;
+		};
+		C0C637101E2D42A400CED588 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = HM6LX4RR5X;
+				INFOPLIST_FILE = "Simple Harmonic MotionTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-MotionTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Simple Harmonic Motion.app/Simple Harmonic Motion";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		C0C636E31E2D42A400CED588 /* Build configuration list for PBXProject "Simple Harmonic Motion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C637091E2D42A400CED588 /* Debug */,
+				C0C6370A1E2D42A400CED588 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		C0C6370B1E2D42A400CED588 /* Build configuration list for PBXNativeTarget "Simple Harmonic Motion" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C6370C1E2D42A400CED588 /* Debug */,
+				C0C6370D1E2D42A400CED588 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		C0C6370E1E2D42A400CED588 /* Build configuration list for PBXNativeTarget "Simple Harmonic MotionTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C0C6370F1E2D42A400CED588 /* Debug */,
+				C0C637101E2D42A400CED588 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = C0C636E01E2D42A400CED588 /* Project object */;
+}
