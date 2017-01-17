@@ -9,6 +9,11 @@
 import Foundation
 import SpriteKit
 
+enum SpringOrientation {
+    case facingLeft
+    case facingRight
+}
+
 class Spring: SKShapeNode {
     
     let initialLength: CGFloat
@@ -17,7 +22,11 @@ class Spring: SKShapeNode {
     
     var force: CGFloat {
         get {
-            return -stiffness * (currentLength - initialLength) // F = -kx
+            if orientation == .facingRight {
+                return -stiffness * (currentLength - initialLength) // F = -kx
+            } else {
+                return stiffness * (currentLength - initialLength) // F = -kx
+            }
         }
     }
     
@@ -26,13 +35,15 @@ class Spring: SKShapeNode {
     var width: CGFloat
     var sections: Int
     
+    var orientation: SpringOrientation
+    
     /**
      Creates a spring.
      
      - parameter width: The width of the spring.
      - parameter sections: The number of 'sections' (V-shapes) the spring has.
      */
-    init(position p: CGPoint, colour c: SKColor, length l: CGFloat, width w: CGFloat, stiffness st: CGFloat, sections sec: Int) {
+    init(position p: CGPoint, colour c: SKColor, orientation o: SpringOrientation, length l: CGFloat, width w: CGFloat, stiffness st: CGFloat, sections sec: Int) {
         
         // Initialise model
         initialLength = l
@@ -40,6 +51,7 @@ class Spring: SKShapeNode {
         stiffness = st
         width = w
         sections = sec
+        orientation = o
         
         super.init()
         
@@ -51,7 +63,7 @@ class Spring: SKShapeNode {
         lineWidth = 1
         lineCap = .round
         
-        updateSpringPath()
+        updatePath()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,13 +73,16 @@ class Spring: SKShapeNode {
     /**
      Updates the spring's path (shape).
      */
-    private func updateSpringPath() {
+    func updatePath() {
         // Create new path
         let newPath = CGMutablePath()
-        newPath.move(to: CGPoint.zero)
         
         // Calculate path constants
-        let sectionLength = currentLength / CGFloat(sections)
+        var sectionLength = currentLength / CGFloat(sections)
+        if orientation == .facingLeft {
+            sectionLength = -currentLength / CGFloat(sections)
+        }
+        
         let bottom: CGFloat = 0
         let top = width
         
@@ -77,10 +92,28 @@ class Spring: SKShapeNode {
         print("bottom" + String(describing: bottom))
         
         // Generate path
-        for i in stride(from: 1, to: sections, by: 2) {
-            newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i), y: top))
-            newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i+1), y: bottom))
+        
+        if orientation == .facingRight {
+            newPath.move(to: CGPoint.zero)
+            // Populate path
+            for i in stride(from: 1, to: sections, by: 2) {
+                newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i), y: top))
+                newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i+1), y: bottom))
+            }
+        } else {
+            //newPath.move(to: CGPoint(x: sectionLength * CGFloat(sections), y: 0))
+            newPath.move(to: CGPoint.zero)
+            // Populate path
+            for i in stride(from: 1, to: sections, by: 2) {
+                print(i)
+                print("x", sectionLength * CGFloat(i+1))
+                print("y", bottom)
+                newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i), y: top))
+                newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i+1), y: bottom))
+            }
         }
+        
+        
         
         // Set new path
         path = newPath
@@ -92,7 +125,12 @@ class Spring: SKShapeNode {
      - parameter change: The amount by which to modify the length. (can be positive or negative)
      */
     func deform(change: CGFloat) {
-        currentLength = initialLength + change
+        if orientation == .facingRight {
+            currentLength = initialLength + change
+        } else {
+            currentLength = initialLength - change
+        }
+        
     }
     
     /**

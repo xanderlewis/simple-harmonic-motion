@@ -26,7 +26,7 @@ class Body: SKSpriteNode {
     
     var linkedSprings: [Spring] = []
     
-    var isLocked = false
+    var isFrozen = false
     
     /**
      Creates a body.

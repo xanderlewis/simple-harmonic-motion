@@ -13,10 +13,11 @@ import GameplayKit
 struct DefaultConstants {
     static let colour = SKColor.white
     static let mass: CGFloat = 60
-    static let damping: CGFloat = 0.1
+    static let damping: CGFloat = 0.01
     static let springWidth: CGFloat = 30
-    static let springStiffness: CGFloat = 0.01
+    static let springStiffness: CGFloat = 2
     static let springSections: Int = 12
+    static let verticalSpacing: CGFloat = 18
 }
 
 class PhysicsScene: SKScene {
@@ -42,13 +43,14 @@ class PhysicsScene: SKScene {
                     spring.deform(change: body.displacement)
                 }
             }
+            spring.updatePath()
         }
         
-        // Apply springs forces to (non-locked) linked bodies and update their positions
+        // Apply springs forces to (non-frozen) linked bodies and update their positions
         enumerateChildNodes(withName: "body") { (node, stop) in
             let body = node as! Body
             
-            if !body.isLocked {
+            if !body.isFrozen {
                 if !body.linkedSprings.isEmpty {
                     for spring in body.linkedSprings {
                         body.applyForce(force: spring.force)
@@ -76,14 +78,16 @@ class PhysicsScene: SKScene {
         let leftSpring = Spring(position: CGPoint(x: 0,
                                                   y: body.position.y - DefaultConstants.springWidth / 2),
                                 colour: DefaultConstants.colour,
+                                orientation: .facingRight,
                                 length: body.position.x - body.mass / 2,
                                 width: DefaultConstants.springWidth,
                                 stiffness: DefaultConstants.springStiffness,
                                 sections: DefaultConstants.springSections)
         
-        let rightSpring = Spring(position: CGPoint(x: body.position.x + body.mass / 2,
+        let rightSpring = Spring(position: CGPoint(x: frame.width,
                                                    y: body.position.y - DefaultConstants.springWidth / 2),
                                  colour: DefaultConstants.colour,
+                                 orientation: .facingLeft,
                                  length: frame.width - (body.position.x + body.mass / 2),
                                  width: DefaultConstants.springWidth,
                                  stiffness: DefaultConstants.springStiffness,
@@ -102,6 +106,37 @@ class PhysicsScene: SKScene {
         
     }
     
+    // MARK: - Drag handling
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            for node in nodes(at: touch.location(in: self)) {
+                if node.name == "body" {
+                    let body = node as! Body
+                    body.isFrozen = true
+                }
+            }
+        }
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch in touches {
+            enumerateChildNodes(withName: "body", using: { (node, stop) in
+                let body = node as! Body
+                if body.isFrozen {
+                    body.displacement += touch.location(in: self).x - body.position.x
+                }
+            })
+        }
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        enumerateChildNodes(withName: "body", using: { (node, stop) in
+            let body = node as! Body
+            body.isFrozen = false
+        })
+    }
+    
     // MARK: - Gesture Responses
     
     func tappedScene(sender: UITapGestureRecognizer) {
@@ -113,8 +148,26 @@ class PhysicsScene: SKScene {
             // Get location of tap
             let tapLocation = sender.location(in: view)
             
-            // Create 'triplet'
-            createTriplet(atPosition: convertPoint(fromView: tapLocation))
+            let tapPosition = convertPoint(fromView: tapLocation)
+            
+            var bodyFits = true
+            enumerateChildNodes(withName: "body", using: { (node, stop) in
+                let body = node as! Body
+                
+                // If body doesnt fit
+                if tapPosition.y + body.mass / 2 + DefaultConstants.verticalSpacing > body.position.y - body.mass / 2 &&
+                    tapPosition.y - body.mass / 2 + DefaultConstants.verticalSpacing < body.position.y + body.mass / 2 {
+                    // Stop checking
+                    bodyFits = false
+                    stop.initialize(to: true)
+                }
+            })
+            
+            if bodyFits {
+                // Create 'triplet'
+                createTriplet(atPosition: convertPoint(fromView: tapLocation))
+            }
+            
         }
         
     }

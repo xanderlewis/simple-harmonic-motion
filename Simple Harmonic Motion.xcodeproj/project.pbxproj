@@ -432,6 +432,7 @@
 				C0C6370D1E2D42A400CED588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		C0C6370E1E2D42A400CED588 /* Build configuration list for PBXNativeTarget "Simple Harmonic MotionTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +441,7 @@
 				C0C637101E2D42A400CED588 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
