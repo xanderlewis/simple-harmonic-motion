@@ -27,7 +27,6 @@ class PhysicsScene: SKScene {
     var longPressRec: UILongPressGestureRecognizer!
     
     // Keep track of user's most recent touch down x location
-    var lastTouchDownX: CGFloat!
     var lastBodyTouches: Dictionary<Body, CGFloat> = [:]
     
     override func didMove(to view: SKView) {
