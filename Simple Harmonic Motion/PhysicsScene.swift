@@ -17,7 +17,7 @@ struct DefaultConstants {
     static let springWidth: CGFloat = 20
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
-    static let verticalSpacing: CGFloat = 18
+    static let verticalSpacing: CGFloat = 30
 }
 
 class PhysicsScene: SKScene {
@@ -174,8 +174,21 @@ class PhysicsScene: SKScene {
             
             // Get location of tap
             let tapLocation = sender.location(in: view)
-            
             let tapPosition = convertPoint(fromView: tapLocation)
+            
+            for node in nodes(at: tapPosition) {
+                if node is Body || node is Spring {
+                    
+                    // Tapped on a body or spring (edit)
+                    
+                    print("tapped on body")
+                    
+                    // Return because user tapped on body
+                    return
+                }
+            }
+            
+        // Tapped in empty space (create a triple)
             
             var bodyFits = true
             enumerateChildNodes(withName: "body", using: { (node, stop) in
@@ -194,9 +207,7 @@ class PhysicsScene: SKScene {
                 // Create 'triplet'
                 createTriplet(atPosition: convertPoint(fromView: tapLocation))
             }
-            
         }
-        
     }
     
     func longPressedScene() {
