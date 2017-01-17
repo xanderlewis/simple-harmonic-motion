@@ -26,8 +26,9 @@ class PhysicsScene: SKScene {
     var tapRec: UITapGestureRecognizer!
     var longPressRec: UILongPressGestureRecognizer!
     
-    // Keep track of user's most recent touch down x location
-    var lastBodyTouches: Dictionary<Body, CGFloat> = [:]
+    // Keep track of which bodies are being dragged, and where they were first touched (x position)
+    var selectedBodies: [UITouch: Body] = [:]
+    var firstTouchPoint: [Body: CGFloat] = [:]
     
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
@@ -115,48 +116,37 @@ class PhysicsScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            print("touchdown")
             for node in nodes(at: touch.location(in: self)) {
                 if node.name == "body" {
                     let body = node as! Body
+                    
+                    // Freeze body
                     body.isFrozen = true
                     
-                    // Associate touch x location with body
-                    lastBodyTouches[body] = touch.location(in: self).x
+                    // Associate body with touch
+                    selectedBodies[touch] = body
+                    firstTouchPoint[body] = touch.location(in: self).x
                 }
             }
         }
-        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            enumerateChildNodes(withName: "body", using: { (node, stop) in
-                let body = node as! Body
-                if let lastTouch = self.lastBodyTouches[body] {
-                    if body.isFrozen {
-                        body.displacement = touch.location(in: self).x - lastTouch
-                    }
-                }
-            })
+            if let body = selectedBodies[touch] {
+                body.displacement = touch.location(in: self).x - firstTouchPoint[body]!
+                print("moving")
+            }
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchup")
         for touch in touches {
-            for node in nodes(at: touch.location(in: self)) {
-                if node.name == "body" {
-                    let body = node as! Body
-                    body.isFrozen = false
-                    lastBodyTouches.removeValue(forKey: body)
-                }
+            if let body = selectedBodies[touch] {
+                body.isFrozen = false
+                selectedBodies.removeValue(forKey: touch)
             }
         }
-        enumerateChildNodes(withName: "body", using: { (node, stop) in
-            let body = node as! Body
-            body.isFrozen = false
-        })
     }
     
     // MARK: - Gesture Responses
