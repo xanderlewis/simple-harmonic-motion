@@ -209,6 +209,7 @@ class PhysicsScene: SKScene {
         tapRec = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
         longPressRec = UILongPressGestureRecognizer(target: self, action: #selector(longPressedScene))
         
+        tapRec.cancelsTouchesInView = false
         longPressRec.minimumPressDuration = 0.8
         
         view?.addGestureRecognizer(tapRec)
