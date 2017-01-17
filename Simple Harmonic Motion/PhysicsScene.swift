@@ -110,6 +110,22 @@ class PhysicsScene: SKScene {
         self.addChild(leftSpring)
         self.addChild(rightSpring)
         
+        // Animations
+        let shrink = SKAction.scale(to: 0.5, duration: 0)
+        let fadeIn = SKAction.fadeIn(withDuration: 0.1)
+        let expand = SKAction.scale(to: 1.0, duration: 0.1)
+        
+        body.alpha = 0
+        leftSpring.alpha = 0
+        rightSpring.alpha = 0
+        
+        body.run(shrink) {
+            body.run(fadeIn)
+            body.run(expand)
+        }
+        leftSpring.run(fadeIn)
+        rightSpring.run(fadeIn)
+        
     }
     
     // MARK: - Drag handling
