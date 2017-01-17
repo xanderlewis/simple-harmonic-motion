@@ -14,9 +14,9 @@ struct DefaultConstants {
     static let colour = SKColor.white
     static let mass: CGFloat = 60
     static let damping: CGFloat = 0.01
-    static let springWidth: CGFloat = 30
+    static let springWidth: CGFloat = 20
     static let springStiffness: CGFloat = 5
-    static let springSections: Int = 12
+    static let springSections: Int = 18
     static let verticalSpacing: CGFloat = 18
 }
 
@@ -26,15 +26,16 @@ class PhysicsScene: SKScene {
     var tapRec: UITapGestureRecognizer!
     var longPressRec: UILongPressGestureRecognizer!
     
-    // Keep track of user's most recent touch down
-    var lastTouchDown: CGFloat!
+    // Keep track of user's most recent touch down x location
+    var lastTouchDownX: CGFloat!
+    var lastBodyTouches: Dictionary<Body, CGFloat> = [:]
     
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.6, alpha: 1)
+        backgroundColor = UIColor(white: 0.8, alpha: 1)
     }
     
     func tickPhysics() {
@@ -115,29 +116,44 @@ class PhysicsScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
-            lastTouchDown = touch.location(in: self).x
             print("touchdown")
             for node in nodes(at: touch.location(in: self)) {
                 if node.name == "body" {
                     let body = node as! Body
                     body.isFrozen = true
+                    
+                    // Associate touch x location with body
+                    lastBodyTouches[body] = touch.location(in: self).x
                 }
             }
         }
+        
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             enumerateChildNodes(withName: "body", using: { (node, stop) in
                 let body = node as! Body
-                if body.isFrozen {
-                    body.displacement = touch.location(in: self).x - self.lastTouchDown
+                if let lastTouch = self.lastBodyTouches[body] {
+                    if body.isFrozen {
+                        body.displacement = touch.location(in: self).x - lastTouch
+                    }
                 }
             })
         }
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchup")
+        for touch in touches {
+            for node in nodes(at: touch.location(in: self)) {
+                if node.name == "body" {
+                    let body = node as! Body
+                    body.isFrozen = false
+                    lastBodyTouches.removeValue(forKey: body)
+                }
+            }
+        }
         enumerateChildNodes(withName: "body", using: { (node, stop) in
             let body = node as! Body
             body.isFrozen = false
