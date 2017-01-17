@@ -86,11 +86,6 @@ class Spring: SKShapeNode {
         let bottom: CGFloat = 0
         let top = width
         
-        print("length" + String(describing: currentLength))
-        print("sectionLength" + String(describing: sectionLength))
-        print("top" + String(describing: top))
-        print("bottom" + String(describing: bottom))
-        
         // Generate path
         
         if orientation == .facingRight {
@@ -105,9 +100,6 @@ class Spring: SKShapeNode {
             newPath.move(to: CGPoint.zero)
             // Populate path
             for i in stride(from: 1, to: sections, by: 2) {
-                print(i)
-                print("x", sectionLength * CGFloat(i+1))
-                print("y", bottom)
                 newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i), y: top))
                 newPath.addLine(to: CGPoint(x: sectionLength * CGFloat(i+1), y: bottom))
             }

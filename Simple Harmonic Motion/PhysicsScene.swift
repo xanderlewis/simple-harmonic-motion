@@ -26,6 +26,9 @@ class PhysicsScene: SKScene {
     var tapRec: UITapGestureRecognizer!
     var longPressRec: UILongPressGestureRecognizer!
     
+    // Keep track of user's most recent touch down
+    var lastTouchDown: CGFloat!
+    
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
         setUpGestureRecognizers()
@@ -112,6 +115,8 @@ class PhysicsScene: SKScene {
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
+            lastTouchDown = touch.location(in: self).x
+            print("touchdown")
             for node in nodes(at: touch.location(in: self)) {
                 if node.name == "body" {
                     let body = node as! Body
@@ -126,7 +131,7 @@ class PhysicsScene: SKScene {
             enumerateChildNodes(withName: "body", using: { (node, stop) in
                 let body = node as! Body
                 if body.isFrozen {
-                    body.displacement += touch.location(in: self).x - body.position.x
+                    body.displacement = touch.location(in: self).x - self.lastTouchDown
                 }
             })
         }
@@ -145,7 +150,6 @@ class PhysicsScene: SKScene {
         // Called when user taps on scene
         
         if sender.state == .ended {
-            print("Tapped physics scene!")
             
             // Get location of tap
             let tapLocation = sender.location(in: view)
