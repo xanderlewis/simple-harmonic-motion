@@ -15,7 +15,7 @@ struct DefaultConstants {
     static let mass: CGFloat = 60
     static let damping: CGFloat = 0.01
     static let springWidth: CGFloat = 30
-    static let springStiffness: CGFloat = 2
+    static let springStiffness: CGFloat = 5
     static let springSections: Int = 12
     static let verticalSpacing: CGFloat = 18
 }
@@ -35,16 +35,6 @@ class PhysicsScene: SKScene {
     }
     
     func tickPhysics() {
-        // Deform springs based on displacement of linked bodies
-        enumerateChildNodes(withName: "spring") { (node, stop) in
-            let spring = node as! Spring
-            if !spring.linkedBodies.isEmpty {
-                for body in spring.linkedBodies {
-                    spring.deform(change: body.displacement)
-                }
-            }
-            spring.updatePath()
-        }
         
         // Apply springs forces to (non-frozen) linked bodies and update their positions
         enumerateChildNodes(withName: "body") { (node, stop) in
@@ -59,6 +49,18 @@ class PhysicsScene: SKScene {
                 body.updatePosition()
             }
         }
+        
+        // Deform springs based on displacement of linked bodies
+        enumerateChildNodes(withName: "spring") { (node, stop) in
+            let spring = node as! Spring
+            if !spring.linkedBodies.isEmpty {
+                for body in spring.linkedBodies {
+                    spring.deform(change: body.displacement)
+                }
+                spring.updatePath()
+            }
+        }
+
     }
     
     
