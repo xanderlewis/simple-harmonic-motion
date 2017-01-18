@@ -28,6 +28,8 @@ class Body: SKSpriteNode {
     
     var isFrozen = false
     
+    var trail: Trail?
+    
     /**
      Creates a body.
      
@@ -43,12 +45,13 @@ class Body: SKSpriteNode {
         self.restPosition = p
         self.damping = d
         
+        
         // Initialise node properties
         super.init(texture: nil, color: c, size: CGSize(width: m, height: m))
-        self.position = p
-        self.zPosition = 1
-        self.anchorPoint = CGPoint(x: 0.5, y: 0.5)
-        self.name = "body"
+        position = p
+        zPosition = 100
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
+        name = "body"
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -83,5 +86,9 @@ class Body: SKSpriteNode {
     func updatePosition() {
         self.velocity += self.acceleration
         self.displacement += self.velocity
+        
+        if trail != nil {
+            trail!.update(sender: self)
+        }
     }
 }

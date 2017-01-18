@@ -10,6 +10,7 @@ import SpriteKit
 import GameplayKit
 
 // Default physics constants for simulation (used when creating new objects)
+// (Limited to this physics scene)
 struct DefaultConstants {
     static let colour = SKColor.white
     static let mass: CGFloat = 60
@@ -17,7 +18,10 @@ struct DefaultConstants {
     static let springWidth: CGFloat = 20
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
-    static let verticalSpacing: CGFloat = 30
+    static let verticalSpacing: CGFloat = 20
+    static let trailColour = UIColor.yellow
+    static let trailVelocity: CGFloat = 10
+    static let trailLength: Int = 60
 }
 
 class PhysicsScene: SKScene {
@@ -76,11 +80,13 @@ class PhysicsScene: SKScene {
     func createTriplet(atPosition bodyPosition: CGPoint) {
         // Create a spring-body-spring 'triplet'
         
+        // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
                         colour: DefaultConstants.colour,
                         mass: DefaultConstants.mass,
                         damping: DefaultConstants.damping)
         
+        // Create left spring instance
         let leftSpring = Spring(position: CGPoint(x: 0,
                                                   y: body.position.y - DefaultConstants.springWidth / 2),
                                 colour: DefaultConstants.colour,
@@ -90,6 +96,7 @@ class PhysicsScene: SKScene {
                                 stiffness: DefaultConstants.springStiffness,
                                 sections: DefaultConstants.springSections)
         
+        // Create right spring instance
         let rightSpring = Spring(position: CGPoint(x: frame.width,
                                                    y: body.position.y - DefaultConstants.springWidth / 2),
                                  colour: DefaultConstants.colour,
@@ -98,6 +105,12 @@ class PhysicsScene: SKScene {
                                  width: DefaultConstants.springWidth,
                                  stiffness: DefaultConstants.springStiffness,
                                  sections: DefaultConstants.springSections)
+        
+        // Create trail for body
+        let trail = Trail(colour: DefaultConstants.trailColour, verticalVelocity: DefaultConstants.trailVelocity, length: DefaultConstants.trailLength)
+        
+        // Add trail to body
+        body.trail = trail
         
         // Link bodies and springs
         body.link(spring: leftSpring)
@@ -109,6 +122,7 @@ class PhysicsScene: SKScene {
         self.addChild(body)
         self.addChild(leftSpring)
         self.addChild(rightSpring)
+        self.addChild(trail)
         
         // Animations
         let shrink = SKAction.scale(to: 0.5, duration: 0)
@@ -188,7 +202,7 @@ class PhysicsScene: SKScene {
                 }
             }
             
-        // Tapped in empty space (create a triple)
+        // Tapped in empty space (create a triplet)
             
             var bodyFits = true
             enumerateChildNodes(withName: "body", using: { (node, stop) in

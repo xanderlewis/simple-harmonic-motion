@@ -57,7 +57,7 @@ class Spring: SKShapeNode {
         
         // Initialise associated node
         position = p
-        zPosition = 0
+        zPosition = 20
         name = "spring"
         strokeColor = c
         lineWidth = 1
