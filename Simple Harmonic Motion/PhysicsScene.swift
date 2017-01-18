@@ -21,14 +21,14 @@ struct DefaultConstants {
     static let springSections: Int = 18
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor.yellow
-    static let trailVelocity: CGFloat = 4
-    static let trailLength: Int = 180
+    static let trailVelocity: CGFloat = 2
+    static let trailLength: Int = 420
 }
 
 class PhysicsScene: SKScene {
     
     // Gesture recognisers
-    var tapRec: UITapGestureRecognizer!
+    //var tapRec: UITapGestureRecognizer!
     var longPressRec: UILongPressGestureRecognizer!
     
     // Keep track of which bodies are being dragged, and where they were first touched (x position)
@@ -37,6 +37,10 @@ class PhysicsScene: SKScene {
     
     // Keep reference to presenting view controller
     var viewController: PhysicsViewController!
+    
+    // Last touch down x value and time
+    var lastTouchDownX: CGFloat!
+    var lastTouchDownTime: TimeInterval!
     
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
@@ -152,9 +156,12 @@ class PhysicsScene: SKScene {
         
     }
     
-    // MARK: - Drag handling
+    // MARK: - Tap/drag handling
+    // TAP:  DOESN'T MOVE, DOWN FOR < 100ms
+    // DRAG: MOVES, DOWN FOR > 200ms
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        
         for touch in touches {
             for node in nodes(at: touch.location(in: self)) {
                 if node.name == "body" {
@@ -169,6 +176,12 @@ class PhysicsScene: SKScene {
                 }
             }
         }
+        
+        // Store touch down and time
+        print("touchdown")
+        lastTouchDownX = touches.first!.location(in: self).x
+        lastTouchDownTime = event?.timestamp
+        print("storing location", lastTouchDownX)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -180,6 +193,18 @@ class PhysicsScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        print("touchup")
+        print("last location", lastTouchDownX)
+        print("current location", touches.first!.location(in: self).x)
+        
+        // If time delta less than 200ms, it hasn't moved, and there's only one finger on the screen... it's a tap!
+        let delta = (event?.timestamp)! - lastTouchDownTime
+        if delta < 0.2 && touches.first!.location(in: self).x == lastTouchDownX && touches.count == 1 {
+            // User tapped on scene
+            tappedScene(withTouch: touches.first!)
+        } else {
+            // User dragged on scene
+        }
         for touch in touches {
             if let body = selectedBodies[touch] {
                 body.isFrozen = false
@@ -188,61 +213,57 @@ class PhysicsScene: SKScene {
         }
     }
     
-    // MARK: - Gesture Responses
-    
-    func tappedScene(sender: UITapGestureRecognizer) {
+    func tappedScene(withTouch touch: UITouch) {
         // Called when user taps on scene
-        
-        if sender.state == .ended {
             
-            // Get location of tap
-            let tapLocation = sender.location(in: view)
-            let tapPosition = convertPoint(fromView: tapLocation)
+        // Get location of tap
+        let tapLocation = touch.location(in: view)
+        let tapPosition = convertPoint(fromView: tapLocation)
             
-            for node in nodes(at: tapPosition) {
-                if node is Body {
+        for node in nodes(at: tapPosition) {
+            if node is Body {
                     
-                    // Tapped on a body -> get dictionary of settings
-                    let newSettings = viewController.getSettings(forObjectWithName: "body", atPoint: convertPoint(toView: node.position))
+                // Tapped on a body -> get dictionary of settings
+                // NEED TO WORK OUT A WAY OF GETTING DATA BACK FROM SETTINGS VIEW (POSSIBLE RETHINK THIS WHOLE STRUCTURE)
+                let newSettings = viewController.getSettings(forObjectWithName: "body", atPoint: convertPoint(toView: node.position))
                     
-                    // Apply new settings
+                return
                     
-                } else if node is Spring {
-                    // Tapped on a spring -> get dictionary of settings
-                    let newSettings = viewController.getSettings(forObjectWithName: "spring", atPoint: convertPoint(toView: node.position))
+            } else if node is Spring {
+                // Tapped on a spring -> get dictionary of settings
+                let newSettings = viewController.getSettings(forObjectWithName: "spring", atPoint: convertPoint(toView: node.position))
                     
-                    // Apply new settings
-                }
-                
-                // Return because user tapped on a node
                 return
             }
+                
+        }
             
-        // Tapped in empty space (create a triplet)
+    // Tapped in empty space (create a triplet)
             
-            var bodyFits = true
-            enumerateChildNodes(withName: "body", using: { (node, stop) in
-                let body = node as! Body
+        var bodyFits = true
+        enumerateChildNodes(withName: "body", using: { (node, stop) in
+            let body = node as! Body
                 
-                let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
+            let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
                 
                 
                 
-                // Check if body intersects with existing body
-                if trialFrame.intersects(body.frame) {
-                    print("new trial frame intersects existing body")
-                    // Stop checking
-                    bodyFits = false
-                    stop.initialize(to: true)
-                }
-            })
-            
-            if bodyFits {
-                // Create 'triplet'
-                createTriplet(atPosition: convertPoint(fromView: tapLocation))
+            // Check if body intersects with existing body
+            if trialFrame.intersects(body.frame) {
+                print("new trial frame intersects existing body")
+                // Stop checking
+                bodyFits = false
+                stop.initialize(to: true)
             }
+        })
+            
+        if bodyFits {
+            // Create 'triplet'
+            createTriplet(atPosition: convertPoint(fromView: tapLocation))
         }
     }
+    
+    // MARK: - Gesture Responses
     
     func longPressedScene() {
         // Called when user taps and holds on scene for a while
@@ -251,13 +272,13 @@ class PhysicsScene: SKScene {
     }
     
     func setUpGestureRecognizers() {
-        tapRec = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
+        //tapRec = UITapGestureRecognizer(target: self, action: #selector(tappedScene))
         longPressRec = UILongPressGestureRecognizer(target: self, action: #selector(longPressedScene))
         
-        tapRec.cancelsTouchesInView = false
+        //tapRec.cancelsTouchesInView = false
         longPressRec.minimumPressDuration = 0.8
         
-        view?.addGestureRecognizer(tapRec)
+        //view?.addGestureRecognizer(tapRec)
         view?.addGestureRecognizer(longPressRec)
     }
 }
