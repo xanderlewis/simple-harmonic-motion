@@ -34,6 +34,9 @@ class PhysicsScene: SKScene {
     var selectedBodies: [UITouch: Body] = [:]
     var firstTouchPoint: [Body: CGFloat] = [:]
     
+    // Keep reference to presenting view controller
+    var viewController: PhysicsViewController!
+    
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
         setUpGestureRecognizers()
@@ -198,6 +201,7 @@ class PhysicsScene: SKScene {
                     // Tapped on a body or spring (edit)
                     
                     print("tapped on body")
+                    viewController.showSettings(forNode: node)
                     
                     // Return because user tapped on body
                     return

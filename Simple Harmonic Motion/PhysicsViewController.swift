@@ -22,6 +22,7 @@ class PhysicsViewController: UIViewController {
         
         let scene = PhysicsScene(size: view.bounds.size)
         scene.scaleMode = .resizeFill
+        scene.viewController = self
         skView.presentScene(scene)
     }
 
@@ -40,5 +41,15 @@ class PhysicsViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func showSettings(forNode node: SKNode) {
+        
+        // Instantiate node settings view controller and configure it
+        let popupVC = storyboard?.instantiateViewController(withIdentifier: "nodesettings") as! NodeSettingsViewController
+        addChildViewController(popupVC)
+        popupVC.view.frame = view.frame
+        view.addSubview(popupVC.view!)
+        popupVC.didMove(toParentViewController: self)
     }
 }

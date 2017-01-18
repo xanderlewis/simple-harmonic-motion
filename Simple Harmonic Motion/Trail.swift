@@ -50,7 +50,5 @@ class Trail: SKShapeNode {
         newPath.addLines(between: points)
         
         path = newPath
-        
-        print(points)
     }
 }
