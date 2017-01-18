@@ -20,8 +20,8 @@ struct DefaultConstants {
     static let springSections: Int = 18
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor.yellow
-    static let trailVelocity: CGFloat = 10
-    static let trailLength: Int = 60
+    static let trailVelocity: CGFloat = 8
+    static let trailLength: Int = 80
 }
 
 class PhysicsScene: SKScene {
@@ -56,6 +56,8 @@ class PhysicsScene: SKScene {
                 }
                 body.updatePosition()
             }
+            
+            body.updateTrail()
         }
         
         // Deform springs based on displacement of linked bodies

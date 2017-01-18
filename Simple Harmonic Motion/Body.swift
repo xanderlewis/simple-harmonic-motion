@@ -86,7 +86,9 @@ class Body: SKSpriteNode {
     func updatePosition() {
         self.velocity += self.acceleration
         self.displacement += self.velocity
-        
+    }
+    
+    func updateTrail() {
         if trail != nil {
             trail!.update(sender: self)
         }
