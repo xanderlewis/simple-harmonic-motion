@@ -9,55 +9,77 @@
 import UIKit
 
 class NodeSettingsViewController: UIViewController {
-    @IBOutlet weak var settingsView: UIView!
-    @IBOutlet weak var settingsStack: UIStackView!
     @IBOutlet var tapRecogniser: UITapGestureRecognizer!
+    
+    var settingsView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(white: 0, alpha: 0.2)
+        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
         tapRecogniser.cancelsTouchesInView = true
         
         // Animate the view to appear
         animateAppear()
-        
-        // Configure stack
-        settingsStack.alignment = .center
-        settingsStack.distribution = .equalSpacing
-        
-        // Add settings to stack depending on node type
-        let titleLabel = UILabel()
-        titleLabel.text = "Object settings"
-        //titleLabel.font = UIFont.init(name: UIFont.fontNames(forFamilyName: "Damascus")[0], size: 18)
-        titleLabel.font = UIFont.systemFont(ofSize: 18, weight: UIFontWeightLight)
-        titleLabel.textColor = UIColor.black
-        
-        settingsStack.addArrangedSubview(titleLabel)
     }
-
+    
+    func prepareSettings(forObjectWithName objectName: String, atPosition position: CGPoint) {
+        // Prepare settings view
+        settingsView = UIView()
+        settingsView.backgroundColor = UIColor.white
+        view.addSubview(settingsView)
+        
+        // Add layout constraints to settings view
+        settingsView.translatesAutoresizingMaskIntoConstraints = false
+        let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 240)
+        let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: 180)
+        let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        let yConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: position.y)
+        
+        NSLayoutConstraint.activate([widthConstraint, heightConstraint, xConstraint, yConstraint])
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        for touch in touches {
-            // If user touched outside of settings view, remove the root view (close node settings)
-            if !settingsView.frame.contains(touch.location(in: view)) {
-                view.removeFromSuperview()
-            }
-        }
-    }
+//    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+//        for touch in touches {
+//            // If user touched outside of settings view, animate remove the root view (close node settings)
+//            if !settingsView.frame.contains(touch.location(in: view)) {
+//                animateDisappear()
+//            }
+//        }
+//    }
     
     func animateAppear() {
-        settingsView.transform = CGAffineTransform(scaleX: 0.7, y: 0.7)
+        settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
         settingsView.alpha = 0
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 5, options: [], animations: {
+        view.backgroundColor = UIColor(white: 0, alpha: 0)
+        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
             self.settingsView.alpha = 1
             self.settingsView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
+    }
+    
+    func animateDisappear() {
+        UIView.animate(withDuration: 0.08, animations: {
+            self.settingsView.transform = CGAffineTransform(scaleX: 1.2, y: 1.2)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.15, animations: {
+                self.settingsView.alpha = 0
+                self.settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2)
+                self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
+            }, completion: { (finished) in
+                if finished {
+                    self.view.removeFromSuperview()
+                }
+            })
+            
+        }
     }
 
     @IBAction func tappedView(_ sender: UITapGestureRecognizer) {
@@ -67,18 +89,8 @@ class NodeSettingsViewController: UIViewController {
             
             // If user touched outside of settings view, remove the root view (close node settings)
             if !settingsView.frame.contains(touchPoint) {
-                view.removeFromSuperview()
+                animateDisappear()
             }
         }
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

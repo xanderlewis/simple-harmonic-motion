@@ -12,16 +12,17 @@ import GameplayKit
 // Default physics constants for simulation (used when creating new objects)
 // (Limited to this physics scene)
 struct DefaultConstants {
-    static let colour = SKColor.white
+    static let bodyColour = SKColor.white
+    static let springColour = UIColor(white: 0.8, alpha: 1)
     static let mass: CGFloat = 60
-    static let damping: CGFloat = 0.01
+    static let damping: CGFloat = 0.008
     static let springWidth: CGFloat = 20
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor.yellow
-    static let trailVelocity: CGFloat = 8
-    static let trailLength: Int = 80
+    static let trailVelocity: CGFloat = 4
+    static let trailLength: Int = 180
 }
 
 class PhysicsScene: SKScene {
@@ -42,7 +43,7 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.8, alpha: 1)
+        backgroundColor = UIColor(white: 0.3, alpha: 1)
     }
     
     func tickPhysics() {
@@ -87,14 +88,14 @@ class PhysicsScene: SKScene {
         
         // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
-                        colour: DefaultConstants.colour,
+                        colour: DefaultConstants.bodyColour,
                         mass: DefaultConstants.mass,
                         damping: DefaultConstants.damping)
         
         // Create left spring instance
         let leftSpring = Spring(position: CGPoint(x: 0,
                                                   y: body.position.y - DefaultConstants.springWidth / 2),
-                                colour: DefaultConstants.colour,
+                                colour: DefaultConstants.springColour,
                                 orientation: .facingRight,
                                 length: body.position.x - body.mass / 2,
                                 width: DefaultConstants.springWidth,
@@ -104,7 +105,7 @@ class PhysicsScene: SKScene {
         // Create right spring instance
         let rightSpring = Spring(position: CGPoint(x: frame.width,
                                                    y: body.position.y - DefaultConstants.springWidth / 2),
-                                 colour: DefaultConstants.colour,
+                                 colour: DefaultConstants.springColour,
                                  orientation: .facingLeft,
                                  length: frame.width - (body.position.x + body.mass / 2),
                                  width: DefaultConstants.springWidth,
@@ -170,7 +171,6 @@ class PhysicsScene: SKScene {
         for touch in touches {
             if let body = selectedBodies[touch] {
                 body.displacement = touch.location(in: self).x - firstTouchPoint[body]!
-                print("moving")
             }
         }
     }
@@ -196,16 +196,22 @@ class PhysicsScene: SKScene {
             let tapPosition = convertPoint(fromView: tapLocation)
             
             for node in nodes(at: tapPosition) {
-                if node is Body || node is Spring {
+                if node is Body {
                     
-                    // Tapped on a body or spring (edit)
+                    // Tapped on a body -> get dictionary of settings
+                    let newSettings = viewController.getSettings(forObjectWithName: "body", atPoint: convertPoint(toView: node.position))
                     
-                    print("tapped on body")
-                    viewController.showSettings(forNode: node)
+                    // Apply new settings
                     
-                    // Return because user tapped on body
-                    return
+                } else if node is Spring {
+                    // Tapped on a spring
+                    let newSettings = viewController.getSettings(forObjectWithName: "spring", atPoint: convertPoint(toView: node.position))
+                    
+                    // Apply new settings
                 }
+                
+                // Return because user tapped on body
+                return
             }
             
         // Tapped in empty space (create a triplet)

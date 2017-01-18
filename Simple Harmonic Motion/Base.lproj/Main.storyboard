@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
-    <device id="retina4_7" orientation="portrait">
+    <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
@@ -18,7 +18,7 @@
                         <viewControllerLayoutGuide type="bottom" id="qHh-Mt-9TT"/>
                     </layoutGuides>
                     <view key="view" multipleTouchEnabled="YES" contentMode="scaleToFill" id="3se-qz-xqx" customClass="SKView">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
@@ -35,40 +35,15 @@
                         <viewControllerLayoutGuide type="bottom" id="iYQ-TA-cn2"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="J7e-pJ-haC">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="SJh-AY-69X">
-                                <rect key="frame" x="67" y="269" width="240" height="128"/>
-                                <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="phc-Mb-ohD">
-                                        <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
-                                    </stackView>
-                                </subviews>
-                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstItem="phc-Mb-ohD" firstAttribute="top" secondItem="SJh-AY-69X" secondAttribute="top" id="61Q-o8-DBJ"/>
-                                    <constraint firstAttribute="trailing" secondItem="phc-Mb-ohD" secondAttribute="trailing" id="DpS-Mg-COA"/>
-                                    <constraint firstAttribute="bottom" secondItem="phc-Mb-ohD" secondAttribute="bottom" id="KPc-ps-WaX"/>
-                                    <constraint firstItem="phc-Mb-ohD" firstAttribute="leading" secondItem="SJh-AY-69X" secondAttribute="leading" id="NQZ-g8-eXM"/>
-                                    <constraint firstAttribute="height" constant="128" id="mEi-J2-LJF"/>
-                                    <constraint firstAttribute="width" constant="240" id="oV6-pI-POl"/>
-                                </constraints>
-                            </view>
-                        </subviews>
                         <color key="backgroundColor" red="1" green="0.0" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
                         <gestureRecognizers/>
-                        <constraints>
-                            <constraint firstItem="SJh-AY-69X" firstAttribute="centerY" secondItem="J7e-pJ-haC" secondAttribute="centerY" id="IyD-Ym-EuO"/>
-                            <constraint firstItem="SJh-AY-69X" firstAttribute="centerX" secondItem="J7e-pJ-haC" secondAttribute="centerX" id="VDh-VV-U8H"/>
-                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="j4Y-tl-c9Y" appends="YES" id="fQF-oN-vq3"/>
                         </connections>
                     </view>
                     <connections>
-                        <outlet property="settingsStack" destination="phc-Mb-ohD" id="Ept-CU-pl7"/>
-                        <outlet property="settingsView" destination="SJh-AY-69X" id="gkZ-yA-oyf"/>
                         <outlet property="tapRecogniser" destination="j4Y-tl-c9Y" id="3K0-yA-xyb"/>
                     </connections>
                 </viewController>

@@ -43,13 +43,22 @@ class PhysicsViewController: UIViewController {
         return true
     }
     
-    func showSettings(forNode node: SKNode) {
+    func getSettings(forObjectWithName objectName: String, atPoint point: CGPoint) {
         
         // Instantiate node settings view controller and configure it
         let popupVC = storyboard?.instantiateViewController(withIdentifier: "nodesettings") as! NodeSettingsViewController
         addChildViewController(popupVC)
+        popupVC.didMove(toParentViewController: self)
+        
+        if objectName == "body" {
+            popupVC.prepareSettings(forObjectWithName: "body", atPosition: point)
+        } else if objectName == "spring" {
+            popupVC.prepareSettings(forObjectWithName: "spring", atPosition: point)
+        }
+        
+        
+        // Show node settings
         popupVC.view.frame = view.frame
         view.addSubview(popupVC.view!)
-        popupVC.didMove(toParentViewController: self)
     }
 }
