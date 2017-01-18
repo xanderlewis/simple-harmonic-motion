@@ -208,7 +208,7 @@ class PhysicsScene: SKScene {
                     // Apply new settings
                     
                 } else if node is Spring {
-                    // Tapped on a spring
+                    // Tapped on a spring -> get dictionary of settings
                     let newSettings = viewController.getSettings(forObjectWithName: "spring", atPoint: convertPoint(toView: node.position))
                     
                     // Apply new settings
@@ -224,9 +224,13 @@ class PhysicsScene: SKScene {
             enumerateChildNodes(withName: "body", using: { (node, stop) in
                 let body = node as! Body
                 
-                // If body doesnt fit
-                if tapPosition.y + body.mass / 2 + DefaultConstants.verticalSpacing > body.position.y - body.mass / 2 &&
-                    tapPosition.y - body.mass / 2 + DefaultConstants.verticalSpacing < body.position.y + body.mass / 2 {
+                let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
+                
+                
+                
+                // Check if body intersects with existing body
+                if trialFrame.intersects(body.frame) {
+                    print("new trial frame intersects existing body")
                     // Stop checking
                     bodyFits = false
                     stop.initialize(to: true)
