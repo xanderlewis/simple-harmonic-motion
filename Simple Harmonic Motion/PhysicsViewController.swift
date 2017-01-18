@@ -16,9 +16,9 @@ class PhysicsViewController: UIViewController {
         super.viewDidLoad()
         
         let skView = view as! SKView
-        skView.ignoresSiblingOrder = false
-        skView.showsFPS = true
-        skView.showsNodeCount = true
+        skView.ignoresSiblingOrder = true
+        //skView.showsFPS = true
+        //skView.showsNodeCount = true
         
         let scene = PhysicsScene(size: view.bounds.size)
         scene.scaleMode = .resizeFill

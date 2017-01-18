@@ -12,17 +12,18 @@ import GameplayKit
 // Default physics constants for simulation (used when creating new objects)
 // (Limited to this physics scene)
 struct DefaultConstants {
-    static let bodyColour = SKColor.white
-    static let springColour = UIColor(white: 0.8, alpha: 1)
-    static let mass: CGFloat = 60
-    static let damping: CGFloat = 0.008
+    static let bodyColour = UIColor(white: 0.9, alpha: 1)
+    static let springColour = UIColor(white: 0.5, alpha: 1)
+    static let mass: CGFloat = 50
+    static let damping: CGFloat = 0.006
     static let springWidth: CGFloat = 20
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
+    static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
-    static let trailColour = UIColor.yellow
-    static let trailVelocity: CGFloat = 2
-    static let trailLength: Int = 420
+    static let trailColour = UIColor(red:1.00, green:0.00, blue:0.45, alpha:1.0)
+    static let trailVelocity: CGFloat = 2.5
+    static let trailLength: Int = 400
 }
 
 class PhysicsScene: SKScene {
@@ -47,7 +48,7 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.3, alpha: 1)
+        backgroundColor = UIColor(white: 0.2, alpha: 1)
     }
     
     func tickPhysics() {
@@ -101,7 +102,7 @@ class PhysicsScene: SKScene {
                                                   y: body.position.y - DefaultConstants.springWidth / 2),
                                 colour: DefaultConstants.springColour,
                                 orientation: .facingRight,
-                                length: body.position.x - body.mass / 2,
+                                length: body.position.x - body.mass / 2 + DefaultConstants.springToBodyContactZone,
                                 width: DefaultConstants.springWidth,
                                 stiffness: DefaultConstants.springStiffness,
                                 sections: DefaultConstants.springSections)
@@ -111,7 +112,7 @@ class PhysicsScene: SKScene {
                                                    y: body.position.y - DefaultConstants.springWidth / 2),
                                  colour: DefaultConstants.springColour,
                                  orientation: .facingLeft,
-                                 length: frame.width - (body.position.x + body.mass / 2),
+                                 length: frame.width - (body.position.x + body.mass / 2) + DefaultConstants.springToBodyContactZone,
                                  width: DefaultConstants.springWidth,
                                  stiffness: DefaultConstants.springStiffness,
                                  sections: DefaultConstants.springSections)
@@ -245,8 +246,6 @@ class PhysicsScene: SKScene {
             let body = node as! Body
                 
             let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
-                
-                
                 
             // Check if body intersects with existing body
             if trialFrame.intersects(body.frame) {

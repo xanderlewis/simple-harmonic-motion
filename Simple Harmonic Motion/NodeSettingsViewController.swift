@@ -19,7 +19,7 @@ class NodeSettingsViewController: UIViewController {
     
     let settingsViewHeight: CGFloat = 180
     let settingsViewWidth: CGFloat = 240
-    let settingsViewSpacer: CGFloat = 20
+    let settingsViewSpacer: CGFloat = 10
     
     var settingsView: UIView!
 
@@ -27,7 +27,7 @@ class NodeSettingsViewController: UIViewController {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+        view.backgroundColor = UIColor(white: 0, alpha: 0.4)
         tapRecogniser.cancelsTouchesInView = true
         
         // Animate the view to appear
@@ -86,7 +86,7 @@ class NodeSettingsViewController: UIViewController {
         settingsView.alpha = 0
         view.backgroundColor = UIColor(white: 0, alpha: 0)
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
-            self.view.backgroundColor = UIColor(white: 0, alpha: 0.3)
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
             self.settingsView.alpha = 1
             self.settingsView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)

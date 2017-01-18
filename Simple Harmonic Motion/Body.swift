@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Body: SKSpriteNode {
+class Body: SKShapeNode {
     
     let mass: CGFloat
     let restPosition: CGPoint
@@ -47,10 +47,23 @@ class Body: SKSpriteNode {
         
         
         // Initialise node properties
-        super.init(texture: nil, color: c, size: CGSize(width: m, height: m))
+        super.init()
+        path = UIBezierPath(roundedRect: CGRect(x: -m/2, y: -m/2, width: m, height: m), cornerRadius: 0).cgPath
+        
+//        let hexPath = CGMutablePath()
+//        let hexRadius = 30
+//        hexPath.move(to: CGPoint(x: 0, y: hexRadius))
+//        for i in 0...6 {
+//            hexPath.addLine(to: CGPoint(x: 0, y: hexRadius), transform: CGAffineTransform(rotationAngle: CGFloat(M_2_PI/6 * Double(i))))
+//        }
+//        path = hexPath
+        
+        
+        lineWidth = 0
+        strokeColor = c.darker(70.0)!
+        fillColor = c
         position = p
         zPosition = 100
-        anchorPoint = CGPoint(x: 0.5, y: 0.5)
         name = "body"
     }
     
