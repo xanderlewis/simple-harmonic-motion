@@ -132,19 +132,23 @@ class PhysicsScene: SKScene {
         
         // Animations
         let shrink = SKAction.scale(to: 0.5, duration: 0)
-        let fadeIn = SKAction.fadeIn(withDuration: 0.1)
+        let fadeIn = SKAction.fadeIn(withDuration: 0.2)
         let expand = SKAction.scale(to: 1.0, duration: 0.1)
         
         body.alpha = 0
         leftSpring.alpha = 0
         rightSpring.alpha = 0
+        trail.alpha = 0
         
         body.run(shrink) {
             body.run(fadeIn)
             body.run(expand)
         }
         leftSpring.run(fadeIn)
-        rightSpring.run(fadeIn)
+        rightSpring.run(fadeIn) {
+            trail.run(fadeIn)
+        }
+        
         
     }
     
@@ -210,7 +214,7 @@ class PhysicsScene: SKScene {
                     // Apply new settings
                 }
                 
-                // Return because user tapped on body
+                // Return because user tapped on a node
                 return
             }
             
