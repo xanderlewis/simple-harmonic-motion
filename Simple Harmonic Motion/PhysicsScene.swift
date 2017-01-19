@@ -43,6 +43,8 @@ class PhysicsScene: SKScene {
     var lastTouchDownX: CGFloat!
     var lastTouchDownTime: TimeInterval!
     
+    // MARK: - Initialising stuff
+    
     override func didMove(to view: SKView) {
         // Set up gesture recognisers
         setUpGestureRecognizers()
@@ -51,6 +53,8 @@ class PhysicsScene: SKScene {
         backgroundColor = UIColor(white: 0.2, alpha: 1)
     }
     
+    // MARK: - Update Loop
+
     func tickPhysics() {
         
         // Apply springs forces to (non-frozen) linked bodies and update their positions
@@ -158,8 +162,8 @@ class PhysicsScene: SKScene {
     }
     
     // MARK: - Tap/drag handling
-    // TAP:  DOESN'T MOVE, DOWN FOR < 100ms
-    // DRAG: MOVES, DOWN FOR > 200ms
+    // (TAP:  DOESN'T MOVE, DOWN FOR < 200ms)
+    // (DRAG: MOVES, DOWN FOR >= 200ms)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
@@ -179,10 +183,8 @@ class PhysicsScene: SKScene {
         }
         
         // Store touch down and time
-        print("touchdown")
         lastTouchDownX = touches.first!.location(in: self).x
         lastTouchDownTime = event?.timestamp
-        print("storing location", lastTouchDownX)
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -194,10 +196,6 @@ class PhysicsScene: SKScene {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("touchup")
-        print("last location", lastTouchDownX)
-        print("current location", touches.first!.location(in: self).x)
-        
         // If time delta less than 200ms, it hasn't moved, and there's only one finger on the screen... it's a tap!
         let delta = (event?.timestamp)! - lastTouchDownTime
         if delta < 0.2 && touches.first!.location(in: self).x == lastTouchDownX && touches.count == 1 {
@@ -222,23 +220,13 @@ class PhysicsScene: SKScene {
         let tapPosition = convertPoint(fromView: tapLocation)
             
         for node in nodes(at: tapPosition) {
-            if node is Body {
-                    
-                // Tapped on a body -> get dictionary of settings
-                // NEED TO WORK OUT A WAY OF GETTING DATA BACK FROM SETTINGS VIEW (POSSIBLE RETHINK THIS WHOLE STRUCTURE)
-                let newSettings = viewController.getSettings(forObjectWithName: "body", atPoint: convertPoint(toView: node.position))
-                    
-                return
-                    
-            } else if node is Spring {
-                // Tapped on a spring -> get dictionary of settings
-                let newSettings = viewController.getSettings(forObjectWithName: "spring", atPoint: convertPoint(toView: node.position))
-                    
+            if node is Body || node is Spring {
+                // Tapped on a body or spring -> show settings (pass reference to node)
+                self.viewController.showSettings(forObject: node)
                 return
             }
-                
         }
-            
+        
     // Tapped in empty space (create a triplet)
             
         var bodyFits = true
@@ -249,7 +237,6 @@ class PhysicsScene: SKScene {
                 
             // Check if body intersects with existing body
             if trialFrame.intersects(body.frame) {
-                print("new trial frame intersects existing body")
                 // Stop checking
                 bodyFits = false
                 stop.initialize(to: true)

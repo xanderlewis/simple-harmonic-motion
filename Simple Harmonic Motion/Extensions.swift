@@ -28,3 +28,9 @@ extension UIColor {
         }
     }
 }
+
+extension CGPoint {
+    func toView(withHeight height: CGFloat) -> CGPoint {
+        return CGPoint(x: self.x, y: height - self.y)
+    }
+}

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C000E2841E31605400C45876 /* BodySettings.xib in Resources */ = {isa = PBXBuildFile; fileRef = C000E2831E31605400C45876 /* BodySettings.xib */; };
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
 		C051402F1E2F6727009158CA /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402E1E2F6727009158CA /* Trail.swift */; };
 		C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05140301E2F7721009158CA /* NodeSettingsViewController.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C000E2831E31605400C45876 /* BodySettings.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = BodySettings.xib; sourceTree = "<group>"; };
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C051402E1E2F6727009158CA /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
 		C05140301E2F7721009158CA /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +70,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C000E2851E31609900C45876 /* Settings Views */ = {
+			isa = PBXGroup;
+			children = (
+				C000E2831E31605400C45876 /* BodySettings.xib */,
+			);
+			name = "Settings Views";
+			sourceTree = "<group>";
+		};
 		C0C636DF1E2D42A400CED588 = {
 			isa = PBXGroup;
 			children = (
@@ -98,6 +108,7 @@
 				C0C636FA1E2D42A400CED588 /* LaunchScreen.storyboard */,
 				C0C636FD1E2D42A400CED588 /* Info.plist */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
+				C000E2851E31609900C45876 /* Settings Views */,
 				C0C637151E2D435900CED588 /* Physics Model */,
 			);
 			path = "Simple Harmonic Motion";
@@ -207,6 +218,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C000E2841E31605400C45876 /* BodySettings.xib in Resources */,
 				C0C636F71E2D42A400CED588 /* Main.storyboard in Resources */,
 				C0C636F91E2D42A400CED588 /* Assets.xcassets in Resources */,
 				C0C636FC1E2D42A400CED588 /* LaunchScreen.storyboard in Resources */,
