@@ -39,9 +39,9 @@ class NodeSettingsViewController: UIViewController {
         
         // Prepare settings view (load from xib file)
         if node is Body {
-            settingsView = Bundle.main.loadNibNamed("BodySettings", owner: self, options: nil)?[0] as? UIView
+            settingsView = Bundle.main.loadNibNamed("ObjectSettings", owner: self, options: nil)?[0] as? UIView
         } else if node is Spring {
-            settingsView = Bundle.main.loadNibNamed("BodySettings", owner: self, options: nil)?[1] as? UIView
+            settingsView = Bundle.main.loadNibNamed("ObjectSettings", owner: self, options: nil)?[1] as? UIView
         }
         
         view.addSubview(settingsView)
