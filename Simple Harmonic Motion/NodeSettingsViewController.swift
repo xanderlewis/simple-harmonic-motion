@@ -12,13 +12,12 @@ import SpriteKit
 class NodeSettingsViewController: UIViewController {
     @IBOutlet var tapRecogniser: UITapGestureRecognizer!
     
-    let settingsViewHeight: CGFloat = 180
-    let settingsViewWidth: CGFloat = 240
-    let settingsViewSpacer: CGFloat = 10
-    
+    let settingsViewSpacer: CGFloat = 4
     var settingsView: UIView!
-    
     var sourceNode: SKNode!
+    
+    // MARK: - Settings view outlets
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,26 +43,30 @@ class NodeSettingsViewController: UIViewController {
             settingsView = Bundle.main.loadNibNamed("ObjectSettings", owner: self, options: nil)?[1] as? UIView
         }
         
+        // Update to current settings
+        
+        
+        // Add settings view as subview
         view.addSubview(settingsView)
         
         
-        // Add layout constraints to settings view
+        // Add layout constraints for settings view
         settingsView.translatesAutoresizingMaskIntoConstraints = false
-        let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsViewWidth)
-        let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsViewHeight)
+        let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.width)
+        let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.height)
         let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
 
         var yConstraintConstant = nodePosition.y
         
         // If bottom of settings view intersects with bottom of root view
-        if yConstraintConstant + settingsViewHeight/2 + settingsViewSpacer > view.frame.height {
+        if yConstraintConstant + settingsView.frame.height/2 + settingsViewSpacer > view.frame.height {
             // Shift negative (up)
-            yConstraintConstant -= (nodePosition.y + settingsViewHeight/2) - view.frame.height + settingsViewSpacer
+            yConstraintConstant -= (nodePosition.y + settingsView.frame.height/2) - view.frame.height + settingsViewSpacer
             
         // If top of settings view intersects with top of root view
-        } else if yConstraintConstant - settingsViewHeight/2 - settingsViewSpacer < 0 {
+        } else if yConstraintConstant - settingsView.frame.height/2 - settingsViewSpacer < 0 {
             // Shift positive (down)
-            yConstraintConstant -= (nodePosition.y - settingsViewHeight/2) - settingsViewSpacer
+            yConstraintConstant -= (nodePosition.y - settingsView.frame.height/2) - settingsViewSpacer
         }
         
         let yConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: yConstraintConstant)
