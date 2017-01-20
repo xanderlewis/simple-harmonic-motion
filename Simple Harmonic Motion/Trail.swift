@@ -24,7 +24,7 @@ class Trail: SKShapeNode {
         strokeColor = c
         lineWidth = 1
         lineCap = .round
-        zPosition = 0
+        zPosition = 10
         strokeColor = c
     }
     

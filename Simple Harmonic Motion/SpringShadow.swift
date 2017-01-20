@@ -1,43 +1,21 @@
 //
-//  Spring.swift
-//  SHMPrototype2
+//  SpringShadow.swift
+//  Simple Harmonic Motion
 //
-//  Created by Xander Lewis on 07/10/2016.
-//  Copyright © 2016 Xander Lewis. All rights reserved.
+//  Created by Xander Lewis on 20/01/2017.
+//  Copyright © 2017 Xander Lewis. All rights reserved.
 //
 
-import Foundation
+import UIKit
 import SpriteKit
 
-enum SpringOrientation {
-    case facingLeft
-    case facingRight
-}
-
-class Spring: SKShapeNode {
-    
-    let initialLength: CGFloat
+class SpringShadow: SKShapeNode {
     var currentLength: CGFloat
-    var stiffness: CGFloat
-    
-    var force: CGFloat {
-        get {
-            if orientation == .facingRight {
-                return -stiffness * (currentLength - initialLength) // F = -kx
-            } else {
-                return stiffness * (currentLength - initialLength) // F = -kx
-            }
-        }
-    }
-    
-    var linkedBodies: [Body] = []
     
     var width: CGFloat
     var sections: Int
     
     var orientation: SpringOrientation
-    
-    var shadow: SpringShadow?
     
     /**
      Creates a spring.
@@ -45,30 +23,21 @@ class Spring: SKShapeNode {
      - parameter width: The width of the spring.
      - parameter sections: The number of 'sections' (V-shapes) the spring has.
      */
-    init(position p: CGPoint, colour c: SKColor, orientation o: SpringOrientation, length l: CGFloat, width w: CGFloat, stiffness st: CGFloat, sections sec: Int) {
+    init(position p: CGPoint, orientation o: SpringOrientation, length l: CGFloat, width w: CGFloat, sections sec: Int) {
         
         // Initialise model
-        initialLength = l
         currentLength = l
-        stiffness = st
         width = w
         sections = sec
         orientation = o
         
-        // Create shadow
-        shadow = SpringShadow(position: CGPoint(x: 0, y: -1), orientation: o, length: l, width: w, sections: sec)
-        
         super.init()
-        
-        if shadow != nil {
-            self.addChild(shadow!)
-        }
         
         // Initialise associated node
         position = p
-        zPosition = 20
+        zPosition = 0
         name = "spring"
-        strokeColor = c
+        strokeColor = UIColor(white: 0.18, alpha: 1.0)
         lineWidth = 1
         lineCap = .round
         
@@ -117,38 +86,6 @@ class Spring: SKShapeNode {
         
         // Set new path
         path = newPath
-        
-        // Update shadow path
-        if shadow != nil {
-            shadow!.currentLength = currentLength
-            shadow!.updatePath()
-        }
-    }
-    
-    /**
-     Changes the length of the spring.
-     
-     - parameter change: The amount by which to modify the length. (can be positive or negative)
-     */
-    func deform(change: CGFloat) {
-        if orientation == .facingRight {
-            currentLength = initialLength + change
-        } else {
-            currentLength = initialLength - change
-        }
-        
-    }
-    
-    /**
-     Links a body to the spring.
-     
-     - parameter body: The body to be linked to the spring.
-     */
-    func link(body: Body) {
-        linkedBodies.append(body)
-    }
-    
-    func unlink(body: Body) {
-        linkedBodies = []
     }
 }
+
