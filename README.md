@@ -8,8 +8,8 @@ This project aims to create a tool that enhances the teaching of this topic to s
 ## Feature List
 - Add/remove bodies on screen, suspended by two connecting springs 
 - Displace bodies with your finger and watch them in motion
-- Adjust mass, damping and appearance of bodies **[in development]**
-- Adjust stiffness (spring constant) and appearance of springs **[in development]**
+- Adjust mass, damping and appearance of bodies
+- Adjust stiffness (spring constant) and appearance of springs
 - Toggle 'motion trails' that travel up the screen for bodies **[in development]**
 - Record and export simulation data as file **[in development]**
 - Some useful information about the actual physics **[in development]**
