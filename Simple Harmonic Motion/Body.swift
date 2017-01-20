@@ -11,7 +11,12 @@ import SpriteKit
 
 class Body: SKShapeNode {
     
-    let mass: CGFloat
+    var mass: CGFloat {
+        didSet {
+            // Change appearance when mass changes
+            path = UIBezierPath(roundedRect: CGRect(x: -mass/2, y: -mass/2, width: mass, height: mass), cornerRadius: 0).cgPath
+        }
+    }
     let restPosition: CGPoint
     var displacement: CGFloat = 0 {
         didSet {
@@ -22,13 +27,20 @@ class Body: SKShapeNode {
     var velocity: CGFloat = 0
     var acceleration: CGFloat = 0
     
-    let damping: CGFloat
+    var damping: CGFloat
     
     var linkedSprings: [Spring] = []
     
     var isFrozen = false
     
     var trail: Trail?
+    
+    override var fillColor: UIColor {
+        didSet {
+            // Change trail colour when fill colour changes
+            trail?.strokeColor = fillColor
+        }
+    }
     
     /**
      Creates a body.
@@ -49,15 +61,6 @@ class Body: SKShapeNode {
         // Initialise node properties
         super.init()
         path = UIBezierPath(roundedRect: CGRect(x: -m/2, y: -m/2, width: m, height: m), cornerRadius: 0).cgPath
-        
-//        let hexPath = CGMutablePath()
-//        let hexRadius = 30
-//        hexPath.move(to: CGPoint(x: 0, y: hexRadius))
-//        for i in 0...6 {
-//            hexPath.addLine(to: CGPoint(x: 0, y: hexRadius), transform: CGAffineTransform(rotationAngle: CGFloat(M_2_PI/6 * Double(i))))
-//        }
-//        path = hexPath
-        
         
         lineWidth = 0
         strokeColor = c.darker(70.0)!

@@ -9,6 +9,15 @@
 import UIKit
 import SpriteKit
 
+public struct BodyColourPalette {
+    static let colour1 = UIColor(red:0.00, green:0.09, blue:0.15, alpha:1.0)
+    static let colour2 = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
+    static let colour3 = UIColor(red:0.25, green:0.92, blue:0.83, alpha:1.0)
+    static let colour4 = UIColor(red:0.99, green:1.00, blue:0.99, alpha:1.0)
+    static let colour5 = UIColor(red:1.00, green:0.62, blue:0.11, alpha:1.0)
+    static let colour6 = UIColor(red:0.80, green:0.55, blue:0.53, alpha:1.0)
+}
+
 class NodeSettingsViewController: UIViewController {
     @IBOutlet var tapRecogniser: UITapGestureRecognizer!
     
@@ -16,8 +25,21 @@ class NodeSettingsViewController: UIViewController {
     var settingsView: UIView!
     var sourceNode: SKNode!
     
-    // MARK: - Settings view outlets
+    // MARK: - Body settings outlets
+    @IBOutlet weak var massSlider: UISlider!
+    @IBOutlet weak var dampingSlider: UISlider!
+    @IBOutlet weak var bodySettingsView: UIView!
+    @IBOutlet weak var colour1Button: UIButton!
+    @IBOutlet weak var colour2Button: UIButton!
+    @IBOutlet weak var colour3Button: UIButton!
+    @IBOutlet weak var colour4Button: UIButton!
+    @IBOutlet weak var colour5Button: UIButton!
+    @IBOutlet weak var colour6Button: UIButton!
     
+    // MARK: - Spring settings outlets
+    @IBOutlet weak var stiffnessSlider: UISlider!
+    
+    @IBOutlet weak var springSettingsView: UIView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +47,18 @@ class NodeSettingsViewController: UIViewController {
         // Do any additional setup after loading the view.
         view.backgroundColor = UIColor(white: 0, alpha: 0)
         tapRecogniser.cancelsTouchesInView = true
+        
+        // Start with popup views hidden
+        bodySettingsView.alpha = 0
+        springSettingsView.alpha = 0
+        
+        // Set up colours
+        colour1Button.backgroundColor = BodyColourPalette.colour1
+        colour2Button.backgroundColor = BodyColourPalette.colour2
+        colour3Button.backgroundColor = BodyColourPalette.colour3
+        colour4Button.backgroundColor = BodyColourPalette.colour4
+        colour5Button.backgroundColor = BodyColourPalette.colour5
+        colour6Button.backgroundColor = BodyColourPalette.colour6
         
     }
     
@@ -37,18 +71,24 @@ class NodeSettingsViewController: UIViewController {
         let nodePosition = node.position.toView(withHeight: view.frame.height)
         
         // Prepare settings view (load from xib file)
-        if node is Body {
-            settingsView = Bundle.main.loadNibNamed("ObjectSettings", owner: self, options: nil)?[0] as? UIView
-        } else if node is Spring {
-            settingsView = Bundle.main.loadNibNamed("ObjectSettings", owner: self, options: nil)?[1] as? UIView
+        if let body = node as? Body {
+            // Show spring settings
+            bodySettingsView.alpha = 1
+            settingsView = bodySettingsView
+            
+            // Update UI to current settings
+            massSlider.value = Float(body.mass)
+            dampingSlider.value = Float(body.damping)
+            
+            
+        } else if let spring = node as? Spring {
+            // Show spring settings
+            springSettingsView.alpha = 1
+            settingsView = springSettingsView
+            
+            // Update UI to current settings
+            stiffnessSlider.value = Float(spring.stiffness)
         }
-        
-        // Update to current settings
-        
-        
-        // Add settings view as subview
-        view.addSubview(settingsView)
-        
         
         // Add layout constraints for settings view
         settingsView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,6 +115,62 @@ class NodeSettingsViewController: UIViewController {
         
         // Animate the view to appear
         animateAppear(from: sourceNode.position.toView(withHeight: view.frame.height))
+    }
+    
+    // MARK: - Object settings actions
+    
+    @IBAction func massSliderChanged(_ sender: UISlider) {
+        if let body = sourceNode as? Body {
+            body.mass = CGFloat(sender.value)
+        }
+    }
+    
+    @IBAction func dampingSliderChanged(_ sender: UISlider) {
+        if let body = sourceNode as? Body {
+            body.damping = CGFloat(sender.value)
+        }
+    }
+    
+    @IBAction func stiffnessSliderChanged(_ sender: UISlider) {
+        if let spring = sourceNode as? Spring {
+            spring.stiffness = CGFloat(sender.value)
+        }
+    }
+    
+    @IBAction func colourButton1Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
+    }
+    
+    @IBAction func colourButton2Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
+    }
+    
+    @IBAction func colourButton3Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
+    }
+    
+    @IBAction func colourButton4Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
+    }
+    
+    @IBAction func colourButton5Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
+    }
+    
+    @IBAction func colourButton6Pressed(_ sender: UIButton) {
+        if let body = sourceNode as? Body {
+            body.fillColor = sender.backgroundColor!
+        }
     }
     
     // MARK: - Animations

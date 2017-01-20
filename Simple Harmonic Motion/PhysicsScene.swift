@@ -16,7 +16,7 @@ struct DefaultConstants {
     static let springColour = UIColor(white: 0.5, alpha: 1)
     static let mass: CGFloat = 50
     static let damping: CGFloat = 0.006
-    static let springWidth: CGFloat = 20
+    static let springWidth: CGFloat = 14
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
     static let springToBodyContactZone: CGFloat = 2
@@ -97,7 +97,7 @@ class PhysicsScene: SKScene {
         
         // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
-                        colour: DefaultConstants.bodyColour,
+                        colour: BodyColourPalette.colour4,
                         mass: DefaultConstants.mass,
                         damping: DefaultConstants.damping)
         
@@ -106,7 +106,7 @@ class PhysicsScene: SKScene {
                                                   y: body.position.y - DefaultConstants.springWidth / 2),
                                 colour: DefaultConstants.springColour,
                                 orientation: .facingRight,
-                                length: body.position.x - body.mass / 2 + DefaultConstants.springToBodyContactZone,
+                                length: body.position.x,
                                 width: DefaultConstants.springWidth,
                                 stiffness: DefaultConstants.springStiffness,
                                 sections: DefaultConstants.springSections)
@@ -116,13 +116,13 @@ class PhysicsScene: SKScene {
                                                    y: body.position.y - DefaultConstants.springWidth / 2),
                                  colour: DefaultConstants.springColour,
                                  orientation: .facingLeft,
-                                 length: frame.width - (body.position.x + body.mass / 2) + DefaultConstants.springToBodyContactZone,
+                                 length: body.position.x,
                                  width: DefaultConstants.springWidth,
                                  stiffness: DefaultConstants.springStiffness,
                                  sections: DefaultConstants.springSections)
         
         // Create trail for body
-        let trail = Trail(colour: DefaultConstants.trailColour, verticalVelocity: DefaultConstants.trailVelocity, length: DefaultConstants.trailLength)
+        let trail = Trail(colour: BodyColourPalette.colour4, verticalVelocity: DefaultConstants.trailVelocity, length: DefaultConstants.trailLength)
         
         // Add trail to body
         body.trail = trail
