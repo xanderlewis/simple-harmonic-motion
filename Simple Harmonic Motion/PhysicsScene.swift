@@ -18,7 +18,7 @@ struct DefaultConstants {
     static let damping: CGFloat = 0.02
     static let springWidth: CGFloat = 14
     static let springStiffness: CGFloat = 5
-    static let springSections: Int = 18
+    static let springSections: Int = 20
     static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor(red:1.00, green:0.00, blue:0.45, alpha:1.0)
