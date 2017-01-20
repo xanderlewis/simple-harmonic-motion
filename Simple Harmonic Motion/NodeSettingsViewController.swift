@@ -21,6 +21,7 @@ public struct BodyColourPalette {
 class NodeSettingsViewController: UIViewController {
     @IBOutlet var tapRecogniser: UITapGestureRecognizer!
     
+    @IBOutlet weak var visualEffectView: UIVisualEffectView!
     let settingsViewSpacer: CGFloat = 4
     var settingsView: UIView!
     var sourceNode: SKNode!
@@ -38,7 +39,6 @@ class NodeSettingsViewController: UIViewController {
     
     // MARK: - Spring settings outlets
     @IBOutlet weak var stiffnessSlider: UISlider!
-    
     @IBOutlet weak var springSettingsView: UIView!
 
     override func viewDidLoad() {
@@ -60,6 +60,7 @@ class NodeSettingsViewController: UIViewController {
         colour5Button.backgroundColor = BodyColourPalette.colour5
         colour6Button.backgroundColor = BodyColourPalette.colour6
         
+        self.visualEffectView.alpha = 0
     }
     
     func showSettings(forObject node: SKNode) {
@@ -180,7 +181,8 @@ class NodeSettingsViewController: UIViewController {
         settingsView.alpha = 0
         view.backgroundColor = UIColor(white: 0, alpha: 0)
         UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
-            self.view.backgroundColor = UIColor(white: 0, alpha: 0.4)
+            self.view.backgroundColor = UIColor(white: 0, alpha: 0.2)
+            self.visualEffectView.alpha = 1
             self.settingsView.alpha = 1
             self.settingsView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
@@ -194,6 +196,7 @@ class NodeSettingsViewController: UIViewController {
                 self.settingsView.alpha = 0
                 self.settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).concatenating(CGAffineTransform(translationX: finalPosition.x - self.view.frame.width/2, y: 0))
                 self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
+                self.visualEffectView.alpha = 0
             }, completion: { (finished) in
                 if finished {
                     self.view.removeFromSuperview()
