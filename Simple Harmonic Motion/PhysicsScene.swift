@@ -15,7 +15,7 @@ struct DefaultConstants {
     static let bodyColour = UIColor(white: 0.9, alpha: 1)
     static let springColour = UIColor(white: 0.5, alpha: 1)
     static let mass: CGFloat = 50
-    static let damping: CGFloat = 0.006
+    static let damping: CGFloat = 0.02
     static let springWidth: CGFloat = 14
     static let springStiffness: CGFloat = 5
     static let springSections: Int = 18
@@ -255,6 +255,8 @@ class PhysicsScene: SKScene {
         // Called when user taps and holds on scene for a while
         
         print("Long pressed physics scene!")
+        
+        // If long pressed on body, give user option to delete
     }
     
     func setUpGestureRecognizers() {
