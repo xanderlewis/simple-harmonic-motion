@@ -51,6 +51,18 @@ class PhysicsScene: SKScene {
         
         // Set background colour
         backgroundColor = UIColor(white: 0.2, alpha: 1)
+        
+        // Set up background label
+        let backgroundLabel = SKLabelNode(text: "Tap anywhere to add a mass")
+        backgroundLabel.fontName = "Damascus Light"
+        backgroundLabel.fontSize = 20
+        backgroundLabel.fontColor = backgroundColor.lighter(10)!
+        backgroundLabel.horizontalAlignmentMode = .center
+        backgroundLabel.verticalAlignmentMode = .center
+        backgroundLabel.position = CGPoint(x: frame.width/2, y: frame.height/2)
+        backgroundLabel.name = "backgroundlabel"
+
+        addChild(backgroundLabel)
     }
     
     // MARK: - Update Loop
@@ -94,6 +106,15 @@ class PhysicsScene: SKScene {
     
     func createTriplet(atPosition bodyPosition: CGPoint) {
         // Create a spring-body-spring 'triplet'
+        
+        // Hide background label
+        enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
+            node.run(SKAction.fadeAlpha(to: 0, duration: 0.1))
+            node.run(SKAction.scale(to: 0.1, duration: 0.1)) {
+                node.isHidden = true
+            }
+            
+        }
         
         // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
@@ -257,6 +278,22 @@ class PhysicsScene: SKScene {
         print("Long pressed physics scene!")
         
         // If long pressed on body, give user option to delete
+        
+        // Check if last body removed
+        var showingLabel = true
+        enumerateChildNodes(withName: "body") { (node, stop) in
+            // If there are bodies, don't show label
+            showingLabel = false
+        }
+        
+        // Show label if no bodies
+        enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
+            if showingLabel {
+                node.isHidden = false
+                node.run(SKAction.fadeAlpha(to: 1, duration: 0.1))
+                node.run(SKAction.scale(to: 1, duration: 0.1))
+            }
+        }
     }
     
     func setUpGestureRecognizers() {

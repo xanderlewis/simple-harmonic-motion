@@ -82,7 +82,6 @@ class Body: SKShapeNode {
         massLabel.fontName = "Damascus Light"
         massLabel.fontSize = m * massLabelSizeConstant
         massLabel.fontColor = c.darker(40)!
-        massLabel.blendMode = .multiply
         massLabel.horizontalAlignmentMode = .center
         massLabel.verticalAlignmentMode = .center
         massLabel.position = CGPoint.zero
