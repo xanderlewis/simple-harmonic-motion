@@ -56,7 +56,7 @@ class Spring: SKShapeNode {
         orientation = o
         
         // Create shadow
-        shadow = SpringShadow(position: CGPoint(x: 0, y: -1), orientation: o, length: l, width: w, sections: sec)
+        shadow = SpringShadow(position: CGPoint(x: 0, y: -2), orientation: o, length: l, width: w, sections: sec)
         
         super.init()
         

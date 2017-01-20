@@ -11,11 +11,11 @@ import UIKit
 // Defines an extension that allows the creation of lighter or darker colours from a reference colour
 extension UIColor {
     func lighter(_ percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust( abs(percentage) )
+        return self.adjust( abs(percentage))
     }
     
     func darker(_ percentage: CGFloat = 30.0) -> UIColor? {
-        return self.adjust( -1 * abs(percentage) )
+        return self.adjust( -1 * abs(percentage))
     }
     
     private func adjust(_ percentage: CGFloat = 30.0) -> UIColor? {
@@ -28,6 +28,8 @@ extension UIColor {
         }
     }
 }
+
+// Convert scene coordinates to view coordinates
 
 extension CGPoint {
     func toView(withHeight height: CGFloat) -> CGPoint {

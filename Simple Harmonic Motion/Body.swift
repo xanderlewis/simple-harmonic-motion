@@ -13,8 +13,12 @@ class Body: SKShapeNode {
     
     var mass: CGFloat {
         didSet {
-            // Change appearance when mass changes
+            // Change size when mass changes
             path = UIBezierPath(roundedRect: CGRect(x: -mass/2, y: -mass/2, width: mass, height: mass), cornerRadius: 0).cgPath
+            
+            // Update mass label when mass changes
+            massLabel.text = String(describing: mass)
+            massLabel.fontSize = mass * massLabelSizeConstant
         }
     }
     let restPosition: CGPoint
@@ -39,8 +43,25 @@ class Body: SKShapeNode {
         didSet {
             // Change trail colour when fill colour changes
             trail?.strokeColor = fillColor
+            
+            // If new colour dark, change label colour to white
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+            fillColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+            if r < 0.3 && g < 0.3 && b < 0.3 {
+                // White
+                massLabel.fontColor = UIColor.white
+            } else if r > 0.8 && g > 0.8 && b > 0.8 {
+                // Black
+                massLabel.fontColor = UIColor.black
+            } else {
+                // Change mass label colour to slightly darker
+                massLabel.fontColor = fillColor.darker(40)!
+            }
         }
     }
+    
+    var massLabel: SKLabelNode!
+    let massLabelSizeConstant: CGFloat = 0.3
     
     /**
      Creates a body.
@@ -57,10 +78,20 @@ class Body: SKShapeNode {
         self.restPosition = p
         self.damping = d
         
+        massLabel = SKLabelNode(text: String(describing: m))
+        massLabel.fontName = "Damascus Light"
+        massLabel.fontSize = m * massLabelSizeConstant
+        massLabel.fontColor = c.darker(40)!
+        massLabel.blendMode = .multiply
+        massLabel.horizontalAlignmentMode = .center
+        massLabel.verticalAlignmentMode = .center
+        massLabel.position = CGPoint.zero
         
         // Initialise node properties
         super.init()
         path = UIBezierPath(roundedRect: CGRect(x: -m/2, y: -m/2, width: m, height: m), cornerRadius: 0).cgPath
+        
+        addChild(massLabel)
         
         lineWidth = 0
         strokeColor = c.darker(70.0)!

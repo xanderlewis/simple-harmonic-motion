@@ -38,7 +38,7 @@ class SpringShadow: SKShapeNode {
         zPosition = 0
         name = "spring"
         strokeColor = UIColor(white: 0.18, alpha: 1.0)
-        lineWidth = 1
+        lineWidth = 2
         lineCap = .round
         
         updatePath()
