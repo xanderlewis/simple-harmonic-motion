@@ -184,6 +184,7 @@
                         </connections>
                     </view>
                     <connections>
+                        <outlet property="bodySettingsLabel" destination="oPl-dm-g3a" id="bRO-h2-uhP"/>
                         <outlet property="bodySettingsView" destination="lLl-1P-gKy" id="CD4-bj-BRu"/>
                         <outlet property="colour1Button" destination="EQS-TQ-Lwz" id="7kV-My-ucb"/>
                         <outlet property="colour2Button" destination="eh5-xu-iYf" id="MVr-kR-OsL"/>
@@ -191,9 +192,14 @@
                         <outlet property="colour4Button" destination="and-gS-RLa" id="OX3-r8-Ugu"/>
                         <outlet property="colour5Button" destination="XIN-F0-FNM" id="pql-Cb-asg"/>
                         <outlet property="colour6Button" destination="0NE-gr-CuS" id="5gc-7N-6Ri"/>
+                        <outlet property="colourLabel" destination="b7q-fp-er6" id="kKA-Bx-wcn"/>
+                        <outlet property="dampingLabel" destination="7wu-Ul-jAx" id="TGq-hr-KvX"/>
                         <outlet property="dampingSlider" destination="6of-Qu-YeM" id="W8f-Kn-bYg"/>
+                        <outlet property="massLabel" destination="6mZ-SJ-hCt" id="3xc-8g-hNi"/>
                         <outlet property="massSlider" destination="8u9-ew-otz" id="qQ8-CF-nbz"/>
+                        <outlet property="springSettingsLabel" destination="3Gg-p8-7g8" id="eup-ED-AIc"/>
                         <outlet property="springSettingsView" destination="HHT-L0-PFB" id="AMF-m3-cDT"/>
+                        <outlet property="stiffnessLabel" destination="vqX-Tc-l7r" id="FRa-RT-6gQ"/>
                         <outlet property="stiffnessSlider" destination="2UT-U0-uQV" id="5Ca-LA-nxS"/>
                         <outlet property="tapRecogniser" destination="j4Y-tl-c9Y" id="3K0-yA-xyb"/>
                         <outlet property="visualEffectView" destination="1Lm-sa-BnY" id="eOX-R0-uEb"/>

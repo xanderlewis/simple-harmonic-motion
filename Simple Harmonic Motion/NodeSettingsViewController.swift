@@ -36,10 +36,16 @@ class NodeSettingsViewController: UIViewController {
     @IBOutlet weak var colour4Button: UIButton!
     @IBOutlet weak var colour5Button: UIButton!
     @IBOutlet weak var colour6Button: UIButton!
+    @IBOutlet weak var bodySettingsLabel: UILabel!
+    @IBOutlet weak var massLabel: UILabel!
+    @IBOutlet weak var dampingLabel: UILabel!
+    @IBOutlet weak var colourLabel: UILabel!
     
     // MARK: - Spring settings outlets
     @IBOutlet weak var stiffnessSlider: UISlider!
     @IBOutlet weak var springSettingsView: UIView!
+    @IBOutlet weak var springSettingsLabel: UILabel!
+    @IBOutlet weak var stiffnessLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,7 +58,7 @@ class NodeSettingsViewController: UIViewController {
         bodySettingsView.alpha = 0
         springSettingsView.alpha = 0
         
-        // Set up colours
+        // Set up colour buttons
         colour1Button.backgroundColor = BodyColourPalette.colour1
         colour2Button.backgroundColor = BodyColourPalette.colour2
         colour3Button.backgroundColor = BodyColourPalette.colour3
@@ -60,7 +66,55 @@ class NodeSettingsViewController: UIViewController {
         colour5Button.backgroundColor = BodyColourPalette.colour5
         colour6Button.backgroundColor = BodyColourPalette.colour6
         
+        // Hide blur view
         self.visualEffectView.alpha = 0
+    }
+    
+    private func updateUIColors(basedOnBody body: Body) {
+        
+        let colour = body.fillColor
+        
+        bodySettingsView.backgroundColor = colour
+        
+        massSlider.minimumTrackTintColor = colour.darker(50)!
+        massSlider.maximumTrackTintColor = colour.darker(50)!
+        
+        dampingSlider.minimumTrackTintColor = colour.darker(50)!
+        dampingSlider.maximumTrackTintColor = colour.darker(50)!
+        
+        let buttons = [colour1Button, colour2Button, colour3Button, colour4Button, colour5Button, colour6Button]
+        
+        for button in buttons {
+            button?.layer.borderWidth = 1
+            button?.layer.borderColor = button?.backgroundColor?.darker(20)!.cgColor
+        }
+        
+        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+        
+        // Make colours light if background becomes too dark
+        colour.getRed(&r, green: &g, blue: &b, alpha: &a)
+        if r < 0.3 && g < 0.3 && b < 0.3 {
+            bodySettingsLabel.textColor = UIColor.white
+            massLabel.textColor = UIColor.white
+            dampingLabel.textColor = UIColor.white
+            colourLabel.textColor = UIColor.white
+            
+            massSlider.minimumTrackTintColor = colour.lighter(70)!
+            massSlider.maximumTrackTintColor = colour.lighter(70)!
+            dampingSlider.minimumTrackTintColor = colour.lighter(70)!
+            dampingSlider.maximumTrackTintColor = colour.lighter(70)!
+        } else {
+            bodySettingsLabel.textColor = UIColor.black
+            massLabel.textColor = UIColor.black
+            dampingLabel.textColor = UIColor.black
+            colourLabel.textColor = UIColor.black
+            
+            massSlider.minimumTrackTintColor = colour.darker(70)!
+            massSlider.maximumTrackTintColor = colour.darker(70)!
+            dampingSlider.minimumTrackTintColor = colour.darker(70)!
+            dampingSlider.maximumTrackTintColor = colour.darker(70)!
+        }
+
     }
     
     func showSettings(forObject node: SKNode) {
@@ -81,6 +135,8 @@ class NodeSettingsViewController: UIViewController {
             massSlider.value = Float(body.mass)
             dampingSlider.value = Float(body.damping)
             
+            // Update UI colours
+            updateUIColors(basedOnBody: body)
             
         } else if let spring = node as? Spring {
             // Show spring settings
@@ -141,36 +197,42 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton1Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
     @IBAction func colourButton2Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
     @IBAction func colourButton3Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
     @IBAction func colourButton4Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
     @IBAction func colourButton5Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
     @IBAction func colourButton6Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
+            updateUIColors(basedOnBody: body)
         }
     }
     
@@ -180,7 +242,7 @@ class NodeSettingsViewController: UIViewController {
         settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).concatenating(CGAffineTransform(translationX: originPosition.x - view.frame.width/2, y: 0))
         settingsView.alpha = 0
         view.backgroundColor = UIColor(white: 0, alpha: 0)
-        UIView.animate(withDuration: 0.25, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
             self.view.backgroundColor = UIColor(white: 0, alpha: 0.2)
             self.visualEffectView.alpha = 1
             self.settingsView.alpha = 1
@@ -192,7 +254,7 @@ class NodeSettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.08, animations: {
             self.settingsView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }) { (finished) in
-            UIView.animate(withDuration: 0.18, animations: {
+            UIView.animate(withDuration: 0.3, animations: {
                 self.settingsView.alpha = 0
                 self.settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).concatenating(CGAffineTransform(translationX: finalPosition.x - self.view.frame.width/2, y: 0))
                 self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
