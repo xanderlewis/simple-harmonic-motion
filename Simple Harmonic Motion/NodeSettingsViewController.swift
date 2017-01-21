@@ -199,6 +199,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     @IBAction func colourButton2Pressed(_ sender: UIButton) {
@@ -206,6 +207,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     @IBAction func colourButton3Pressed(_ sender: UIButton) {
@@ -213,6 +215,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     @IBAction func colourButton4Pressed(_ sender: UIButton) {
@@ -220,6 +223,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     @IBAction func colourButton5Pressed(_ sender: UIButton) {
@@ -227,6 +231,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     @IBAction func colourButton6Pressed(_ sender: UIButton) {
@@ -234,6 +239,7 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body)
         }
+        animateBounce()
     }
     
     // MARK: - Animations
@@ -265,6 +271,16 @@ class NodeSettingsViewController: UIViewController {
                 }
             })
             
+        }
+    }
+    
+    func animateBounce() {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.settingsView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
+                self.settingsView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
+            }, completion: nil)
         }
     }
     
