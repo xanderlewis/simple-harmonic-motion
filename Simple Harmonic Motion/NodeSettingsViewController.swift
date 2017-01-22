@@ -70,51 +70,59 @@ class NodeSettingsViewController: UIViewController {
         self.visualEffectView.alpha = 0
     }
     
-    private func updateUIColors(basedOnBody body: Body) {
+    private func updateUIColors(basedOnBody body: Body, animated: Bool) {
         
         let colour = body.fillColor
+        var duration: TimeInterval
         
-        bodySettingsView.backgroundColor = colour
-        
-        massSlider.minimumTrackTintColor = colour.darker(50)!
-        massSlider.maximumTrackTintColor = colour.darker(50)!
-        
-        dampingSlider.minimumTrackTintColor = colour.darker(50)!
-        dampingSlider.maximumTrackTintColor = colour.darker(50)!
-        
-        let buttons = [colour1Button, colour2Button, colour3Button, colour4Button, colour5Button, colour6Button]
-        
-        for button in buttons {
-            button?.layer.borderWidth = 1
-            button?.layer.borderColor = button?.backgroundColor?.darker(20)!.cgColor
-        }
-        
-        var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-        
-        // Make colours light if background becomes too dark
-        colour.getRed(&r, green: &g, blue: &b, alpha: &a)
-        if r < 0.3 && g < 0.3 && b < 0.3 {
-            bodySettingsLabel.textColor = UIColor.white
-            massLabel.textColor = UIColor.white
-            dampingLabel.textColor = UIColor.white
-            colourLabel.textColor = UIColor.white
-            
-            massSlider.minimumTrackTintColor = colour.lighter(70)!
-            massSlider.maximumTrackTintColor = colour.lighter(70)!
-            dampingSlider.minimumTrackTintColor = colour.lighter(70)!
-            dampingSlider.maximumTrackTintColor = colour.lighter(70)!
+        if animated {
+            duration = 0.3
         } else {
-            bodySettingsLabel.textColor = UIColor.black
-            massLabel.textColor = UIColor.black
-            dampingLabel.textColor = UIColor.black
-            colourLabel.textColor = UIColor.black
-            
-            massSlider.minimumTrackTintColor = colour.darker(70)!
-            massSlider.maximumTrackTintColor = colour.darker(70)!
-            dampingSlider.minimumTrackTintColor = colour.darker(70)!
-            dampingSlider.maximumTrackTintColor = colour.darker(70)!
+            duration = 0
         }
-
+        
+        UIView.animate(withDuration: duration) {
+            self.bodySettingsView.backgroundColor = colour
+            
+            self.massSlider.minimumTrackTintColor = colour.darker(50)!
+            self.massSlider.maximumTrackTintColor = colour.darker(50)!
+            
+            self.dampingSlider.minimumTrackTintColor = colour.darker(50)!
+            self.dampingSlider.maximumTrackTintColor = colour.darker(50)!
+            
+            let buttons = [self.colour1Button, self.colour2Button, self.colour3Button, self.colour4Button, self.colour5Button, self.colour6Button]
+            
+            for button in buttons {
+                button?.layer.borderWidth = 1
+                button?.layer.borderColor = button?.backgroundColor?.darker(20)!.cgColor
+            }
+            
+            var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
+            
+            // Make colours light if background becomes too dark
+            colour.getRed(&r, green: &g, blue: &b, alpha: &a)
+            if r < 0.3 && g < 0.3 && b < 0.3 {
+                self.bodySettingsLabel.textColor = UIColor.white
+                self.massLabel.textColor = UIColor.white
+                self.dampingLabel.textColor = UIColor.white
+                self.colourLabel.textColor = UIColor.white
+                
+                self.massSlider.minimumTrackTintColor = colour.lighter(70)!
+                self.massSlider.maximumTrackTintColor = colour.lighter(70)!
+                self.dampingSlider.minimumTrackTintColor = colour.lighter(70)!
+                self.dampingSlider.maximumTrackTintColor = colour.lighter(70)!
+            } else {
+                self.bodySettingsLabel.textColor = UIColor.black
+                self.massLabel.textColor = UIColor.black
+                self.dampingLabel.textColor = UIColor.black
+                self.colourLabel.textColor = UIColor.black
+                
+                self.massSlider.minimumTrackTintColor = colour.darker(70)!
+                self.massSlider.maximumTrackTintColor = colour.darker(70)!
+                self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
+                self.dampingSlider.maximumTrackTintColor = colour.darker(70)!
+            }
+        }
     }
     
     func showSettings(forObject node: SKNode) {
@@ -136,7 +144,7 @@ class NodeSettingsViewController: UIViewController {
             dampingSlider.value = Float(body.damping)
             
             // Update UI colours
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: false)
             
         } else if let spring = node as? Spring {
             // Show spring settings
@@ -197,7 +205,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton1Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -205,7 +213,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton2Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -213,7 +221,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton3Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -221,7 +229,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton4Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -229,7 +237,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton5Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -237,7 +245,7 @@ class NodeSettingsViewController: UIViewController {
     @IBAction func colourButton6Pressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body)
+            updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
     }
@@ -270,7 +278,6 @@ class NodeSettingsViewController: UIViewController {
                     self.view.removeFromSuperview()
                 }
             })
-            
         }
     }
     
@@ -278,7 +285,7 @@ class NodeSettingsViewController: UIViewController {
         UIView.animate(withDuration: 0.1, animations: {
             self.settingsView.transform = CGAffineTransform(scaleX: 1.05, y: 1.05)
         }) { (finished) in
-            UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
+            UIView.animate(withDuration: 0.6, delay: 0, usingSpringWithDamping: 0.4, initialSpringVelocity: 30, options: [], animations: {
                 self.settingsView.transform = CGAffineTransform(scaleX: 1.0, y: 1.0)
             }, completion: nil)
         }
