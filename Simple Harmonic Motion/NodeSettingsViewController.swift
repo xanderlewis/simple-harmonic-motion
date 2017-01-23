@@ -77,6 +77,12 @@ class NodeSettingsViewController: UIViewController {
         AudioServicesCreateSystemSoundID(soundURL, &arpSoundID)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        if sourceNode != nil {
+            sourceNode.scene?.isUserInteractionEnabled = true
+        }
+    }
+    
     private func updateUIColors(basedOnBody body: Body, animated: Bool) {
         
         let colour = body.fillColor
@@ -91,11 +97,11 @@ class NodeSettingsViewController: UIViewController {
         UIView.animate(withDuration: duration) {
             self.bodySettingsView.backgroundColor = colour
             
-            self.massSlider.minimumTrackTintColor = colour.darker(50)!
-            self.massSlider.maximumTrackTintColor = colour.darker(50)!
+            self.massSlider.minimumTrackTintColor = colour.darker(70)!
+            self.massSlider.maximumTrackTintColor = colour.darker(30)!
             
-            self.dampingSlider.minimumTrackTintColor = colour.darker(50)!
-            self.dampingSlider.maximumTrackTintColor = colour.darker(50)!
+            self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
+            self.dampingSlider.maximumTrackTintColor = colour.darker(30)!
             
             let buttons = [self.colour1Button, self.colour2Button, self.colour3Button, self.colour4Button, self.colour5Button, self.colour6Button]
             
@@ -114,9 +120,9 @@ class NodeSettingsViewController: UIViewController {
                 self.dampingLabel.textColor = UIColor.white
                 self.colourLabel.textColor = UIColor.white
                 
-                self.massSlider.minimumTrackTintColor = colour.lighter(70)!
+                self.massSlider.minimumTrackTintColor = colour.lighter(30)!
                 self.massSlider.maximumTrackTintColor = colour.lighter(70)!
-                self.dampingSlider.minimumTrackTintColor = colour.lighter(70)!
+                self.dampingSlider.minimumTrackTintColor = colour.lighter(30)!
                 self.dampingSlider.maximumTrackTintColor = colour.lighter(70)!
             } else {
                 self.bodySettingsLabel.textColor = UIColor.black
@@ -124,15 +130,18 @@ class NodeSettingsViewController: UIViewController {
                 self.dampingLabel.textColor = UIColor.black
                 self.colourLabel.textColor = UIColor.black
                 
-                self.massSlider.minimumTrackTintColor = colour.darker(70)!
-                self.massSlider.maximumTrackTintColor = colour.darker(70)!
-                self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
-                self.dampingSlider.maximumTrackTintColor = colour.darker(70)!
+                //self.massSlider.minimumTrackTintColor = colour.darker(70)!
+                //self.massSlider.maximumTrackTintColor = colour.darker(70)!
+                //self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
+                //self.dampingSlider.maximumTrackTintColor = colour.darker(70)!
             }
         }
     }
     
     func showSettings(forObject node: SKNode) {
+        
+        // Disable to touches to the node's scene while popup is showing
+        node.scene?.isUserInteractionEnabled = false
         
         // Store node as property
         sourceNode = node
