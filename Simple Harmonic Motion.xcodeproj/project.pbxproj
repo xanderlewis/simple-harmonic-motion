@@ -74,20 +74,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		C000E2851E31609900C45876 /* Settings Views */ = {
+		C06FB7091E37B08C00490257 /* Visuals */ = {
 			isa = PBXGroup;
 			children = (
+				C051402E1E2F6727009158CA /* Trail.swift */,
+				C0C62B991E31935700566384 /* SpringShadow.swift */,
 			);
-			name = "Settings Views";
+			name = Visuals;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		C0C636DF1E2D42A400CED588 = {
 			isa = PBXGroup;
 			children = (
 				C0C636EA1E2D42A400CED588 /* Simple Harmonic Motion */,
-				C051402E1E2F6727009158CA /* Trail.swift */,
-				C0C62B991E31935700566384 /* SpringShadow.swift */,
-				C0FF192D1E342F8E0024ED05 /* Sounds */,
 				C0C637051E2D42A400CED588 /* Simple Harmonic MotionTests */,
 				C0C636E91E2D42A400CED588 /* Products */,
 			);
@@ -108,15 +108,16 @@
 				C0C636EB1E2D42A400CED588 /* AppDelegate.swift */,
 				C0C636F11E2D42A400CED588 /* PhysicsScene.swift */,
 				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
-				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
+				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
 				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
 				C0C636FA1E2D42A400CED588 /* LaunchScreen.storyboard */,
 				C0C636FD1E2D42A400CED588 /* Info.plist */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
-				C000E2851E31609900C45876 /* Settings Views */,
 				C0C637151E2D435900CED588 /* Physics Model */,
+				C06FB7091E37B08C00490257 /* Visuals */,
+				C0FF192D1E342F8E0024ED05 /* Sounds */,
 			);
 			path = "Simple Harmonic Motion";
 			sourceTree = "<group>";
@@ -145,6 +146,7 @@
 				C0FF192B1E342F8B0024ED05 /* arp.wav */,
 			);
 			name = Sounds;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

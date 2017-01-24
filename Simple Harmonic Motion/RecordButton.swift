@@ -18,10 +18,14 @@ enum SpinDirection {
     case right
 }
 
+@IBDesignable
 class RecordButton: UIButton {
     var recordingState: RecordButtonRecordingState = .stopped
-    var recordingColour = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
-    var stopColour = UIColor.darkGray
+    @IBInspectable var recordingColour = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
+    @IBInspectable var stopColour = UIColor.darkGray
+    
+    @IBInspectable var recordText = "REC"
+    @IBInspectable var stopText = "STOP"
     
     override init(frame aFrame: CGRect) {
         super.init(frame: aFrame)
@@ -36,11 +40,14 @@ class RecordButton: UIButton {
         layer.cornerRadius = frame.width / 2
         backgroundColor = recordingColour
         layer.shadowColor = UIColor.black.cgColor
-        layer.shadowOffset = CGSize(width: 0, height: 3)
+        layer.shadowOffset = CGSize(width: 0, height: 2)
         layer.shadowRadius = 2
-        layer.shadowOpacity = 0.2
-        layer.borderColor = recordingColour.darker(60)?.cgColor
+        layer.shadowOpacity = 0.1
+        layer.borderColor = recordingColour.darker()?.cgColor
         layer.borderWidth = 1
+        
+        setTitle(recordText, for: .normal)
+        setTitleColor(recordingColour.darker(50), for: .normal)
     }
     
     private func becomeRecordButton() {
@@ -58,7 +65,7 @@ class RecordButton: UIButton {
         let borderAnim = CABasicAnimation(keyPath: "borderColor")
         borderAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         borderAnim.fromValue = layer.borderColor
-        borderAnim.toValue = recordingColour.darker(60)?.cgColor
+        borderAnim.toValue = recordingColour.darker(50)?.cgColor
         borderAnim.duration = 0.3
         borderAnim.fillMode = kCAFillModeForwards
         borderAnim.isRemovedOnCompletion = false
@@ -70,7 +77,8 @@ class RecordButton: UIButton {
             self.backgroundColor = self.recordingColour
         }
         
-        setTitle("REC", for: .normal)
+        setTitle(recordText, for: .normal)
+        setTitleColor(recordingColour.darker(50), for: .normal)
     }
     
     private func becomeStopButton() {
@@ -100,7 +108,8 @@ class RecordButton: UIButton {
         
         //spin(.left)
         
-        setTitle("STOP", for: .normal)
+        setTitle(stopText, for: .normal)
+        setTitleColor(stopColour.darker(50), for: .normal)
     }
     
     @objc private func tapped() {
@@ -139,6 +148,9 @@ class RecordButton: UIButton {
         layer.shadowOpacity = 0.2
         layer.borderColor = recordingColour.darker(60)?.cgColor
         layer.borderWidth = 1
+        setTitleColor(recordingColour.darker(30), for: .normal)
+        
+        setTitle(recordText, for: .normal)
     }
     
     private func spin(_ direction: SpinDirection) {
