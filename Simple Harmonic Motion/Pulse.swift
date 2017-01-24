@@ -38,9 +38,13 @@ class Pulse: CALayer {
         bounds = CGRect(x: 0, y: 0, width: radius * 2, height: radius * 2)
         cornerRadius = radius
         
-        setUpAnimationGroup()
-        
-        add(animationGroup, forKey: "pulse")
+        DispatchQueue.global().async {
+            self.setUpAnimationGroup()
+            
+            DispatchQueue.main.async {
+                self.add(self.animationGroup, forKey: "pulse")
+            }
+        }
     }
     
     func createScaleAnimation() -> CABasicAnimation {
