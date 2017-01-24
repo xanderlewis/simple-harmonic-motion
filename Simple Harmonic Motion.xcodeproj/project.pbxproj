@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037695D1E37A1E100CD70B7 /* RecordButton.swift */; };
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
 		C051402F1E2F6727009158CA /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402E1E2F6727009158CA /* Trail.swift */; };
 		C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05140301E2F7721009158CA /* NodeSettingsViewController.swift */; };
@@ -34,8 +35,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C037695D1E37A1E100CD70B7 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
-		C051402E1E2F6727009158CA /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Trail.swift; sourceTree = "<group>"; };
+		C051402E1E2F6727009158CA /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trail.swift; path = "Simple Harmonic Motion/Trail.swift"; sourceTree = "<group>"; };
 		C05140301E2F7721009158CA /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -83,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C636EA1E2D42A400CED588 /* Simple Harmonic Motion */,
+				C051402E1E2F6727009158CA /* Trail.swift */,
 				C0C62B991E31935700566384 /* SpringShadow.swift */,
 				C0FF192D1E342F8E0024ED05 /* Sounds */,
 				C0C637051E2D42A400CED588 /* Simple Harmonic MotionTests */,
@@ -105,6 +108,7 @@
 				C0C636EB1E2D42A400CED588 /* AppDelegate.swift */,
 				C0C636F11E2D42A400CED588 /* PhysicsScene.swift */,
 				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
+				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
 				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
@@ -131,7 +135,6 @@
 			children = (
 				C0C637111E2D434A00CED588 /* Body.swift */,
 				C0C637131E2D434E00CED588 /* Spring.swift */,
-				C051402E1E2F6727009158CA /* Trail.swift */,
 			);
 			name = "Physics Model";
 			sourceTree = "<group>";
@@ -254,6 +257,7 @@
 				C051402D1E2F656C009158CA /* Extensions.swift in Sources */,
 				C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */,
 				C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */,
+				C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */,
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
