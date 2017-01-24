@@ -26,6 +26,8 @@ struct DefaultConstants {
     static let trailLength: Int = 400
 }
 
+typealias bodyID = Int
+
 class PhysicsScene: SKScene {
     
     // Gesture recognisers
@@ -42,6 +44,11 @@ class PhysicsScene: SKScene {
     // Last touch down x value and time
     var lastTouchDownX: CGFloat!
     var lastTouchDownTime: TimeInterval!
+    
+    // Data recording
+    var recording = false
+    var csvGenerator: CSVGenerator!
+    var bodyDatasets: [bodyID: BodyDataset] = [:]
     
     // MARK: - Initialising stuff
     
@@ -65,7 +72,54 @@ class PhysicsScene: SKScene {
         addChild(backgroundLabel)
     }
     
+    // MARK: - Start/stop recording
+    
+    func initiateRecording() {
+        // Create a dataset for each body and associate the pair
+        enumerateChildNodes(withName: "body") { (node, stop) in
+            let body = node as! Body
+            
+            if self.bodyDatasets[body.id] == nil {
+                self.bodyDatasets[body.id] = BodyDataset()
+            }
+        }
+        
+        recording = true
+    }
+    
+    func finishRecording() {
+        recording = false
+        
+        // Export data
+        csvGenerator = CSVGenerator(fromBodyDatasets: Array(bodyDatasets.values))
+        let pathToData = csvGenerator.generateFile(withFilename: "simple-harmonic-motion.csv")
+        
+        // Allow user to send the data somewhere
+        let vc = UIActivityViewController(activityItems: [pathToData], applicationActivities: [])
+        vc.excludedActivityTypes = []
+        view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
+    }
+    
     // MARK: - Update Loop
+    
+    override func update(_ currentTime: TimeInterval) {
+        // Move physics forward one 'tick'
+        tickPhysics()
+        
+        // Record data for each body
+        if recording {
+            enumerateChildNodes(withName: "body", using: { (node, stop) in
+                let body = node as! Body
+                
+                self.bodyDatasets[body.id]!.mass.append(Float(body.mass))
+                self.bodyDatasets[body.id]!.damping.append(Float(body.damping))
+                self.bodyDatasets[body.id]!.displacement.append(Float(body.displacement))
+                self.bodyDatasets[body.id]!.velocity.append(Float(body.velocity))
+                self.bodyDatasets[body.id]!.acceleration.append(Float(body.acceleration))
+                self.bodyDatasets[body.id]!.kineticEnergy.append(Float(0.5 * body.mass * pow(body.velocity, 2))) // 1/2(mv^2)
+            })
+        }
+    }
 
     func tickPhysics() {
         
@@ -98,11 +152,7 @@ class PhysicsScene: SKScene {
 
     }
     
-    
-    override func update(_ currentTime: TimeInterval) {
-        // Move physics forward one 'tick'
-        tickPhysics()
-    }
+    // MARK: - Creating bodies and springs
     
     func createTriplet(atPosition bodyPosition: CGPoint) {
         // Create a spring-body-spring 'triplet'
@@ -178,8 +228,6 @@ class PhysicsScene: SKScene {
         rightSpring.run(fadeIn) {
             trail.run(fadeIn)
         }
-        
-        
     }
     
     // MARK: - Tap/drag handling

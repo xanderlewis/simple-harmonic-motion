@@ -11,6 +11,10 @@ import SpriteKit
 
 class Body: SKShapeNode {
     
+    static var totalBodies = 0
+    
+    var id: Int!
+    
     var mass: CGFloat {
         didSet {
             // Change size when mass changes
@@ -72,6 +76,9 @@ class Body: SKShapeNode {
      - parameter damping: The damping coefficient to be used to simulate friction acting against the body.
      */
     init(position p: CGPoint, colour c: SKColor, mass m: CGFloat, damping d: CGFloat) {
+        
+        id = Body.totalBodies
+        Body.totalBodies += 1
         
         // Initialise model properties
         self.mass = m

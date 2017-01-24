@@ -10,7 +10,9 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
-class PhysicsViewController: UIViewController {
+class PhysicsViewController: UIViewController, RecordButtonDelegate {
+    
+    @IBOutlet weak var recordButton: RecordButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,7 +28,7 @@ class PhysicsViewController: UIViewController {
         skView.presentScene(scene)
         
         // Set up record button
-        
+        recordButton.delegate = self
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -44,6 +46,20 @@ class PhysicsViewController: UIViewController {
 
     override var prefersStatusBarHidden: Bool {
         return true
+    }
+    
+    func recordButtonTapped() {
+        let skView = view as! SKView
+        let physicsScene = skView.scene as! PhysicsScene
+        
+        physicsScene.initiateRecording()
+    }
+    
+    func stopButtonTapped() {
+        let skView = view as! SKView
+        let physicsScene = skView.scene as! PhysicsScene
+        
+        physicsScene.finishRecording()
     }
     
     func showSettings(forObject node: SKNode) {

@@ -11,6 +11,9 @@
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
 		C051402F1E2F6727009158CA /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402E1E2F6727009158CA /* Trail.swift */; };
 		C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05140301E2F7721009158CA /* NodeSettingsViewController.swift */; };
+		C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70A1E37B90B00490257 /* Pulse.swift */; };
+		C06FB70D1E37E92000490257 /* CSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70C1E37E92000490257 /* CSVGenerator.swift */; };
+		C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */; };
 		C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C62B991E31935700566384 /* SpringShadow.swift */; };
 		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
 		C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F11E2D42A400CED588 /* PhysicsScene.swift */; };
@@ -39,6 +42,9 @@
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C051402E1E2F6727009158CA /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trail.swift; path = "Simple Harmonic Motion/Trail.swift"; sourceTree = "<group>"; };
 		C05140301E2F7721009158CA /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
+		C06FB70A1E37B90B00490257 /* Pulse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Pulse.swift; path = "Simple Harmonic Motion/Pulse.swift"; sourceTree = "<group>"; };
+		C06FB70C1E37E92000490257 /* CSVGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVGenerator.swift; sourceTree = "<group>"; };
+		C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsDatasets.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C636EB1E2D42A400CED588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -78,10 +84,20 @@
 			isa = PBXGroup;
 			children = (
 				C051402E1E2F6727009158CA /* Trail.swift */,
+				C06FB70A1E37B90B00490257 /* Pulse.swift */,
 				C0C62B991E31935700566384 /* SpringShadow.swift */,
 			);
 			name = Visuals;
 			path = ..;
+			sourceTree = "<group>";
+		};
+		C0C2AB891E3801F800624771 /* Data Handling */ = {
+			isa = PBXGroup;
+			children = (
+				C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */,
+				C06FB70C1E37E92000490257 /* CSVGenerator.swift */,
+			);
+			name = "Data Handling";
 			sourceTree = "<group>";
 		};
 		C0C636DF1E2D42A400CED588 = {
@@ -117,6 +133,7 @@
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C637151E2D435900CED588 /* Physics Model */,
 				C06FB7091E37B08C00490257 /* Visuals */,
+				C0C2AB891E3801F800624771 /* Data Handling */,
 				C0FF192D1E342F8E0024ED05 /* Sounds */,
 			);
 			path = "Simple Harmonic Motion";
@@ -255,12 +272,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */,
 				C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */,
 				C051402D1E2F656C009158CA /* Extensions.swift in Sources */,
 				C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */,
 				C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */,
+				C06FB70D1E37E92000490257 /* CSVGenerator.swift in Sources */,
 				C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */,
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
+				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
 				C0C637121E2D434A00CED588 /* Body.swift in Sources */,

@@ -40,6 +40,9 @@
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="18" id="urg-Ed-FQu"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recordButton" destination="ER0-kK-bMo" id="7BB-B0-oe5"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>

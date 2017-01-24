@@ -18,7 +18,14 @@ enum SpinDirection {
     case right
 }
 
-@IBDesignable
+protocol RecordButtonDelegate {
+    func recordButtonTapped()
+    func stopButtonTapped()
+}
+
+// TODO: Clean up this whole class, separate into functions etc...
+
+//@IBDesignable
 class RecordButton: UIButton {
     var recordingState: RecordButtonRecordingState = .stopped
     @IBInspectable var recordingColour = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
@@ -26,6 +33,8 @@ class RecordButton: UIButton {
     
     @IBInspectable var recordText = "REC"
     @IBInspectable var stopText = "STOP"
+    
+    var delegate: RecordButtonDelegate!
     
     override init(frame aFrame: CGRect) {
         super.init(frame: aFrame)
@@ -117,13 +126,20 @@ class RecordButton: UIButton {
         case .stopped:
             // Tapped record
             
+            delegate.recordButtonTapped()
             becomeStopButton()
+            
+            // Pulse effect
+            let pulse = Pulse(numberOfPulses: 1, radius: bounds.width * 24, position: CGPoint(x: bounds.midX, y: bounds.midY))
+            pulse.backgroundColor = recordingColour.cgColor
+            layer.insertSublayer(pulse, below: nil)
             
             // Start recording process
             
         case .recording:
             // Tapped stop
             
+            delegate.stopButtonTapped()
             becomeRecordButton()
             
             // Stop recording -> export popover
