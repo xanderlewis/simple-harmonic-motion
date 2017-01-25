@@ -129,11 +129,6 @@ class NodeSettingsViewController: UIViewController {
                 self.massLabel.textColor = UIColor.black
                 self.dampingLabel.textColor = UIColor.black
                 self.colourLabel.textColor = UIColor.black
-                
-                //self.massSlider.minimumTrackTintColor = colour.darker(70)!
-                //self.massSlider.maximumTrackTintColor = colour.darker(70)!
-                //self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
-                //self.dampingSlider.maximumTrackTintColor = colour.darker(70)!
             }
         }
     }
@@ -172,10 +167,10 @@ class NodeSettingsViewController: UIViewController {
         }
         
         // Add layout constraints for settings view
-        settingsView.translatesAutoresizingMaskIntoConstraints = false
-        let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.width)
-        let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.height)
-        let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        //settingsView.translatesAutoresizingMaskIntoConstraints = false
+        //let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.width)
+        //let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.height)
+        //let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
 
         var yConstraintConstant = nodePosition.y
         
@@ -192,7 +187,7 @@ class NodeSettingsViewController: UIViewController {
         
         let yConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: yConstraintConstant)
         
-        NSLayoutConstraint.activate([widthConstraint, heightConstraint, xConstraint, yConstraint])
+        NSLayoutConstraint.activate([yConstraint])
         
         // Animate the view to appear
         animateAppear(from: sourceNode.position.toView(withHeight: view.frame.height))

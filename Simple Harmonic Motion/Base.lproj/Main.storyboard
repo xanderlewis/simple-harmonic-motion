@@ -59,16 +59,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Lm-sa-BnY">
+                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Lm-sa-BnY">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" ambiguous="YES" id="uik-Ba-uOL">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="uik-Ba-uOL">
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-1P-gKy" userLabel="Body Settings View">
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lLl-1P-gKy" userLabel="Body Settings View">
                                             <rect key="frame" x="40" y="194" width="240" height="180"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EQS-TQ-Lwz" userLabel="Colour 1">
                                                     <rect key="frame" x="83" y="147" width="16" height="16"/>
@@ -164,10 +162,13 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="180" id="buR-m3-LNH"/>
+                                                <constraint firstAttribute="width" constant="240" id="dkH-Zn-52e"/>
+                                            </constraints>
                                         </view>
-                                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="HHT-L0-PFB" userLabel="Spring Settings View">
-                                            <rect key="frame" x="40" y="382" width="240" height="180"/>
-                                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HHT-L0-PFB" userLabel="Spring Settings View">
+                                            <rect key="frame" x="40" y="194" width="240" height="180"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Spring Settings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="3Gg-p8-7g8">
                                                     <rect key="frame" x="42" y="26" width="157" height="28"/>
@@ -193,13 +194,29 @@
                                                 </label>
                                             </subviews>
                                             <color key="backgroundColor" red="0.90196079019999997" green="0.90196079019999997" blue="0.90196079019999997" alpha="1" colorSpace="calibratedRGB"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="240" id="Yuy-FQ-ar8"/>
+                                                <constraint firstAttribute="height" constant="180" id="hsv-fc-Bxn"/>
+                                            </constraints>
                                         </view>
                                     </subviews>
+                                    <constraints>
+                                        <constraint firstItem="lLl-1P-gKy" firstAttribute="centerX" secondItem="uik-Ba-uOL" secondAttribute="centerX" id="Hmn-8y-xPc"/>
+                                        <constraint firstItem="lLl-1P-gKy" firstAttribute="centerY" secondItem="uik-Ba-uOL" secondAttribute="centerY" id="XbP-ZH-Ryh"/>
+                                        <constraint firstItem="HHT-L0-PFB" firstAttribute="centerY" secondItem="uik-Ba-uOL" secondAttribute="centerY" id="Zji-kx-Bkk"/>
+                                        <constraint firstItem="HHT-L0-PFB" firstAttribute="centerX" secondItem="uik-Ba-uOL" secondAttribute="centerX" id="clp-ts-PhX"/>
+                                    </constraints>
                                 </view>
                                 <blurEffect style="dark"/>
                             </visualEffectView>
                         </subviews>
                         <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="1Lm-sa-BnY" firstAttribute="top" secondItem="J7e-pJ-haC" secondAttribute="top" id="6rd-vu-2Pp"/>
+                            <constraint firstItem="1Lm-sa-BnY" firstAttribute="leading" secondItem="J7e-pJ-haC" secondAttribute="leading" id="MTL-zh-FyU"/>
+                            <constraint firstAttribute="trailing" secondItem="1Lm-sa-BnY" secondAttribute="trailing" id="Rtr-T3-Gif"/>
+                            <constraint firstItem="iYQ-TA-cn2" firstAttribute="top" secondItem="1Lm-sa-BnY" secondAttribute="bottom" id="qBB-uX-0Hi"/>
+                        </constraints>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="j4Y-tl-c9Y" appends="YES" id="fQF-oN-vq3"/>
                         </connections>
