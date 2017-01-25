@@ -25,7 +25,6 @@ protocol RecordButtonDelegate {
 
 // TODO: Clean up this whole class, separate into functions etc...
 
-//@IBDesignable
 class RecordButton: UIButton {
     var recordingState: RecordButtonRecordingState = .stopped
     @IBInspectable var recordingColour = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
@@ -50,8 +49,8 @@ class RecordButton: UIButton {
         backgroundColor = recordingColour
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 0, height: 2)
-        layer.shadowRadius = 2
-        layer.shadowOpacity = 0.1
+        layer.shadowRadius = 3
+        layer.shadowOpacity = 0.2
         layer.borderColor = recordingColour.darker()?.cgColor
         layer.borderWidth = 1
         
@@ -61,30 +60,15 @@ class RecordButton: UIButton {
     
     private func becomeRecordButton() {
         recordingState = .stopped
-        
-        let shapeAnim = CABasicAnimation(keyPath: "cornerRadius")
-        shapeAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        shapeAnim.fromValue = 0
-        shapeAnim.toValue = frame.width / 2
-        shapeAnim.duration = 0.3
-        shapeAnim.fillMode = kCAFillModeForwards
-        shapeAnim.isRemovedOnCompletion = false
-        layer.add(shapeAnim, forKey: "cornerRadius")
-        
-        let borderAnim = CABasicAnimation(keyPath: "borderColor")
-        borderAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        borderAnim.fromValue = layer.borderColor
-        borderAnim.toValue = recordingColour.darker(50)?.cgColor
-        borderAnim.duration = 0.3
-        borderAnim.fillMode = kCAFillModeForwards
-        borderAnim.isRemovedOnCompletion = false
-        layer.add(borderAnim, forKey: "borderColor")
-        
-        //spin(.right)
+
+        layer.add(animateCornerRadius(from: 0, to: frame.width/2, withDuration: 0.3), forKey: "cornerRadius")
+        layer.add(animateBorderColour(from: layer.borderColor!, to: (recordingColour.darker(50)?.cgColor)!, withDuration: 0.3), forKey: "borderColor")
         
         UIView.animate(withDuration: 0.3) {
             self.backgroundColor = self.recordingColour
         }
+        
+        //spin(.right)
         
         setTitle(recordText, for: .normal)
         setTitleColor(recordingColour.darker(50), for: .normal)
@@ -93,24 +77,10 @@ class RecordButton: UIButton {
     private func becomeStopButton() {
         recordingState = .recording
         
-        let shapeAnim = CABasicAnimation(keyPath: "cornerRadius")
-        shapeAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        shapeAnim.fromValue = frame.width / 2
-        shapeAnim.toValue = 0
-        shapeAnim.duration = 0.3
-        shapeAnim.fillMode = kCAFillModeForwards
-        shapeAnim.isRemovedOnCompletion = false
-        layer.add(shapeAnim, forKey: "cornerRadius")
+        layer.add(animateCornerRadius(from: frame.width / 2, to: 0, withDuration: 0.3), forKey: "cornerRadius")
+        layer.add(animateBorderColour(from: layer.borderColor!, to: (stopColour.darker()?.cgColor)!, withDuration: 0.3), forKey: "borderColor")
         
-        let borderAnim = CABasicAnimation(keyPath: "borderColor")
-        borderAnim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        borderAnim.fromValue = layer.borderColor
-        borderAnim.toValue = UIColor.darkGray.darker()?.cgColor
-        borderAnim.duration = 0.3
-        borderAnim.fillMode = kCAFillModeForwards
-        borderAnim.isRemovedOnCompletion = false
-        layer.add(borderAnim, forKey: "borderColor")
-        
+        // Animate background colour
         UIView.animate(withDuration: 0.3) {
             self.backgroundColor = self.stopColour
         }
@@ -134,17 +104,36 @@ class RecordButton: UIButton {
             pulse.backgroundColor = recordingColour.cgColor
             layer.insertSublayer(pulse, below: nil)
             
-            // Start recording process
-            
         case .recording:
             // Tapped stop
             
             delegate.stopButtonTapped()
             becomeRecordButton()
-            
-            // Stop recording -> export popover
-            
         }
+    }
+    
+    private func animateCornerRadius(from: CGFloat, to: CGFloat, withDuration duration: CFTimeInterval) -> CABasicAnimation {
+        let anim = CABasicAnimation(keyPath: "cornerRadius")
+        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        anim.fromValue = from
+        anim.toValue = to
+        anim.duration = duration
+        anim.fillMode = kCAFillModeForwards
+        anim.isRemovedOnCompletion = false
+        
+        return anim
+    }
+    
+    private func animateBorderColour(from: CGColor, to: CGColor, withDuration duration: CFTimeInterval) -> CABasicAnimation {
+        let anim = CABasicAnimation(keyPath: "borderColor")
+        anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        anim.fromValue = layer.borderColor
+        anim.toValue = UIColor.darkGray.darker()?.cgColor
+        anim.duration = duration
+        anim.fillMode = kCAFillModeForwards
+        anim.isRemovedOnCompletion = false
+        
+        return anim
     }
     
     init(frame: CGRect, recordingColour: UIColor = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0), stopColour: UIColor = UIColor.darkGray) {

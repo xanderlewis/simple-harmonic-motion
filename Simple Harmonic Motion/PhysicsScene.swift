@@ -47,7 +47,6 @@ class PhysicsScene: SKScene {
     
     // Data recording
     var recording = false
-    var csvGenerator: CSVGenerator!
     var bodyDatasets: [bodyID: BodyDataset] = [:]
     
     // MARK: - Initialising stuff
@@ -57,7 +56,7 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.25, alpha: 1)
+        backgroundColor = UIColor(white: 0.2, alpha: 1)
         
         // Set up background label
         let backgroundLabel = SKLabelNode(text: "Tap anywhere to add a mass")
@@ -91,12 +90,12 @@ class PhysicsScene: SKScene {
         recording = false
         
         // Export data
-        csvGenerator = CSVGenerator(fromBodyDatasets: Array(bodyDatasets.values))
+        let csvGenerator = CSVGenerator(fromBodyDatasets: Array(bodyDatasets.values))
         let pathToData = csvGenerator.generateFile(withFilename: "simple-harmonic-motion.csv")
         
         // Allow user to send the data somewhere
         let vc = UIActivityViewController(activityItems: [pathToData], applicationActivities: [])
-        vc.excludedActivityTypes = []
+        vc.excludedActivityTypes = [.postToTwitter, .postToWeibo, .postToFlickr, .postToFacebook, .postToVimeo]
         view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
     

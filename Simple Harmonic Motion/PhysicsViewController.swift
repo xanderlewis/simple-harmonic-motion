@@ -27,7 +27,7 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         scene.viewController = self
         skView.presentScene(scene)
         
-        // Set up record button
+        // Set up record button to delegate responsibilities to this view controller
         recordButton.delegate = self
     }
 

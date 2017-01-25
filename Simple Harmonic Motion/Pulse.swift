@@ -47,7 +47,7 @@ class Pulse: CALayer {
         }
     }
     
-    func createScaleAnimation() -> CABasicAnimation {
+    private func createScaleAnimation() -> CABasicAnimation {
         let anim = CABasicAnimation(keyPath: "transform.scale.xy")
         anim.fromValue = NSNumber(value: initialScale)
         anim.toValue = NSNumber(value: 1)
@@ -56,7 +56,7 @@ class Pulse: CALayer {
         return anim
     }
     
-    func createOpacityAnimation() -> CAKeyframeAnimation {
+    private func createOpacityAnimation() -> CAKeyframeAnimation {
         let anim = CAKeyframeAnimation(keyPath: "opacity")
         anim.duration = pulseDuration
         anim.values = [0.4, 0.8, 0]
@@ -65,7 +65,7 @@ class Pulse: CALayer {
         return anim
     }
     
-    func setUpAnimationGroup() {
+    private func setUpAnimationGroup() {
         animationGroup.duration = pulseDuration + interval
         animationGroup.repeatCount = numberOfPulses
         
