@@ -313,7 +313,7 @@ class NodeSettingsViewController: UIViewController {
         }
     }
     
-    // MARK: Exit From Settings
+    // MARK: - Exit From Settings
 
     @IBAction func tappedView(_ sender: UITapGestureRecognizer) {
         if sender.state == .ended {

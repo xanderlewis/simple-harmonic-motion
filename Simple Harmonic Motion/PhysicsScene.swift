@@ -105,6 +105,13 @@ class PhysicsScene: SKScene {
         // Move physics forward one 'tick'
         tickPhysics()
         
+        // Enable record button if there are bodies
+        if Body.totalBodies > 0 && viewController?.recordButton?.recordingState == .disabled {
+            viewController?.recordButton?.recordingState = .stopped
+        } else if Body.totalBodies <= 0 {
+            viewController?.recordButton?.recordingState = .disabled
+        }
+        
         // Record data for each body
         if recording {
             enumerateChildNodes(withName: "body", using: { (node, stop) in
@@ -117,6 +124,15 @@ class PhysicsScene: SKScene {
                 self.bodyDatasets[body.id]!.acceleration.append(Float(body.acceleration))
                 self.bodyDatasets[body.id]!.kineticEnergy.append(Float(0.5 * body.mass * pow(body.velocity, 2))) // 1/2(mv^2)
             })
+        }
+        
+        // Show label if no bodies
+        if Body.totalBodies <= 0 {
+            enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
+                node.isHidden = false
+                node.run(SKAction.fadeAlpha(to: 1, duration: 0.1))
+                node.run(SKAction.scale(to: 1, duration: 0.1))
+            }
         }
     }
 
@@ -151,7 +167,7 @@ class PhysicsScene: SKScene {
 
     }
     
-    // MARK: - Creating bodies and springs
+    // MARK: - Creating and removing bodies and springs
     
     func createTriplet(atPosition bodyPosition: CGPoint) {
         // Create a spring-body-spring 'triplet'
@@ -226,6 +242,38 @@ class PhysicsScene: SKScene {
         leftSpring.run(fadeIn)
         rightSpring.run(fadeIn) {
             trail.run(fadeIn)
+        }
+    }
+    
+    func removeTriplet(thatContainsBody body: Body) {
+        // Define animations
+        let shrink = SKAction.scale(to: 0.1, duration: 0.3)
+        let fadeOut = SKAction.fadeOut(withDuration: 0.3)
+        
+        for spring in body.linkedSprings {
+            // Animate spring disappearing
+            spring.run(shrink)
+            spring.run(fadeOut) {
+                // Remove spring
+                spring.removeFromParent()
+                NSObject.cancelPreviousPerformRequests(withTarget: spring)
+            }
+        }
+        
+        // Animate trail disappearing
+        body.trail?.run(fadeOut) {
+            // Remove trail
+            body.trail?.removeFromParent()
+            NSObject.cancelPreviousPerformRequests(withTarget: body.trail!)
+        }
+        
+        // Animate body disappearing
+        body.run(shrink)
+        body.run(fadeOut) {
+            // Remove body
+            body.removeFromParent()
+            NSObject.cancelPreviousPerformRequests(withTarget: body)
+            Body.totalBodies -= 1
         }
     }
     
@@ -319,28 +367,28 @@ class PhysicsScene: SKScene {
     
     // MARK: - Gesture Responses
     
-    func longPressedScene() {
+    func longPressedScene(sender: UILongPressGestureRecognizer) {
         // Called when user taps and holds on scene for a while
         
         print("Long pressed physics scene!")
         
         // If long pressed on body, give user option to delete
-        
-        // Check if last body removed
-        var showingLabel = true
-        enumerateChildNodes(withName: "body") { (node, stop) in
-            // If there are bodies, don't show label
-            showingLabel = false
-        }
-        
-        // Show label if no bodies
-        enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
-            if showingLabel {
-                node.isHidden = false
-                node.run(SKAction.fadeAlpha(to: 1, duration: 0.1))
-                node.run(SKAction.scale(to: 1, duration: 0.1))
+        for node in nodes(at: convertPoint(fromView: sender.location(ofTouch: 0, in: view))) {
+            if let body = node as? Body {
+                
+                let vc = UIAlertController(title: "Delete Mass", message: "Would you like to delete this mass from the world?", preferredStyle: .actionSheet)
+                
+                vc.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                    // Delete body node
+                    self.removeTriplet(thatContainsBody: body)
+                }))
+                
+                vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                
+                view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
             }
         }
+        
     }
     
     func setUpGestureRecognizers() {

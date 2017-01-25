@@ -11,6 +11,7 @@ import UIKit
 enum RecordButtonRecordingState {
     case recording
     case stopped
+    case disabled
 }
 
 enum SpinDirection {
@@ -22,8 +23,6 @@ protocol RecordButtonDelegate {
     func recordButtonTapped()
     func stopButtonTapped()
 }
-
-// TODO: Clean up this whole class, separate into functions etc...
 
 class RecordButton: UIButton {
     var recordingState: RecordButtonRecordingState = .stopped
@@ -58,6 +57,8 @@ class RecordButton: UIButton {
         setTitleColor(recordingColour.darker(50), for: .normal)
     }
     
+    // MARK: - Button state transforms
+    
     private func becomeRecordButton() {
         recordingState = .stopped
 
@@ -91,6 +92,8 @@ class RecordButton: UIButton {
         setTitleColor(stopColour.darker(50), for: .normal)
     }
     
+    // MARK: - Tap handling
+    
     @objc private func tapped() {
         switch recordingState {
         case .stopped:
@@ -109,8 +112,16 @@ class RecordButton: UIButton {
             
             delegate.stopButtonTapped()
             becomeRecordButton()
+            
+        case .disabled:
+            // Tell the user why they can't press record
+            let vc = UIAlertController(title: "Hold on!", message: "How can you record if you've got nothing to record? Add a mass or two first.", preferredStyle: .alert)
+            vc.addAction(UIAlertAction(title: "Fine 🙄", style: .default, handler: nil))
+            window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
     }
+    
+    // MARK: - Animations
     
     private func animateCornerRadius(from: CGFloat, to: CGFloat, withDuration duration: CFTimeInterval) -> CABasicAnimation {
         let anim = CABasicAnimation(keyPath: "cornerRadius")
@@ -136,6 +147,25 @@ class RecordButton: UIButton {
         return anim
     }
     
+    private func spin(_ direction: SpinDirection) {
+        var angle: CGFloat = 0
+        if direction == .left {
+            angle = CGFloat(M_PI)
+        } else if direction == .right {
+            angle = CGFloat(-M_PI)
+        }
+        
+        UIView.animate(withDuration: 0.2, animations: {
+            self.transform = CGAffineTransform(rotationAngle: angle)
+        }) { (finished) in
+            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
+                self.transform = CGAffineTransform(rotationAngle: 0)
+            }, completion: nil)
+        }
+    }
+
+    //MARK: -
+    
     init(frame: CGRect, recordingColour: UIColor = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0), stopColour: UIColor = UIColor.darkGray) {
         self.recordingColour = recordingColour
         self.stopColour = stopColour
@@ -156,22 +186,5 @@ class RecordButton: UIButton {
         setTitleColor(recordingColour.darker(30), for: .normal)
         
         setTitle(recordText, for: .normal)
-    }
-    
-    private func spin(_ direction: SpinDirection) {
-        var angle: CGFloat = 0
-        if direction == .left {
-            angle = CGFloat(M_PI)
-        } else if direction == .right {
-            angle = CGFloat(-M_PI)
-        }
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.transform = CGAffineTransform(rotationAngle: angle)
-        }) { (finished) in
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
-                self.transform = CGAffineTransform(rotationAngle: 0)
-            }, completion: nil)
-        }
     }
 }
