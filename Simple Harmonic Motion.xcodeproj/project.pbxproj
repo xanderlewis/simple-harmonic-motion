@@ -15,6 +15,7 @@
 		C06FB70D1E37E92000490257 /* CSVGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70C1E37E92000490257 /* CSVGenerator.swift */; };
 		C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */; };
 		C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBE91E41FBE10038AA94 /* AboutViewController.swift */; };
+		C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */; };
 		C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C62B991E31935700566384 /* SpringShadow.swift */; };
 		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
 		C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F11E2D42A400CED588 /* PhysicsScene.swift */; };
@@ -47,6 +48,7 @@
 		C06FB70C1E37E92000490257 /* CSVGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CSVGenerator.swift; sourceTree = "<group>"; };
 		C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsDatasets.swift; sourceTree = "<group>"; };
 		C088EBE91E41FBE10038AA94 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C636EB1E2D42A400CED588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
 				C088EBE91E41FBE10038AA94 /* AboutViewController.swift */,
+				C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */,
 				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
@@ -284,6 +287,7 @@
 				C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */,
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
 				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
+				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
