@@ -115,7 +115,7 @@ class RecordButton: UIButton {
             
         case .disabled:
             // Tell the user why they can't press record
-            let vc = UIAlertController(title: "Hold on!", message: "Recording nothing wouldn't be particularly useful, would it? Add a mass or two first.", preferredStyle: .alert)
+            let vc = UIAlertController(title: "Hold on!", message: "Recording nothing wouldn't be particularly useful, would it? You should probably add a mass or two first.", preferredStyle: .alert)
             vc.addAction(UIAlertAction(title: "Fine 🙄", style: .default, handler: nil))
             window?.rootViewController?.present(vc, animated: true, completion: nil)
         }

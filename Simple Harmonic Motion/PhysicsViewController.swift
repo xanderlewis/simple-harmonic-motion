@@ -17,6 +17,8 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        print("loaded view")
+        
         let skView = view as! SKView
         skView.ignoresSiblingOrder = true
         //skView.showsFPS = true
@@ -29,6 +31,18 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         
         // Set up record button to delegate responsibilities to this view controller
         recordButton.delegate = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        print("viewwillappear")
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        print("viewdidappear")
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        print("viewdiddisappear")
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
@@ -73,5 +87,9 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         // Show node settings
         popupVC.view.frame = view.frame
         view.addSubview(popupVC.view!)
+    }
+    
+    @IBAction func unwindFromHelp(segue: UIStoryboardSegue) {
+        // don't need to do anything
     }
 }

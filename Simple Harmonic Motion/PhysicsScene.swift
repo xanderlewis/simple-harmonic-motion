@@ -59,6 +59,8 @@ class PhysicsScene: SKScene {
     // MARK: - Initialising stuff
     
     override func didMove(to view: SKView) {
+        
+        print("didmoveto")
         // Set up gesture recognisers
         setUpGestureRecognizers()
         
@@ -365,25 +367,34 @@ class PhysicsScene: SKScene {
             }
         }
         
-    // Tapped in empty space (create a triplet)
+        // Tapped in empty space (create a triplet)
+        
+        if !recording {
+            var bodyFits = true
+            enumerateChildNodes(withName: "body", using: { (node, stop) in
+                let body = node as! Body
+                
+                let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
+                
+                // Check if body intersects with existing body
+                if trialFrame.intersects(body.frame) {
+                    // Stop checking
+                    bodyFits = false
+                    stop.initialize(to: true)
+                }
+            })
             
-        var bodyFits = true
-        enumerateChildNodes(withName: "body", using: { (node, stop) in
-            let body = node as! Body
-                
-            let trialFrame = CGRect(x: 0, y: tapPosition.y - body.frame.width/2, width: (self.view?.frame.width)!, height: body.frame.height)
-                
-            // Check if body intersects with existing body
-            if trialFrame.intersects(body.frame) {
-                // Stop checking
-                bodyFits = false
-                stop.initialize(to: true)
+            if bodyFits {
+                // Create 'triplet'
+                createTriplet(atPosition: convertPoint(fromView: tapLocation))
             }
-        })
+
+        } else {
+            // User tried to create a body whilst recording
+            let vc = UIAlertController(title: "Hang on!", message: "We're recording some data at the moment. Stop recording if you want to add a new mass.", preferredStyle: .alert)
+            vc.addAction(UIAlertAction(title: "Okay! 😌", style: .default, handler: nil))
             
-        if bodyFits {
-            // Create 'triplet'
-            createTriplet(atPosition: convertPoint(fromView: tapLocation))
+            view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
     }
     
@@ -400,12 +411,12 @@ class PhysicsScene: SKScene {
                 
                 let vc = UIAlertController(title: "Delete Mass", message: "Would you like to delete this mass from the world?", preferredStyle: .actionSheet)
                 
-                vc.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { (action) in
+                vc.addAction(UIAlertAction(title: "Yes, delete it", style: .destructive, handler: { (action) in
                     // Delete body node
                     self.removeTriplet(thatContainsBody: body)
                 }))
                 
-                vc.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+                vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: nil))
                 
                 view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
             }

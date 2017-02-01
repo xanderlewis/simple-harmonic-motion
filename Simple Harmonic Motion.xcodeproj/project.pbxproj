@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037695D1E37A1E100CD70B7 /* RecordButton.swift */; };
+		C03CF6ED1E427BB000D2B33B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CF6EC1E427BB000D2B33B /* TabBarController.swift */; };
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
 		C051402F1E2F6727009158CA /* Trail.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402E1E2F6727009158CA /* Trail.swift */; };
 		C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C05140301E2F7721009158CA /* NodeSettingsViewController.swift */; };
@@ -27,6 +28,7 @@
 		C0C637071E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637061E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift */; };
 		C0C637121E2D434A00CED588 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637111E2D434A00CED588 /* Body.swift */; };
 		C0C637141E2D434E00CED588 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637131E2D434E00CED588 /* Spring.swift */; };
+		C0C986321E429E4900D5C368 /* HelpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C986311E429E4900D5C368 /* HelpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,6 +43,7 @@
 
 /* Begin PBXFileReference section */
 		C037695D1E37A1E100CD70B7 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
+		C03CF6EC1E427BB000D2B33B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C051402E1E2F6727009158CA /* Trail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Trail.swift; path = "Simple Harmonic Motion/Trail.swift"; sourceTree = "<group>"; };
 		C05140301E2F7721009158CA /* NodeSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NodeSettingsViewController.swift; sourceTree = "<group>"; };
@@ -64,6 +67,7 @@
 		C0C637081E2D42A400CED588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C637111E2D434A00CED588 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		C0C637131E2D434E00CED588 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
+		C0C986311E429E4900D5C368 /* HelpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HelpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +136,9 @@
 				C088EBE91E41FBE10038AA94 /* AboutViewController.swift */,
 				C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */,
 				C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */,
+				C0C986311E429E4900D5C368 /* HelpViewController.swift */,
 				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
+				C03CF6EC1E427BB000D2B33B /* TabBarController.swift */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
 				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
@@ -274,12 +280,14 @@
 				C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */,
 				C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */,
 				C06FB70D1E37E92000490257 /* CSVGenerator.swift in Sources */,
+				C03CF6ED1E427BB000D2B33B /* TabBarController.swift in Sources */,
 				C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */,
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
 				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,
+				C0C986321E429E4900D5C368 /* HelpViewController.swift in Sources */,
 				C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
 				C0C637121E2D434A00CED588 /* Body.swift in Sources */,
@@ -428,6 +436,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-Motion";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -441,6 +450,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "com.xanderlewis.Simple-Harmonic-Motion";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
