@@ -168,10 +168,10 @@ class NodeSettingsViewController: UIViewController {
 
         var yConstraintConstant = nodePosition.y
         
-        // If bottom of settings view intersects with bottom of root view
-        if yConstraintConstant + settingsView.frame.height/2 + settingsViewSpacer > view.frame.height {
+        // If bottom of settings view intersects with bottom of root view (plus tab bar height)
+        if yConstraintConstant + settingsView.frame.height/2 + settingsViewSpacer > view.frame.height - 60 {
             // Shift negative (up)
-            yConstraintConstant -= (nodePosition.y + settingsView.frame.height/2) - view.frame.height + settingsViewSpacer
+            yConstraintConstant -= (nodePosition.y + settingsView.frame.height/2) - view.frame.height + settingsViewSpacer + 60
             
         // If top of settings view intersects with top of root view
         } else if yConstraintConstant - settingsView.frame.height/2 - settingsViewSpacer < 0 {
