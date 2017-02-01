@@ -56,7 +56,7 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.2, alpha: 1)
+        backgroundColor = UIColor(white: 0.1, alpha: 1)
         
         // Set up background label
         let backgroundLabel = SKLabelNode(text: "Tap anywhere to add a mass")

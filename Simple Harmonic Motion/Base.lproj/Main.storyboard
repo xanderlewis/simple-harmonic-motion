@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="BV1-FR-VrT">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="moh-PO-1io">
     <device id="retina4_0" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Physics View Controller-->
+        <!--Simulation-->
         <scene sceneID="tXr-a1-R10">
             <objects>
                 <viewController id="BV1-FR-VrT" customClass="PhysicsViewController" customModule="Simple_Harmonic_Motion" customModuleProvider="target" sceneMemberID="viewController">
@@ -22,11 +23,11 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" alpha="0.69999999999999996" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="fill" buttonType="roundedRect" lineBreakMode="headTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ER0-kK-bMo" customClass="RecordButton" customModule="Simple_Harmonic_Motion" customModuleProvider="target">
-                                <rect key="frame" x="18" y="38" width="60" height="60"/>
+                                <rect key="frame" x="18" y="38" width="50" height="50"/>
                                 <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="A6c-OE-Zma"/>
-                                    <constraint firstAttribute="width" constant="60" id="e4C-5t-vF7"/>
+                                    <constraint firstAttribute="height" constant="50" id="A6c-OE-Zma"/>
+                                    <constraint firstAttribute="width" constant="50" id="e4C-5t-vF7"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="14"/>
                                 <state key="normal" title="REC">
@@ -40,12 +41,14 @@
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="18" id="urg-Ed-FQu"/>
                         </constraints>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Simulation" image="atom" id="dcr-x8-sUA"/>
                     <connections>
                         <outlet property="recordButton" destination="ER0-kK-bMo" id="7BB-B0-oe5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1136.25" y="135.21126760563379"/>
         </scene>
         <!--Node Settings View Controller-->
         <scene sceneID="JA0-R6-Zah">
@@ -250,7 +253,97 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1072.5" y="125.70422535211267"/>
+            <point key="canvasLocation" x="2070" y="125.70422535211267"/>
+        </scene>
+        <!--Tab Bar Controller-->
+        <scene sceneID="IS0-xb-OqJ">
+            <objects>
+                <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="moh-PO-1io" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <tabBar key="tabBar" contentMode="scaleToFill" barStyle="black" id="Nnr-rU-Rcj">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <color key="selectedImageTintColor" red="1" green="0.0" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="WA0-tB-Dbg"/>
+                        <segue destination="Hnq-bR-nvi" kind="relationship" relationship="viewControllers" id="kpz-vz-8z9"/>
+                        <segue destination="WFA-Kw-OLN" kind="relationship" relationship="viewControllers" id="fAm-2L-8MA"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="egl-u5-4ly" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="138.75" y="135.21126760563379"/>
+        </scene>
+        <!--Options-->
+        <scene sceneID="bUJ-0X-NSc">
+            <objects>
+                <viewController id="Hnq-bR-nvi" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="6Tp-yE-2d9"/>
+                        <viewControllerLayoutGuide type="bottom" id="KwD-z9-Rbn"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WjY-Z1-aEj">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Options" image="jar-of-pills" id="IrX-pL-i9t"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="75o-m8-BIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="81" y="985"/>
+        </scene>
+        <!--About-->
+        <scene sceneID="1Hg-Ot-awx">
+            <objects>
+                <viewController id="WFA-Kw-OLN" customClass="AboutViewController" customModule="Simple_Harmonic_Motion" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="kpC-3m-kHV"/>
+                        <viewControllerLayoutGuide type="bottom" id="RqH-hK-UA8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Kkd-0Q-VcR">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" semanticContentAttribute="playback" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-TC-2hi">
+                                <rect key="frame" x="16" y="20" width="288" height="548"/>
+                                <string key="text">Some Stuff  Simplet harmonicum motion dolor sit amet, consectetur adipiscing elit. Phasellus eu mollis libero. Praesent vehicula ut massa eget suscipit. Integer nec cursus velit. Vivamus a nunc massa. Proin cursus justo sit amet sem tempus, vitae volutpat massa fermentum. Vestibulum iaculis faucibus justo, pulvinar congue nisl scelerisque quis. Nam egestas finibus aliquet. Fusce condimentum, augue sed dictum pulvinar, augue est euismod nisl, eu tristique dui odio ut sem.
+
+Donec magna odio, malesuada eget arcu sit amet, pharetra luctus massa. Mauris malesuada diam quis elit ultrices consequat. Ut ex arcu, tincidunt sit amet purus mattis, pretium ullamcorper nisl. Fusce vel justo nec erat blandit vestibulum. Nullam purus dui, eleifend eu nunc nec, viverra laoreet mauris. Duis pellentesque, mauris a ullamcorper fringilla, felis libero dapibus ipsum, at pretium lectus orci nec urna. Proin eget elit erat. Mauris pharetra ante lorem, in pretium ligula imperdiet nec. Vestibulum imperdiet finibus odio, eget luctus velit hendrerit eget. In hac habitasse platea dictumst. Donec non ipsum in tellus tincidunt mollis. Cras eu lorem purus. Praesent maximus congue egestas. Nullam sit amet interdum justo, vehicula viverra lorem. Sed sollicitudin tempus ultrices. Sed laoreet, nisi in placerat suscipit, felis tortor faucibus diam, et cursus ante tortor egestas augue.
+
+Sed eget volutpat libero. Proin posuere sagittis pretium. Quisque cursus viverra congue. Phasellus dictum vitae diam id posuere. Sed et ligula vel massa tincidunt rhoncus vel ut est. Ut convallis metus id dui sagittis tempor. Integer accumsan efficitur justo, ut posuere odio pretium eu. Phasellus mattis lacus sit amet scelerisque varius.
+
+Maecenas ut metus nec tortor consequat lobortis in nec risus. Sed finibus volutpat urna, in pharetra libero iaculis in. Nullam venenatis, massa sit amet venenatis ultrices, nisi leo porta leo, in sollicitudin ipsum velit vitae lorem. Nullam quis aliquam nunc. Sed viverra, odio et convallis eleifend, ligula lacus sagittis felis, id efficitur dolor felis id augue. Duis et tristique turpis. Pellentesque rhoncus ullamcorper nulla pretium maximus. Proin id dui sed neque mattis tristique. Quisque sodales arcu id tortor congue ultrices. Mauris dolor nisi, porta vel tellus vel, sollicitudin ultrices diam. Aliquam a mattis nibh, vitae vehicula sem. Nulla sed malesuada magna, laoreet finibus leo. Maecenas convallis, augue eu dictum bibendum, tellus enim maximus nulla, sed mollis ante lectus sit amet enim.
+
+Quisque ut pretium ex. Proin euismod mi eget tortor sagittis dictum. Praesent luctus tincidunt tincidunt. Pellentesque at lacinia ipsum. Fusce ultricies sit amet purus blandit tincidunt. In id placerat massa. Vivamus at tempor erat, sed varius velit. Duis volutpat, dui ut mattis pretium, justo velit tempor odio, eu pellentesque tellus mauris a ipsum. Suspendisse potenti. Nullam egestas ultricies urna et mollis. Duis venenatis mauris ac diam mollis, quis ornare magna sodales.          </string>
+                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstItem="XgI-TC-2hi" firstAttribute="top" secondItem="kpC-3m-kHV" secondAttribute="bottom" id="9SL-z6-qsx"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="XgI-TC-2hi" secondAttribute="trailing" id="A44-Pz-2N9"/>
+                            <constraint firstItem="XgI-TC-2hi" firstAttribute="leading" secondItem="Kkd-0Q-VcR" secondAttribute="leadingMargin" id="G71-GF-YzJ"/>
+                            <constraint firstAttribute="bottomMargin" secondItem="XgI-TC-2hi" secondAttribute="bottom" id="LUA-zg-Sz7"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="About" image="microscope" id="K4w-xK-tw2"/>
+                    <connections>
+                        <outlet property="textView" destination="XgI-TC-2hi" id="s30-zj-gSv"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lzc-wd-QqM" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1035" y="975"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="atom" width="25" height="25"/>
+        <image name="jar-of-pills" width="25" height="25"/>
+        <image name="microscope" width="25" height="25"/>
+    </resources>
 </document>

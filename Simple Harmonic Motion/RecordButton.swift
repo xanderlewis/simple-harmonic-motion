@@ -26,8 +26,8 @@ protocol RecordButtonDelegate {
 
 class RecordButton: UIButton {
     var recordingState: RecordButtonRecordingState = .stopped
-    @IBInspectable var recordingColour = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
-    @IBInspectable var stopColour = UIColor.darkGray
+    var recordingColour = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
+    var stopColour = UIColor.darkGray
     
     @IBInspectable var recordText = "REC"
     @IBInspectable var stopText = "STOP"
@@ -51,7 +51,7 @@ class RecordButton: UIButton {
         layer.shadowRadius = 3
         layer.shadowOpacity = 0.2
         layer.borderColor = recordingColour.darker()?.cgColor
-        layer.borderWidth = 1
+        layer.borderWidth = 2
         
         setTitle(recordText, for: .normal)
         setTitleColor(recordingColour.darker(50), for: .normal)
@@ -115,7 +115,7 @@ class RecordButton: UIButton {
             
         case .disabled:
             // Tell the user why they can't press record
-            let vc = UIAlertController(title: "Hold on!", message: "How can you record if you've got nothing to record? Add a mass or two first.", preferredStyle: .alert)
+            let vc = UIAlertController(title: "Hold on!", message: "Recording nothing wouldn't be particularly useful, would it? Add a mass or two first.", preferredStyle: .alert)
             vc.addAction(UIAlertAction(title: "Fine 🙄", style: .default, handler: nil))
             window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
@@ -138,8 +138,8 @@ class RecordButton: UIButton {
     private func animateBorderColour(from: CGColor, to: CGColor, withDuration duration: CFTimeInterval) -> CABasicAnimation {
         let anim = CABasicAnimation(keyPath: "borderColor")
         anim.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
-        anim.fromValue = layer.borderColor
-        anim.toValue = UIColor.darkGray.darker()?.cgColor
+        anim.fromValue = from
+        anim.toValue = to
         anim.duration = duration
         anim.fillMode = kCAFillModeForwards
         anim.isRemovedOnCompletion = false
