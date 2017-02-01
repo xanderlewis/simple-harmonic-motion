@@ -12,11 +12,9 @@ import SpriteKit
 class Trail: SKShapeNode {
     
     private var points: [CGPoint] = []
-    var verticalVelocity: CGFloat
     var length: Int
     
-    init(colour c: SKColor, verticalVelocity vv: CGFloat, length l: Int) {
-        verticalVelocity = vv
+    init(colour c: SKColor, length l: Int) {
         length = l
         
         // Initialise node
@@ -32,18 +30,19 @@ class Trail: SKShapeNode {
         fatalError("init(coder:) has not been implemented")
     }
     
-    func update(sender: Body) {
+    func update(sender: Body, velocity: CGFloat, following: Bool) {
         // Move points vertically
         for (i, _) in points.enumerated() {
-            points[i].y += verticalVelocity
+            points[i].y += velocity
         }
         
         // Add current position
         if points.count >= length {
             points.removeFirst()
         }
-        
-        points.append(sender.position)
+        if following {
+            points.append(sender.position)
+        }
         
         // Render trail
         let newPath = CGMutablePath()

@@ -8,7 +8,6 @@
 
 import UIKit
 import SpriteKit
-import AudioToolbox
 
 public struct BodyColourPalette {
     static let colour1 = UIColor(red:0.00, green:0.09, blue:0.15, alpha:1.0)
@@ -48,8 +47,6 @@ class NodeSettingsViewController: UIViewController {
     @IBOutlet weak var springSettingsView: UIView!
     @IBOutlet weak var springSettingsLabel: UILabel!
     @IBOutlet weak var stiffnessLabel: UILabel!
-    
-    var arpSoundID: SystemSoundID = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,10 +69,6 @@ class NodeSettingsViewController: UIViewController {
         
         // Hide blur view
         self.visualEffectView.alpha = 0
-        
-        // Load arp sound
-        let soundURL = Bundle.main.url(forResource: "arp", withExtension: "wav")! as CFURL
-        AudioServicesCreateSystemSoundID(soundURL, &arpSoundID)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -219,7 +212,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     
@@ -228,7 +220,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     
@@ -237,7 +228,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     
@@ -246,7 +236,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     
@@ -255,7 +244,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     
@@ -264,7 +252,6 @@ class NodeSettingsViewController: UIViewController {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
-        AudioServicesPlaySystemSound(arpSoundID)
         animateBounce()
     }
     

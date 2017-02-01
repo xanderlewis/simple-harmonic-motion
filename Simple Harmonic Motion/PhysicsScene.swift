@@ -9,9 +9,8 @@
 import SpriteKit
 import GameplayKit
 
-// Default physics constants for simulation (used when creating new objects)
-// (Limited to this physics scene)
-struct DefaultConstants {
+// Default physics constants for simulation
+public struct DefaultSimulationConstants {
     static let bodyColour = UIColor(white: 0.9, alpha: 1)
     static let springColour = UIColor(white: 0.5, alpha: 1)
     static let mass: CGFloat = 50
@@ -22,8 +21,16 @@ struct DefaultConstants {
     static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor(red:1.00, green:0.00, blue:0.45, alpha:1.0)
-    static let trailVelocity: CGFloat = 2.5
-    static let trailLength: Int = 400
+    static var trailLength: Int = 400
+    
+    // Constants that are changable via options
+    static var trailsEnabled = true
+    static var trailVelocity: CGFloat = 2.5 {
+        didSet {
+            // Change trail length depending on velocity to make sure it stays on the screen
+            trailLength = Int(trailVelocity * 200)
+        }
+    }
 }
 
 typealias bodyID = Int
@@ -151,7 +158,7 @@ class PhysicsScene: SKScene {
                 body.updatePosition()
             }
             
-            body.updateTrail()
+            body.updateTrail(velocity: DefaultSimulationConstants.trailVelocity, following: DefaultSimulationConstants.trailsEnabled)
         }
         
         // Deform springs based on displacement of linked bodies
@@ -184,31 +191,31 @@ class PhysicsScene: SKScene {
         // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
                         colour: BodyColourPalette.colour4,
-                        mass: DefaultConstants.mass,
-                        damping: DefaultConstants.damping)
+                        mass: DefaultSimulationConstants.mass,
+                        damping: DefaultSimulationConstants.damping)
         
         // Create left spring instance
         let leftSpring = Spring(position: CGPoint(x: 0,
-                                                  y: body.position.y - DefaultConstants.springWidth / 2),
-                                colour: DefaultConstants.springColour,
+                                                  y: body.position.y - DefaultSimulationConstants.springWidth / 2),
+                                colour: DefaultSimulationConstants.springColour,
                                 orientation: .facingRight,
                                 length: body.position.x,
-                                width: DefaultConstants.springWidth,
-                                stiffness: DefaultConstants.springStiffness,
-                                sections: DefaultConstants.springSections)
+                                width: DefaultSimulationConstants.springWidth,
+                                stiffness: DefaultSimulationConstants.springStiffness,
+                                sections: DefaultSimulationConstants.springSections)
         
         // Create right spring instance
         let rightSpring = Spring(position: CGPoint(x: frame.width,
-                                                   y: body.position.y - DefaultConstants.springWidth / 2),
-                                 colour: DefaultConstants.springColour,
+                                                   y: body.position.y - DefaultSimulationConstants.springWidth / 2),
+                                 colour: DefaultSimulationConstants.springColour,
                                  orientation: .facingLeft,
                                  length: body.position.x,
-                                 width: DefaultConstants.springWidth,
-                                 stiffness: DefaultConstants.springStiffness,
-                                 sections: DefaultConstants.springSections)
+                                 width: DefaultSimulationConstants.springWidth,
+                                 stiffness: DefaultSimulationConstants.springStiffness,
+                                 sections: DefaultSimulationConstants.springSections)
         
         // Create trail for body
-        let trail = Trail(colour: BodyColourPalette.colour4, verticalVelocity: DefaultConstants.trailVelocity, length: DefaultConstants.trailLength)
+        let trail = Trail(colour: BodyColourPalette.colour4, length: DefaultSimulationConstants.trailLength)
         
         // Add trail to body
         body.trail = trail
@@ -274,6 +281,21 @@ class PhysicsScene: SKScene {
             body.removeFromParent()
             NSObject.cancelPreviousPerformRequests(withTarget: body)
             Body.totalBodies -= 1
+        }
+    }
+    
+//    func enableTrails() {
+//        enumerateChildNodes(withName: "body") { (node, stop) in
+//            let body = node as! Body
+//            
+//            body.trail?.isHidden = false
+//        }
+//    }
+    
+    func disableTrails() {
+        enumerateChildNodes(withName: "body") { (node, stop) in
+            let body = node as! Body
+            body.trail?.isHidden = true
         }
     }
     
@@ -396,7 +418,7 @@ class PhysicsScene: SKScene {
         longPressRec = UILongPressGestureRecognizer(target: self, action: #selector(longPressedScene))
         
         //tapRec.cancelsTouchesInView = false
-        longPressRec.minimumPressDuration = 0.8
+        longPressRec.minimumPressDuration = 0.6
         
         //view?.addGestureRecognizer(tapRec)
         view?.addGestureRecognizer(longPressRec)

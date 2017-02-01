@@ -46,7 +46,9 @@ class Body: SKShapeNode {
     override var fillColor: UIColor {
         didSet {
             // Change trail colour when fill colour changes
-            trail?.strokeColor = fillColor
+            if trail != nil {
+                trail!.strokeColor = fillColor
+            }
             
             // If new colour dark, change label colour to white
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
@@ -141,9 +143,9 @@ class Body: SKShapeNode {
         self.displacement += self.velocity
     }
     
-    func updateTrail() {
+    func updateTrail(velocity: CGFloat, following: Bool) {
         if trail != nil {
-            trail!.update(sender: self)
+            trail!.update(sender: self, velocity: velocity, following: following)
         }
     }
 }

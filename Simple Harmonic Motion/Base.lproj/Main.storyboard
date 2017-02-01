@@ -289,55 +289,52 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-DI-gv4">
-                                <rect key="frame" x="119" y="20" width="82" height="29"/>
-                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="24"/>
+                                <rect key="frame" x="116" y="52" width="88.5" height="31.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="26"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqq-3W-S5B">
-                                <rect key="frame" x="16" y="49" width="288" height="470"/>
+                                <rect key="frame" x="0.0" y="91.5" width="320" height="427.5"/>
                                 <connections>
-                                    <segue destination="SYB-lE-DUu" kind="embed" id="1YR-6t-cG5"/>
+                                    <segue destination="SYB-lE-DUu" kind="embed" identifier="OptionsEmbed" id="1YR-6t-cG5"/>
                                 </connections>
                             </containerView>
                         </subviews>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="lqq-3W-S5B" firstAttribute="top" secondItem="CyU-DI-gv4" secondAttribute="bottom" id="4i4-qM-yh3"/>
+                            <constraint firstItem="lqq-3W-S5B" firstAttribute="top" secondItem="CyU-DI-gv4" secondAttribute="bottom" constant="8" id="4i4-qM-yh3"/>
                             <constraint firstItem="CyU-DI-gv4" firstAttribute="centerX" secondItem="WjY-Z1-aEj" secondAttribute="centerX" id="5u7-R1-a4g"/>
-                            <constraint firstItem="lqq-3W-S5B" firstAttribute="leading" secondItem="WjY-Z1-aEj" secondAttribute="leadingMargin" id="D7W-Mx-opg"/>
+                            <constraint firstItem="lqq-3W-S5B" firstAttribute="leading" secondItem="WjY-Z1-aEj" secondAttribute="leading" id="D7W-Mx-opg"/>
                             <constraint firstItem="KwD-z9-Rbn" firstAttribute="top" secondItem="lqq-3W-S5B" secondAttribute="bottom" id="Dtn-IJ-13m"/>
-                            <constraint firstItem="CyU-DI-gv4" firstAttribute="top" secondItem="6Tp-yE-2d9" secondAttribute="bottom" id="fjw-Hm-ZbK"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="lqq-3W-S5B" secondAttribute="trailing" id="slH-U1-cw8"/>
+                            <constraint firstItem="CyU-DI-gv4" firstAttribute="top" secondItem="6Tp-yE-2d9" secondAttribute="bottom" constant="32" id="fjw-Hm-ZbK"/>
+                            <constraint firstAttribute="trailing" secondItem="lqq-3W-S5B" secondAttribute="trailing" id="slH-U1-cw8"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Options" image="microscope" id="IrX-pL-i9t"/>
-                    <connections>
-                        <outlet property="containerView" destination="lqq-3W-S5B" id="HjI-Jr-OJc"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75o-m8-BIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="80.625" y="984.50704225352115"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Options Table View Controller-->
         <scene sceneID="9Kg-lw-C2L">
             <objects>
-                <tableViewController id="SYB-lE-DUu" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gmG-ag-egI">
-                        <rect key="frame" x="0.0" y="0.0" width="288" height="470"/>
+                <tableViewController id="SYB-lE-DUu" customClass="OptionsTableViewController" customModule="Simple_Harmonic_Motion" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="static" style="grouped" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="gmG-ag-egI">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="427.5"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
-                        <color key="sectionIndexBackgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <sections>
                             <tableViewSection headerTitle="Physics" id="g8C-dO-Ed4" userLabel="Physics">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="gray" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="MlE-iU-bZX">
-                                        <rect key="frame" x="0.0" y="56" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="MlE-iU-bZX" id="qTr-GC-0C2">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Motion Trails" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FSN-hn-wa5">
@@ -347,7 +344,11 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dAj-MI-jXv">
-                                                    <rect key="frame" x="231" y="8" width="51" height="27.5"/>
+                                                    <rect key="frame" x="263" y="8" width="51" height="27.5"/>
+                                                    <color key="onTintColor" red="1" green="0.0" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="motionTrailsSwitchChanged:" destination="SYB-lE-DUu" eventType="valueChanged" id="7nd-ye-hVI"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                             <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -360,13 +361,13 @@
                                                 <constraint firstItem="dAj-MI-jXv" firstAttribute="top" secondItem="qTr-GC-0C2" secondAttribute="topMargin" id="odc-Ye-WzY"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="fbx-AT-cqO">
-                                        <rect key="frame" x="0.0" y="100" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="100" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fbx-AT-cqO" id="CmP-yY-WCH">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Trail Speed" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1eO-i1-Tbn">
@@ -375,39 +376,51 @@
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="Rbn-ih-lge">
-                                                    <rect key="frame" x="158" y="8" width="124" height="29"/>
-                                                    <color key="tintColor" red="1" green="0.0" blue="0.36078431372549019" alpha="1" colorSpace="calibratedRGB"/>
+                                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="VIU-sm-bOy">
+                                                    <rect key="frame" x="144" y="8" width="168" height="29"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" constant="120" id="ViP-cr-aA9"/>
+                                                        <constraint firstAttribute="width" constant="168" id="GfR-8y-KdN"/>
                                                     </constraints>
-                                                </slider>
+                                                    <segments>
+                                                        <segment title="Slow"/>
+                                                        <segment title="Medium"/>
+                                                        <segment title="Fast"/>
+                                                    </segments>
+                                                    <color key="tintColor" red="1" green="0.0" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="trailSpeedSwitchChanged:" destination="SYB-lE-DUu" eventType="valueChanged" id="WUF-Gg-Hub"/>
+                                                    </connections>
+                                                </segmentedControl>
                                             </subviews>
                                             <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                                             <constraints>
                                                 <constraint firstItem="1eO-i1-Tbn" firstAttribute="leading" secondItem="CmP-yY-WCH" secondAttribute="leadingMargin" id="5BH-e5-TZD"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="Rbn-ih-lge" secondAttribute="bottom" id="HdQ-BX-HxK"/>
                                                 <constraint firstItem="1eO-i1-Tbn" firstAttribute="top" secondItem="CmP-yY-WCH" secondAttribute="topMargin" id="Mv4-QI-Fcw"/>
+                                                <constraint firstItem="VIU-sm-bOy" firstAttribute="trailing" secondItem="CmP-yY-WCH" secondAttribute="trailingMargin" id="NC7-gT-IeK"/>
+                                                <constraint firstItem="VIU-sm-bOy" firstAttribute="top" secondItem="CmP-yY-WCH" secondAttribute="topMargin" id="TTY-kT-mGh"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="1eO-i1-Tbn" secondAttribute="bottom" id="kZk-Hd-2zV"/>
-                                                <constraint firstItem="Rbn-ih-lge" firstAttribute="trailing" secondItem="CmP-yY-WCH" secondAttribute="trailingMargin" id="vTk-SE-gXa"/>
-                                                <constraint firstItem="Rbn-ih-lge" firstAttribute="top" secondItem="CmP-yY-WCH" secondAttribute="topMargin" id="yLu-ej-LsT"/>
+                                                <constraint firstItem="VIU-sm-bOy" firstAttribute="bottom" secondItem="CmP-yY-WCH" secondAttribute="bottomMargin" id="yJH-x5-Ilp"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
                             <tableViewSection headerTitle="Theme" id="ZS5-H6-Jra" userLabel="Theme">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5PE-gK-7TK">
-                                        <rect key="frame" x="0.0" y="201" width="288" height="44"/>
+                                        <rect key="frame" x="0.0" y="201" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5PE-gK-7TK" id="aqF-Mw-vEQ">
-                                            <rect key="frame" x="0.0" y="0.0" width="288" height="43"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-vf-Y7V">
-                                                    <rect key="frame" x="231" y="8" width="51" height="27.5"/>
+                                                    <rect key="frame" x="263" y="8" width="51" height="27.5"/>
+                                                    <color key="onTintColor" red="1" green="0.0" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="darkThemeSwitchChanged:" destination="SYB-lE-DUu" eventType="valueChanged" id="2pb-cg-Dcv"/>
+                                                    </connections>
                                                 </switch>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Dark Theme" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qwd-b8-pve">
                                                     <rect key="frame" x="8" y="8" width="94" height="27.5"/>
@@ -426,7 +439,7 @@
                                                 <constraint firstAttribute="bottomMargin" secondItem="E0j-vf-Y7V" secondAttribute="bottom" id="nHY-T6-GLO"/>
                                             </constraints>
                                         </tableViewCellContentView>
-                                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                        <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -436,10 +449,15 @@
                             <outlet property="delegate" destination="SYB-lE-DUu" id="55S-3b-xp7"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="darkThemeSwitch" destination="E0j-vf-Y7V" id="SWp-FA-YvZ"/>
+                        <outlet property="motionTrailsSwitch" destination="dAj-MI-jXv" id="70U-Mx-IBG"/>
+                        <outlet property="trailSpeedSwitch" destination="VIU-sm-bOy" id="UN2-4j-TsB"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="9fo-g5-sHz" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="958" y="1415"/>
+            <point key="canvasLocation" x="956.25" y="1414.4366197183099"/>
         </scene>
         <!--About-->
         <scene sceneID="1Hg-Ot-awx">
@@ -455,7 +473,7 @@
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="top" semanticContentAttribute="playback" directionalLockEnabled="YES" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XgI-TC-2hi">
                                 <rect key="frame" x="16" y="20" width="288" height="548"/>
-                                <string key="text">Some Stuff  Simplet harmonicum motion dolor sit amet, consectetur adipiscing elit. Phasellus eu mollis libero. Praesent vehicula ut massa eget suscipit. Integer nec cursus velit. Vivamus a nunc massa. Proin cursus justo sit amet sem tempus, vitae volutpat massa fermentum. Vestibulum iaculis faucibus justo, pulvinar congue nisl scelerisque quis. Nam egestas finibus aliquet. Fusce condimentum, augue sed dictum pulvinar, augue est euismod nisl, eu tristique dui odio ut sem.
+                                <mutableString key="text"> Simplet harmonicum motion dolor sit amet, consectetur adipiscing elit. Phasellus eu mollis libero. Praesent vehicula ut massa eget suscipit. Integer nec cursus velit. Vivamus a nunc massa. Proin cursus justo sit amet sem tempus, vitae volutpat massa fermentum. Vestibulum iaculis faucibus justo, pulvinar congue nisl scelerisque quis. Nam egestas finibus aliquet. Fusce condimentum, augue sed dictum pulvinar, augue est euismod nisl, eu tristique dui odio ut sem.
 
 Donec magna odio, malesuada eget arcu sit amet, pharetra luctus massa. Mauris malesuada diam quis elit ultrices consequat. Ut ex arcu, tincidunt sit amet purus mattis, pretium ullamcorper nisl. Fusce vel justo nec erat blandit vestibulum. Nullam purus dui, eleifend eu nunc nec, viverra laoreet mauris. Duis pellentesque, mauris a ullamcorper fringilla, felis libero dapibus ipsum, at pretium lectus orci nec urna. Proin eget elit erat. Mauris pharetra ante lorem, in pretium ligula imperdiet nec. Vestibulum imperdiet finibus odio, eget luctus velit hendrerit eget. In hac habitasse platea dictumst. Donec non ipsum in tellus tincidunt mollis. Cras eu lorem purus. Praesent maximus congue egestas. Nullam sit amet interdum justo, vehicula viverra lorem. Sed sollicitudin tempus ultrices. Sed laoreet, nisi in placerat suscipit, felis tortor faucibus diam, et cursus ante tortor egestas augue.
 
@@ -463,7 +481,7 @@ Sed eget volutpat libero. Proin posuere sagittis pretium. Quisque cursus viverra
 
 Maecenas ut metus nec tortor consequat lobortis in nec risus. Sed finibus volutpat urna, in pharetra libero iaculis in. Nullam venenatis, massa sit amet venenatis ultrices, nisi leo porta leo, in sollicitudin ipsum velit vitae lorem. Nullam quis aliquam nunc. Sed viverra, odio et convallis eleifend, ligula lacus sagittis felis, id efficitur dolor felis id augue. Duis et tristique turpis. Pellentesque rhoncus ullamcorper nulla pretium maximus. Proin id dui sed neque mattis tristique. Quisque sodales arcu id tortor congue ultrices. Mauris dolor nisi, porta vel tellus vel, sollicitudin ultrices diam. Aliquam a mattis nibh, vitae vehicula sem. Nulla sed malesuada magna, laoreet finibus leo. Maecenas convallis, augue eu dictum bibendum, tellus enim maximus nulla, sed mollis ante lectus sit amet enim.
 
-Quisque ut pretium ex. Proin euismod mi eget tortor sagittis dictum. Praesent luctus tincidunt tincidunt. Pellentesque at lacinia ipsum. Fusce ultricies sit amet purus blandit tincidunt. In id placerat massa. Vivamus at tempor erat, sed varius velit. Duis volutpat, dui ut mattis pretium, justo velit tempor odio, eu pellentesque tellus mauris a ipsum. Suspendisse potenti. Nullam egestas ultricies urna et mollis. Duis venenatis mauris ac diam mollis, quis ornare magna sodales.          </string>
+Quisque ut pretium ex. Proin euismod mi eget tortor sagittis dictum. Praesent luctus tincidunt tincidunt. Pellentesque at lacinia ipsum. Fusce ultricies sit amet purus blandit tincidunt. In id placerat massa. Vivamus at tempor erat, sed varius velit. Duis volutpat, dui ut mattis pretium, justo velit tempor odio, eu pellentesque tellus mauris a ipsum. Suspendisse potenti. Nullam egestas ultricies urna et mollis. Duis venenatis mauris ac diam mollis, quis ornare magna sodales.        </mutableString>
                                 <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="11"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>

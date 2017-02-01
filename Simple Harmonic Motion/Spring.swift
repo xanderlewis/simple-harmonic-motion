@@ -113,8 +113,6 @@ class Spring: SKShapeNode {
             }
         }
         
-        
-        
         // Set new path
         path = newPath
         

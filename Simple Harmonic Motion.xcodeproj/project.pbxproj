@@ -16,6 +16,7 @@
 		C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */; };
 		C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBE91E41FBE10038AA94 /* AboutViewController.swift */; };
 		C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */; };
+		C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */; };
 		C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C62B991E31935700566384 /* SpringShadow.swift */; };
 		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
 		C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F11E2D42A400CED588 /* PhysicsScene.swift */; };
@@ -26,7 +27,6 @@
 		C0C637071E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637061E2D42A400CED588 /* Simple_Harmonic_MotionTests.swift */; };
 		C0C637121E2D434A00CED588 /* Body.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637111E2D434A00CED588 /* Body.swift */; };
 		C0C637141E2D434E00CED588 /* Spring.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C637131E2D434E00CED588 /* Spring.swift */; };
-		C0FF192C1E342F8B0024ED05 /* arp.wav in Resources */ = {isa = PBXBuildFile; fileRef = C0FF192B1E342F8B0024ED05 /* arp.wav */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +49,7 @@
 		C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsDatasets.swift; sourceTree = "<group>"; };
 		C088EBE91E41FBE10038AA94 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
+		C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableTableViewController.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C636EB1E2D42A400CED588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -63,7 +64,6 @@
 		C0C637081E2D42A400CED588 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C0C637111E2D434A00CED588 /* Body.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Body.swift; sourceTree = "<group>"; };
 		C0C637131E2D434E00CED588 /* Spring.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Spring.swift; sourceTree = "<group>"; };
-		C0FF192B1E342F8B0024ED05 /* arp.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = arp.wav; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,6 +131,7 @@
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
 				C088EBE91E41FBE10038AA94 /* AboutViewController.swift */,
 				C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */,
+				C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */,
 				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
@@ -140,7 +141,6 @@
 				C0C637151E2D435900CED588 /* Physics Model */,
 				C06FB7091E37B08C00490257 /* Visuals */,
 				C0C2AB891E3801F800624771 /* Data Handling */,
-				C0FF192D1E342F8E0024ED05 /* Sounds */,
 			);
 			path = "Simple Harmonic Motion";
 			sourceTree = "<group>";
@@ -161,15 +161,6 @@
 				C0C637131E2D434E00CED588 /* Spring.swift */,
 			);
 			name = "Physics Model";
-			sourceTree = "<group>";
-		};
-		C0FF192D1E342F8E0024ED05 /* Sounds */ = {
-			isa = PBXGroup;
-			children = (
-				C0FF192B1E342F8B0024ED05 /* arp.wav */,
-			);
-			name = Sounds;
-			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -259,7 +250,6 @@
 			files = (
 				C0C636F71E2D42A400CED588 /* Main.storyboard in Resources */,
 				C0C636F91E2D42A400CED588 /* Assets.xcassets in Resources */,
-				C0FF192C1E342F8B0024ED05 /* arp.wav in Resources */,
 				C0C636FC1E2D42A400CED588 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -289,6 +279,7 @@
 				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
+				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,
 				C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
 				C0C637121E2D434A00CED588 /* Body.swift in Sources */,
