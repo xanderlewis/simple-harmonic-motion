@@ -14,6 +14,9 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     
     @IBOutlet weak var recordButton: RecordButton!
     
+    // Keep a reference to the scene being presented
+    var scene: PhysicsScene!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,7 +27,7 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         //skView.showsFPS = true
         //skView.showsNodeCount = true
         
-        let scene = PhysicsScene(size: view.bounds.size)
+        scene = PhysicsScene(size: view.bounds.size)
         scene.scaleMode = .resizeFill
         scene.viewController = self
         skView.presentScene(scene)
@@ -33,16 +36,16 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         recordButton.delegate = self
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        print("viewwillappear")
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
-        print("viewdidappear")
+        print("viewwillappear")
+        super.viewWillAppear(animated)
+        scene.isPaused = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("viewdiddisappear")
+        print("viewdidappear")
+        super.viewDidAppear(animated)
+        scene.isPaused = true
     }
 
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {

@@ -1215,8 +1215,8 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="infoLight" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CUm-p3-QEA">
-                                <rect key="frame" x="276" y="42" width="22" height="22"/>
-                                <color key="tintColor" red="1" green="0.0" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
+                                <rect key="frame" x="266" y="52" width="22" height="22"/>
+                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <segue destination="nhP-Op-V0V" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="eWv-l8-aKv"/>
                                 </connections>
@@ -1224,10 +1224,10 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="trailing" secondItem="CUm-p3-QEA" secondAttribute="trailing" constant="22" id="Fta-Zh-gbN"/>
+                            <constraint firstAttribute="trailing" secondItem="CUm-p3-QEA" secondAttribute="trailing" constant="32" id="Fta-Zh-gbN"/>
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="18" id="sI6-fA-YwA"/>
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="18" id="urg-Ed-FQu"/>
-                            <constraint firstItem="CUm-p3-QEA" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="22" id="wIp-GH-Gk6"/>
+                            <constraint firstItem="CUm-p3-QEA" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="32" id="wIp-GH-Gk6"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="atom" id="dcr-x8-sUA"/>
