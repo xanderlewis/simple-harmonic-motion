@@ -10,7 +10,8 @@ import UIKit
 import SpriteKit
 
 public struct BodyColourPalette {
-    static let colour1 = UIColor(red:0.00, green:0.09, blue:0.15, alpha:1.0)
+    //static let colour1 = UIColor(red:0.00, green:0.09, blue:0.15, alpha:1.0)
+    static let colour1 = UIColor(red:0.45, green:0.00, blue:0.92, alpha:1.0)
     //static let colour2 = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
     static let colour2 = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
     static let colour3 = UIColor(red:0.25, green:0.92, blue:0.83, alpha:1.0)
