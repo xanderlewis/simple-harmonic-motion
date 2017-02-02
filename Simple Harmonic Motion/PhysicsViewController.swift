@@ -20,8 +20,6 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("loaded view")
-        
         let skView = view as! SKView
         skView.ignoresSiblingOrder = true
         //skView.showsFPS = true
@@ -37,13 +35,11 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("viewwillappear")
         super.viewWillAppear(animated)
         scene.isPaused = false
     }
     
     override func viewDidDisappear(_ animated: Bool) {
-        print("viewdidappear")
         super.viewDidAppear(animated)
         scene.isPaused = true
     }
@@ -72,11 +68,11 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         physicsScene.initiateRecording()
     }
     
-    func stopButtonTapped() {
+    func stopButtonTapped(sender: RecordButton) {
         let skView = view as! SKView
         let physicsScene = skView.scene as! PhysicsScene
         
-        physicsScene.finishRecording()
+        physicsScene.finishRecording(sender: sender)
     }
     
     func showSettings(forObject node: SKNode) {

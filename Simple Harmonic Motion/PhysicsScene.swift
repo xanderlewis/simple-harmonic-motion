@@ -60,7 +60,6 @@ class PhysicsScene: SKScene {
     
     override func didMove(to view: SKView) {
         
-        print("didmoveto")
         // Set up gesture recognisers
         setUpGestureRecognizers()
         
@@ -95,7 +94,7 @@ class PhysicsScene: SKScene {
         recording = true
     }
     
-    func finishRecording() {
+    func finishRecording(sender: RecordButton) {
         recording = false
         
         // Export data
@@ -105,6 +104,10 @@ class PhysicsScene: SKScene {
         // Allow user to send the data somewhere
         let vc = UIActivityViewController(activityItems: [pathToData], applicationActivities: [])
         vc.excludedActivityTypes = [.postToTwitter, .postToWeibo, .postToFlickr, .postToFacebook, .postToVimeo]
+        
+        vc.popoverPresentationController?.sourceView = view
+        vc.popoverPresentationController?.sourceRect = CGRect(x: sender.frame.midX, y: sender.frame.midY, width: 1, height: 1)
+        
         view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
     }
     
@@ -403,8 +406,6 @@ class PhysicsScene: SKScene {
     func longPressedScene(sender: UILongPressGestureRecognizer) {
         // Called when user taps and holds on scene for a while
         
-        print("Long pressed physics scene!")
-        
         // If long pressed on body, give user option to delete
         for node in nodes(at: convertPoint(fromView: sender.location(ofTouch: 0, in: view))) {
             if let body = node as? Body {
@@ -417,6 +418,9 @@ class PhysicsScene: SKScene {
                 }))
                 
                 vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: nil))
+                
+                vc.popoverPresentationController?.sourceView = view
+                vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x, y: convertPoint(toView: body.position).y, width: 1, height: 1)
                 
                 view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
             }

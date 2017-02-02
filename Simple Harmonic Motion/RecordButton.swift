@@ -21,7 +21,7 @@ enum SpinDirection {
 
 protocol RecordButtonDelegate {
     func recordButtonTapped()
-    func stopButtonTapped()
+    func stopButtonTapped(sender: RecordButton)
 }
 
 class RecordButton: UIButton {
@@ -110,7 +110,7 @@ class RecordButton: UIButton {
         case .recording:
             // Tapped stop
             
-            delegate.stopButtonTapped()
+            delegate.stopButtonTapped(sender: self)
             becomeRecordButton()
             
         case .disabled:

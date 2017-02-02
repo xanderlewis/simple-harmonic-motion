@@ -16,6 +16,9 @@ class OptionsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // Restore user defaults
+        let defaults = UserDefaults.standard
     }
 
     override func didReceiveMemoryWarning() {
