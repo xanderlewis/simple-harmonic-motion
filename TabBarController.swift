@@ -12,14 +12,11 @@ class TabBarController: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
+        // Get reference to all views in tab bar (helps with performance)
         for viewController in viewControllers! {
             let _ = viewController.view!
         }
-        
-        print("tabbarviewdidload")
     }
 
     override func didReceiveMemoryWarning() {

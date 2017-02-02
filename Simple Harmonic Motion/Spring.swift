@@ -16,7 +16,7 @@ enum SpringOrientation {
 
 class Spring: SKShapeNode {
     
-    let initialLength: CGFloat
+    var initialLength: CGFloat
     var currentLength: CGFloat
     var stiffness: CGFloat
     

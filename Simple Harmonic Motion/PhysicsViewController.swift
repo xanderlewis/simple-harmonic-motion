@@ -91,4 +91,9 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     @IBAction func unwindFromHelp(segue: UIStoryboardSegue) {
         // don't need to do anything
     }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        // Refresh spring lengths when device rotates
+        scene?.refreshTripletPositions(toFit: size)
+    }
 }

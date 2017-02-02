@@ -17,7 +17,7 @@ public struct DefaultSimulationConstants {
     static let damping: CGFloat = 0.02
     static let springWidth: CGFloat = 14
     static let springStiffness: CGFloat = 5
-    static let springSections: Int = 20
+    static let springSections: Int = 22
     static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
     static let trailColour = UIColor(red:1.00, green:0.00, blue:0.45, alpha:1.0)
@@ -28,7 +28,7 @@ public struct DefaultSimulationConstants {
     static var trailVelocity: CGFloat = 2.5 {
         didSet {
             // Change trail length depending on velocity to make sure it stays on the screen
-            trailLength = Int(trailVelocity * 200)
+            trailLength = Int(trailVelocity * 240)
         }
     }
 }
@@ -56,6 +56,9 @@ class PhysicsScene: SKScene {
     var recording = false
     var bodyDatasets: [bodyID: BodyDataset] = [:]
     
+    // Background grid
+    var background = SKSpriteNode(imageNamed: "backgroundGrid")
+    
     // MARK: - Initialising stuff
     
     override func didMove(to view: SKView) {
@@ -65,6 +68,12 @@ class PhysicsScene: SKScene {
         
         // Set background colour
         backgroundColor = UIColor(white: 0.1, alpha: 1)
+        
+        // Set up background grid
+        background.anchorPoint = CGPoint.zero
+        background.position = CGPoint.zero
+        background.zPosition = 0
+        addChild(background)
         
         // Set up background label
         let backgroundLabel = SKLabelNode(text: "Tap anywhere to add a mass")
@@ -289,18 +298,36 @@ class PhysicsScene: SKScene {
         }
     }
     
-//    func enableTrails() {
-//        enumerateChildNodes(withName: "body") { (node, stop) in
-//            let body = node as! Body
-//            
-//            body.trail?.isHidden = false
-//        }
-//    }
-    
     func disableTrails() {
         enumerateChildNodes(withName: "body") { (node, stop) in
             let body = node as! Body
             body.trail?.isHidden = true
+        }
+    }
+    
+    // MARK: - Refresh when device orientation changes
+    func refreshTripletPositions(toFit newSize: CGSize) {
+        // Refresh spring lengths
+        enumerateChildNodes(withName: "spring") { (node, stop) in
+            let spring = node as! Spring
+            
+            if spring.orientation == .facingRight {
+                spring.initialLength = newSize.width / 2
+                spring.currentLength = newSize.width / 2
+            } else {
+                spring.position = CGPoint(x: newSize.width, y: spring.position.y)
+                spring.initialLength = newSize.width / 2
+                spring.currentLength = newSize.width / 2
+            }
+        }
+        
+        // Refresh body positions
+        enumerateChildNodes(withName: "body") { (node, stop) in
+            let body = node as! Body
+            
+            body.position = CGPoint(x: newSize.width / 2, y: body.position.y)
+            body.displacement = 0
+            body.restPosition = CGPoint(x: newSize.width / 2, y: body.restPosition.y)
         }
     }
     

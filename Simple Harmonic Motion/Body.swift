@@ -25,7 +25,7 @@ class Body: SKShapeNode {
             massLabel.fontSize = mass * massLabelSizeConstant
         }
     }
-    let restPosition: CGPoint
+    var restPosition: CGPoint
     var displacement: CGFloat = 0 {
         didSet {
             // Keep node x position in sync with displacement
