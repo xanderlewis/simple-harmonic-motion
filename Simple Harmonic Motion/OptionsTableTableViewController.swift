@@ -21,7 +21,7 @@ class OptionsTableViewController: UITableViewController {
         super.viewDidLoad()
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -81,8 +81,5 @@ class OptionsTableViewController: UITableViewController {
             // Disable dark theme
             AppColourScheme.shared.current = .light
         }
-        
-        // Notify rest of app that the colour scheme has changed
-        NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: AppColourScheme.changed), object: nil))
     }
 }

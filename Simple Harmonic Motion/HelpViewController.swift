@@ -17,17 +17,15 @@ class HelpViewController: UIViewController {
         super.viewDidLoad()
 
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
         
-        setUpBlur()
+        updateColours()
     }
     
     func updateColours() {
-        textView.textColor = AppColourScheme.shared.colourForHelpViewText()
         setUpBlur()
         
-        // SET FONT SIZE FOR WHOLE ATTRIBUTED STRING
-        //textView.attributedText.attribute(NSFontAttributeName , at: 0, effectiveRange: <#T##NSRangePointer?#>)
+        textView.attributedText = NSAttributedString(string: textView.text, attributes: [NSStrokeColorAttributeName: AppColourScheme.shared.colourForHelpViewText(), NSForegroundColorAttributeName: AppColourScheme.shared.colourForHelpViewText()])
     }
     
     func setUpBlur() {
@@ -45,7 +43,7 @@ class HelpViewController: UIViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        // Segue back to simulation view
+        // Segue back to simulation view when tapped
         performSegue(withIdentifier: "UnwindHelp", sender: self)
     }
 

@@ -86,7 +86,7 @@ class PhysicsScene: SKScene {
         addChild(backgroundLabel)
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
     }
     
     // MARK: - Colour scheme

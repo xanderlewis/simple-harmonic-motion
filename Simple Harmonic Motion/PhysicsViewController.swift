@@ -35,7 +35,7 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         recordButton.delegate = self
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
     }
     
     func updateColours() {

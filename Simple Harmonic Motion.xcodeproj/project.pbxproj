@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C00017561E447C660087F226 /* AppColourscheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00017551E447C660087F226 /* AppColourscheme.swift */; };
+		C00017561E447C660087F226 /* AppColourScheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00017551E447C660087F226 /* AppColourScheme.swift */; };
 		C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037695D1E37A1E100CD70B7 /* RecordButton.swift */; };
 		C03CF6ED1E427BB000D2B33B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CF6EC1E427BB000D2B33B /* TabBarController.swift */; };
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
@@ -45,7 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		C00017551E447C660087F226 /* AppColourscheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColourscheme.swift; sourceTree = "<group>"; };
+		C00017551E447C660087F226 /* AppColourScheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColourScheme.swift; sourceTree = "<group>"; };
 		C037695D1E37A1E100CD70B7 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		C03CF6EC1E427BB000D2B33B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -136,7 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C636EB1E2D42A400CED588 /* AppDelegate.swift */,
-				C00017551E447C660087F226 /* AppColourscheme.swift */,
+				C00017551E447C660087F226 /* AppColourScheme.swift */,
 				C0C636F11E2D42A400CED588 /* PhysicsScene.swift */,
 				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
@@ -295,7 +295,7 @@
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
 				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
 				C09797C11E44002B00DCB204 /* RecordingsTableViewController.swift in Sources */,
-				C00017561E447C660087F226 /* AppColourscheme.swift in Sources */,
+				C00017561E447C660087F226 /* AppColourScheme.swift in Sources */,
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,

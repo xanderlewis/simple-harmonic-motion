@@ -19,7 +19,7 @@ class TabBarController: UITabBarController {
         }
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
     }
 
     override func didReceiveMemoryWarning() {

@@ -16,10 +16,17 @@ enum ColourScheme {
 
 class AppColourScheme {
     static let shared = AppColourScheme(.dark) // (default colourscheme is dark)
-    var current: ColourScheme
+    var current: ColourScheme {
+        didSet {
+            if current != oldValue {
+                // Post notification to indicated that the colour scheme has changed for the whole app
+                NotificationCenter.default.post(name: AppColourScheme.changed, object: nil)
+            }
+        }
+    }
     
-    // String key for notification of colour scheme changes
-    static let changed = "com.xanderlewis.colourSchemeChanged"
+    // Notification key for colour scheme changes
+    static let changed = NSNotification.Name("com.xanderlewis.colourSchemeChanged")
     
     init(_ colourScheme: ColourScheme) {
         current = colourScheme
@@ -156,7 +163,7 @@ class AppColourScheme {
     func colourForSpring() -> UIColor {
         switch current {
         case .light:
-            return UIColor(white: 0.4, alpha: 1)
+            return UIColor(white: 0.5, alpha: 1)
         case .dark:
             return UIColor(white: 0.5, alpha: 1)
         }
