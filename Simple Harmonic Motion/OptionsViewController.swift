@@ -9,11 +9,20 @@
 import UIKit
 
 class OptionsViewController: UIViewController {
+    @IBOutlet weak var titleLabel: UILabel!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+    }
+    
+    func updateColours() {
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: { 
+            self.view.backgroundColor = AppColourScheme.shared.colourForTableViewBackground()
+            self.titleLabel.textColor = AppColourScheme.shared.colourForTableViewText()
+        }, completion: nil)
     }
 
     override func didReceiveMemoryWarning() {

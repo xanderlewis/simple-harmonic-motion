@@ -11,18 +11,45 @@ import UIKit
 class OptionsTableViewController: UITableViewController {
     @IBOutlet weak var motionTrailsSwitch: UISwitch!
     @IBOutlet weak var trailSpeedSwitch: UISegmentedControl!
-    
     @IBOutlet weak var darkThemeSwitch: UISwitch!
+    
+    @IBOutlet weak var motionTrailsLabel: UILabel!
+    @IBOutlet weak var trailSpeedLabel: UILabel!
+    @IBOutlet weak var darkThemeLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Restore user defaults (to be implemented)
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    func updateColours() {
+        
+        
+        UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: {
+            self.tableView.backgroundColor = AppColourScheme.shared.colourForTableViewBackground()
+            self.tableView.separatorColor = AppColourScheme.shared.colourForTableViewSeparator()
+            self.tableView.sectionIndexColor = AppColourScheme.shared.colourForTableViewText()
+            
+            for cell in self.tableView.visibleCells {
+                cell.contentView.backgroundColor = AppColourScheme.shared.colourForTableViewCellBackground()
+            }
+            
+            self.motionTrailsSwitch.tintColor = AppColourScheme.shared.colourForUIElementTint()
+            self.trailSpeedSwitch.tintColor = AppColourScheme.shared.colourForUIElementTint()
+            self.darkThemeSwitch.tintColor = AppColourScheme.shared.colourForUIElementTint()
+            
+            self.motionTrailsLabel.textColor = AppColourScheme.shared.colourForTableViewText()
+            self.trailSpeedLabel.textColor = AppColourScheme.shared.colourForTableViewText()
+            self.darkThemeLabel.textColor = AppColourScheme.shared.colourForTableViewText()
+
+        }, completion: nil)
     }
     
     @IBAction func motionTrailsSwitchChanged(_ sender: UISwitch) {
@@ -48,9 +75,14 @@ class OptionsTableViewController: UITableViewController {
     
     @IBAction func darkThemeSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
-            // enable dark theme!
+            // Enable dark theme
+            AppColourScheme.shared.current = .dark
         } else {
-            // disable dark theme!
+            // Disable dark theme
+            AppColourScheme.shared.current = .light
         }
+        
+        // Notify rest of app that the colour scheme has changed
+        NotificationCenter.default.post(Notification(name: NSNotification.Name(rawValue: AppColourScheme.changed), object: nil))
     }
 }

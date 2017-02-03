@@ -9,11 +9,34 @@
 import UIKit
 
 class HelpViewController: UIViewController {
+    @IBOutlet weak var textView: UITextView!
+    
+    var visualEffectView: UIVisualEffectView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+        
+        setUpBlur()
+    }
+    
+    func updateColours() {
+        textView.textColor = AppColourScheme.shared.colourForHelpViewText()
+        setUpBlur()
+        
+        // SET FONT SIZE FOR WHOLE ATTRIBUTED STRING
+        //textView.attributedText.attribute(NSFontAttributeName , at: 0, effectiveRange: <#T##NSRangePointer?#>)
+    }
+    
+    func setUpBlur() {
+        // Set up blurred background
+        let blurEffect = UIBlurEffect(style: AppColourScheme.shared.styleForBlurEffect())
+        visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.frame = view.bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.insertSubview(visualEffectView, belowSubview: textView)
     }
 
     override func didReceiveMemoryWarning() {
@@ -22,7 +45,7 @@ class HelpViewController: UIViewController {
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
-        print("tap!!")
+        // Segue back to simulation view
         performSegue(withIdentifier: "UnwindHelp", sender: self)
     }
 

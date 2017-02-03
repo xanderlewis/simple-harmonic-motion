@@ -17,11 +17,17 @@ class TabBarController: UITabBarController {
         for viewController in viewControllers! {
             let _ = viewController.view!
         }
+        
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
+    
+    func updateColours() {
+        tabBar.barStyle = AppColourScheme.shared.styleForTabBar()
+    }
 }

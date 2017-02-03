@@ -13,6 +13,7 @@ import GameplayKit
 class PhysicsViewController: UIViewController, RecordButtonDelegate {
     
     @IBOutlet weak var recordButton: RecordButton!
+    @IBOutlet weak var helpButton: UIButton!
     
     // Keep a reference to the scene being presented
     var scene: PhysicsScene!
@@ -32,6 +33,14 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         
         // Set up record button to delegate responsibilities to this view controller
         recordButton.delegate = self
+        
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+    }
+    
+    func updateColours() {
+        view.backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
+        helpButton.tintColor = AppColourScheme.shared.colourForHelpButton()
     }
     
     override func viewDidAppear(_ animated: Bool) {

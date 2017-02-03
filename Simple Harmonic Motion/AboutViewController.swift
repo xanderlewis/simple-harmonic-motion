@@ -14,7 +14,8 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
     }
 
     override func didReceiveMemoryWarning() {
@@ -25,6 +26,11 @@ class AboutViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         textView.setContentOffset(CGPoint.zero, animated: false)
+    }
+    
+    func updateColours() {
+        view.backgroundColor = AppColourScheme.shared.colourForViewBackground()
+        textView.textColor = AppColourScheme.shared.colourForAboutViewText()
     }
     
 

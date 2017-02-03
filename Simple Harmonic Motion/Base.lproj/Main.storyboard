@@ -22,230 +22,210 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="F2h-nm-HVU">
-                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
-                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="XLJ-kd-rCh">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
-                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                                    <subviews>
-                                        <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-lf-7pe">
-                                            <rect key="frame" x="8" y="0.0" width="304" height="548"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="14" name="HelveticaNeue-UltraLight"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">
+                            <textView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" fixedFrame="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" canCancelContentTouches="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1DJ-lf-7pe">
+                                <rect key="frame" x="8" y="10" width="304" height="548"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <attributedString key="attributedText">
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue-UltraLight"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
 Quick Help
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="51" name="HelveticaNeue-UltraLight"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="▫︎">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="LucidaGrande"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Tap to create a mass
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="51" name="HelveticaNeue-UltraLight"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="▫︎">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Tap to create a mass
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content" base64-UTF8="YES">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
 Cg
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="▫︎">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="LucidaGrande"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Tap on an existing mass or spring to edit it
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="▫︎">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Tap on an existing mass or spring to edit it
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="▫︎">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="LucidaGrande"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">Press and hold on an existing mass to delete it
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="▫︎">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">Press and hold on an existing mass to delete it
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content" base64-UTF8="YES">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content" base64-UTF8="YES">
 Cg
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="▫︎">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="LucidaGrande"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="Drag across a mass to displace it">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content=" ">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="▫︎">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="LucidaGrande"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Drag across a mass to displace it">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content=" ">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">
  </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="11" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content">(When you create a new mass, it is automatically attached to both sides of the screen by springs.)
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">(When you create a new mass, it is automatically attached to both sides of the screen by springs.)
 
 Have a go at changing the mass, damping, stiffness properties to see how they affect the motion.   
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="Recording data">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="14" name="HelveticaNeue"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment>
-                                                    <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop to export the data and send it for viewing and processing elsewhere.
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="Recording data">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="14" name="HelveticaNeue"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop to export the data and send it for viewing and processing elsewhere.
 
 
 </string>
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                                <fragment content="(tap to return)">
-                                                    <attributes>
-                                                        <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <font key="NSFont" size="13" name="HelveticaNeue-UltraLightItalic"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                                        </textView>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstAttribute="trailingMargin" secondItem="1DJ-lf-7pe" secondAttribute="trailing" id="7pi-0I-qyo"/>
-                                        <constraint firstItem="1DJ-lf-7pe" firstAttribute="leading" secondItem="XLJ-kd-rCh" secondAttribute="leadingMargin" id="FRd-0I-x4n"/>
-                                        <constraint firstItem="1DJ-lf-7pe" firstAttribute="top" secondItem="XLJ-kd-rCh" secondAttribute="top" id="OFs-4M-sgb"/>
-                                        <constraint firstItem="1DJ-lf-7pe" firstAttribute="bottom" secondItem="XLJ-kd-rCh" secondAttribute="bottom" id="PRI-Ay-fWo"/>
-                                    </constraints>
-                                </view>
-                                <blurEffect style="dark"/>
-                            </visualEffectView>
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment content="(tap to return)">
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="13" name="HelveticaNeue-UltraLightItalic"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="center" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
                         </subviews>
-                        <constraints>
-                            <constraint firstItem="F2h-nm-HVU" firstAttribute="leading" secondItem="Sf0-m2-ecq" secondAttribute="leading" id="NQR-4v-Jgl"/>
-                            <constraint firstItem="hA4-3T-RJH" firstAttribute="top" secondItem="F2h-nm-HVU" secondAttribute="bottom" id="Qdt-gr-elV"/>
-                            <constraint firstAttribute="trailing" secondItem="F2h-nm-HVU" secondAttribute="trailing" id="cge-JK-Qim"/>
-                            <constraint firstItem="F2h-nm-HVU" firstAttribute="top" secondItem="m2D-cs-itr" secondAttribute="bottom" id="qmi-ta-rgZ"/>
-                        </constraints>
                     </view>
                     <connections>
+                        <outlet property="textView" destination="1DJ-lf-7pe" id="p1o-PK-G3b"/>
                         <segue destination="Rfr-34-fBg" kind="unwind" identifier="UnwindHelp" unwindAction="unwindFromHelpWithSegue:" id="8MM-5H-Ii9"/>
                     </connections>
                 </viewController>
@@ -296,6 +276,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="atom" id="dcr-x8-sUA"/>
                     <connections>
+                        <outlet property="helpButton" destination="CUm-p3-QEA" id="lSm-2W-kA3"/>
                         <outlet property="recordButton" destination="ER0-kK-bMo" id="7BB-B0-oe5"/>
                     </connections>
                 </viewController>
@@ -521,7 +502,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     </tabBar>
                     <connections>
                         <segue destination="BV1-FR-VrT" kind="relationship" relationship="viewControllers" id="WA0-tB-Dbg"/>
-                        <segue destination="6Wv-R7-MOS" kind="relationship" relationship="viewControllers" id="YxT-VV-mkl"/>
+                        <segue destination="gGd-7z-KOq" kind="relationship" relationship="viewControllers" id="EVO-Uu-uBB"/>
                         <segue destination="Hnq-bR-nvi" kind="relationship" relationship="viewControllers" id="kpz-vz-8z9"/>
                         <segue destination="WFA-Kw-OLN" kind="relationship" relationship="viewControllers" id="fAm-2L-8MA"/>
                     </connections>
@@ -530,40 +511,80 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
             </objects>
             <point key="canvasLocation" x="138.75" y="135.21126760563379"/>
         </scene>
-        <!--Graphs-->
-        <scene sceneID="42b-Pu-PTM">
+        <!--Graph Config View Controller-->
+        <scene sceneID="VN7-co-TmG">
             <objects>
-                <viewController id="6Wv-R7-MOS" sceneMemberID="viewController">
+                <viewController id="6gn-px-1zZ" customClass="GraphConfigViewController" customModule="Simple_Harmonic_Motion" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="eDF-Oe-ce6"/>
-                        <viewControllerLayoutGuide type="bottom" id="STP-Zw-Zh3"/>
+                        <viewControllerLayoutGuide type="top" id="VrN-rH-ahG"/>
+                        <viewControllerLayoutGuide type="bottom" id="3bQ-Gs-efA"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="S1J-3G-k1L">
+                    <view key="view" contentMode="scaleToFill" id="RKe-kd-xfI">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Graphing Coming Soon" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Alq-eN-jFv">
-                                <rect key="frame" x="54" y="166" width="213" height="237"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="213" id="8jb-aW-hDx"/>
-                                    <constraint firstAttribute="height" constant="237" id="lIM-tq-L6T"/>
-                                </constraints>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="20" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ftl-YE-f0N">
+                                <rect key="frame" x="16" y="20" width="288" height="548"/>
+                                <string key="text">Two pairs of PickerViews to choose bodies and a property for each. (x and y axis)
+
+'Generate Graph' button to create graph and transition to new view controller to show it.</string>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="19"/>
-                                <color key="textColor" red="0.40000000600000002" green="0.40000000600000002" blue="0.40000000600000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" red="0.29803922770000002" green="0.29803922770000002" blue="0.29803922770000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="Alq-eN-jFv" firstAttribute="centerY" secondItem="S1J-3G-k1L" secondAttribute="centerY" id="9v6-1D-lpw"/>
-                            <constraint firstItem="Alq-eN-jFv" firstAttribute="centerX" secondItem="S1J-3G-k1L" secondAttribute="centerX" id="w75-nQ-ES7"/>
+                            <constraint firstItem="ftl-YE-f0N" firstAttribute="top" secondItem="VrN-rH-ahG" secondAttribute="bottom" id="31W-o5-a16"/>
+                            <constraint firstItem="3bQ-Gs-efA" firstAttribute="top" secondItem="ftl-YE-f0N" secondAttribute="bottom" id="Gpa-Yj-FC1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="ftl-YE-f0N" secondAttribute="trailing" id="HbW-3Z-ryO"/>
+                            <constraint firstItem="ftl-YE-f0N" firstAttribute="leading" secondItem="RKe-kd-xfI" secondAttribute="leadingMargin" id="Zeh-qt-Ufd"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Graphs" image="line-graph" id="MZZ-nl-2lc"/>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="0yw-zp-X0I" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R3K-3J-vq1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-864.375" y="760.56338028169012"/>
+            <point key="canvasLocation" x="-1590" y="563"/>
+        </scene>
+        <!--Recordings-->
+        <scene sceneID="bbp-hi-Qg9">
+            <objects>
+                <viewController id="gGd-7z-KOq" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="fUH-L3-sgV"/>
+                        <viewControllerLayoutGuide type="bottom" id="rGC-Ed-KdQ"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="HF5-Cc-Dig">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="h8U-vy-zt8">
+                                <rect key="frame" x="0.0" y="115" width="320" height="404"/>
+                                <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Recordings" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rET-WZ-thR">
+                                <rect key="frame" x="51" y="52" width="218" height="55"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" red="0.098039217289999994" green="0.098039217289999994" blue="0.098039217289999994" alpha="1" colorSpace="calibratedRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="h8U-vy-zt8" secondAttribute="trailing" id="6P4-a6-Dsf"/>
+                            <constraint firstItem="h8U-vy-zt8" firstAttribute="top" secondItem="rET-WZ-thR" secondAttribute="bottom" constant="8" id="J36-8l-jEw"/>
+                            <constraint firstItem="rET-WZ-thR" firstAttribute="top" secondItem="fUH-L3-sgV" secondAttribute="bottom" constant="32" id="VCc-Lq-qXG"/>
+                            <constraint firstItem="h8U-vy-zt8" firstAttribute="leading" secondItem="HF5-Cc-Dig" secondAttribute="leading" id="pOI-4S-Iil"/>
+                            <constraint firstItem="rGC-Ed-KdQ" firstAttribute="top" secondItem="h8U-vy-zt8" secondAttribute="bottom" id="rlX-Vf-uKz"/>
+                            <constraint firstItem="rET-WZ-thR" firstAttribute="centerX" secondItem="HF5-Cc-Dig" secondAttribute="centerX" id="ukh-BF-14j"/>
+                        </constraints>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="Recordings" image="line-graph" id="BKC-M2-PIK"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="0bK-ST-Eec" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-755.625" y="719.36619718309862"/>
         </scene>
         <!--Options-->
         <scene sceneID="bUJ-0X-NSc">
@@ -580,7 +601,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Options" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CyU-DI-gv4">
                                 <rect key="frame" x="85.5" y="52" width="149.5" height="55"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-UltraLight" family="Helvetica Neue" pointSize="48"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lqq-3W-S5B">
@@ -601,6 +622,9 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Options" image="switch" id="IrX-pL-i9t"/>
+                    <connections>
+                        <outlet property="titleLabel" destination="CyU-DI-gv4" id="3RF-0M-Nfa"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="75o-m8-BIN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -704,7 +728,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <switch opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-vf-Y7V">
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="E0j-vf-Y7V">
                                                     <rect key="frame" x="263" y="8" width="51" height="27.5"/>
                                                     <color key="onTintColor" red="1" green="0.0" blue="0.36078431370000003" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
@@ -720,24 +744,15 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="(light theme coming soon)" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4Xf-UL-da0">
-                                                    <rect key="frame" x="104" y="14.5" width="157" height="14.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                                    <color key="textColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <color key="backgroundColor" white="0.14000000000000001" alpha="1" colorSpace="calibratedWhite"/>
                                             <constraints>
                                                 <constraint firstAttribute="bottomMargin" secondItem="qwd-b8-pve" secondAttribute="bottom" id="0e6-VP-pbz"/>
-                                                <constraint firstItem="E0j-vf-Y7V" firstAttribute="leading" secondItem="4Xf-UL-da0" secondAttribute="trailing" constant="2" id="89c-ql-51o"/>
                                                 <constraint firstItem="qwd-b8-pve" firstAttribute="leading" secondItem="aqF-Mw-vEQ" secondAttribute="leadingMargin" id="Ly4-tY-gst"/>
                                                 <constraint firstItem="qwd-b8-pve" firstAttribute="top" secondItem="aqF-Mw-vEQ" secondAttribute="topMargin" id="Oi1-sp-kW6"/>
                                                 <constraint firstItem="E0j-vf-Y7V" firstAttribute="trailing" secondItem="aqF-Mw-vEQ" secondAttribute="trailingMargin" id="aHQ-sz-zPV"/>
                                                 <constraint firstItem="E0j-vf-Y7V" firstAttribute="top" secondItem="aqF-Mw-vEQ" secondAttribute="topMargin" id="cXs-eU-cp4"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="E0j-vf-Y7V" secondAttribute="bottom" id="nHY-T6-GLO"/>
-                                                <constraint firstItem="4Xf-UL-da0" firstAttribute="leading" secondItem="qwd-b8-pve" secondAttribute="trailing" constant="2" id="o29-Nb-rOJ"/>
-                                                <constraint firstItem="4Xf-UL-da0" firstAttribute="centerY" secondItem="aqF-Mw-vEQ" secondAttribute="centerY" id="zY4-lO-Mc9"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
@@ -751,8 +766,11 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="darkThemeLabel" destination="qwd-b8-pve" id="YLW-Ka-Qx9"/>
                         <outlet property="darkThemeSwitch" destination="E0j-vf-Y7V" id="SWp-FA-YvZ"/>
+                        <outlet property="motionTrailsLabel" destination="FSN-hn-wa5" id="TZm-Ry-UuQ"/>
                         <outlet property="motionTrailsSwitch" destination="dAj-MI-jXv" id="70U-Mx-IBG"/>
+                        <outlet property="trailSpeedLabel" destination="1eO-i1-Tbn" id="uRa-7n-FP8"/>
                         <outlet property="trailSpeedSwitch" destination="VIU-sm-bOy" id="UN2-4j-TsB"/>
                     </connections>
                 </tableViewController>

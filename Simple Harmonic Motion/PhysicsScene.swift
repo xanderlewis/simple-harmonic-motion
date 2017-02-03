@@ -12,7 +12,6 @@ import GameplayKit
 // Default physics constants for simulation
 public struct DefaultSimulationConstants {
     static let bodyColour = UIColor(white: 0.9, alpha: 1)
-    static let springColour = UIColor(white: 0.5, alpha: 1)
     static let mass: CGFloat = 50
     static let damping: CGFloat = 0.02
     static let springWidth: CGFloat = 14
@@ -20,7 +19,6 @@ public struct DefaultSimulationConstants {
     static let springSections: Int = 22
     static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
-    static let trailColour = UIColor(red:1.00, green:0.00, blue:0.45, alpha:1.0)
     static var trailLength: Int = 400
     
     // Constants that are changable via options
@@ -57,7 +55,7 @@ class PhysicsScene: SKScene {
     var bodyDatasets: [bodyID: BodyDataset] = [:]
     
     // Background grid
-    var background = SKSpriteNode(imageNamed: "backgroundGrid")
+    var background: SKSpriteNode!
     
     // MARK: - Initialising stuff
     
@@ -67,9 +65,10 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = UIColor(white: 0.1, alpha: 1)
+        backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
         
         // Set up background grid
+        background = SKSpriteNode(imageNamed: "darkGrid")
         background.anchorPoint = CGPoint.zero
         background.position = CGPoint.zero
         background.zPosition = 0
@@ -84,8 +83,36 @@ class PhysicsScene: SKScene {
         backgroundLabel.verticalAlignmentMode = .center
         backgroundLabel.position = CGPoint(x: frame.width/2, y: frame.height/2)
         backgroundLabel.name = "backgroundlabel"
-
         addChild(backgroundLabel)
+        
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: NSNotification.Name(AppColourScheme.changed), object: nil)
+    }
+    
+    // MARK: - Colour scheme
+    
+    func updateColours() {
+        print("updating physics colour scheme")
+        backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
+        
+        switch AppColourScheme.shared.current {
+        case .light:
+            background.texture = SKTexture(imageNamed: "lightGrid")
+        case .dark:
+            background.texture = SKTexture(imageNamed: "darkGrid")
+        }
+        
+        enumerateChildNodes(withName: "spring") { (node, stop) in
+            let spring = node as! Spring
+            spring.strokeColor = AppColourScheme.shared.colourForSpring()
+            spring.shadow?.strokeColor = AppColourScheme.shared.colourForSpringShadow()
+        }
+        
+        enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
+            let label = node as! SKLabelNode
+            
+            label.fontColor = AppColourScheme.shared.colourForBackgroundLabel()
+        }
     }
     
     // MARK: - Start/stop recording
@@ -204,14 +231,14 @@ class PhysicsScene: SKScene {
         
         // Create body instance
         let body = Body(position: CGPoint(x: frame.width / 2, y: bodyPosition.y),
-                        colour: BodyColourPalette.colour4,
+                        colour: BodyColourPalette.random(),
                         mass: DefaultSimulationConstants.mass,
                         damping: DefaultSimulationConstants.damping)
         
         // Create left spring instance
         let leftSpring = Spring(position: CGPoint(x: 0,
                                                   y: body.position.y - DefaultSimulationConstants.springWidth / 2),
-                                colour: DefaultSimulationConstants.springColour,
+                                colour: AppColourScheme.shared.colourForSpring(),
                                 orientation: .facingRight,
                                 length: body.position.x,
                                 width: DefaultSimulationConstants.springWidth,
@@ -221,7 +248,7 @@ class PhysicsScene: SKScene {
         // Create right spring instance
         let rightSpring = Spring(position: CGPoint(x: frame.width,
                                                    y: body.position.y - DefaultSimulationConstants.springWidth / 2),
-                                 colour: DefaultSimulationConstants.springColour,
+                                 colour: AppColourScheme.shared.colourForSpring(),
                                  orientation: .facingLeft,
                                  length: body.position.x,
                                  width: DefaultSimulationConstants.springWidth,
@@ -229,7 +256,7 @@ class PhysicsScene: SKScene {
                                  sections: DefaultSimulationConstants.springSections)
         
         // Create trail for body
-        let trail = Trail(colour: BodyColourPalette.colour4, length: DefaultSimulationConstants.trailLength)
+        let trail = Trail(colour: body.fillColor, length: DefaultSimulationConstants.trailLength)
         
         // Add trail to body
         body.trail = trail

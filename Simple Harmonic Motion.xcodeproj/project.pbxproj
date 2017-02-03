@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C00017561E447C660087F226 /* AppColourscheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = C00017551E447C660087F226 /* AppColourscheme.swift */; };
 		C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C037695D1E37A1E100CD70B7 /* RecordButton.swift */; };
 		C03CF6ED1E427BB000D2B33B /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C03CF6EC1E427BB000D2B33B /* TabBarController.swift */; };
 		C051402D1E2F656C009158CA /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C051402C1E2F656C009158CA /* Extensions.swift */; };
@@ -18,6 +19,8 @@
 		C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBE91E41FBE10038AA94 /* AboutViewController.swift */; };
 		C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */; };
 		C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */; };
+		C09797C11E44002B00DCB204 /* RecordingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */; };
+		C09797C31E44057200DCB204 /* GraphConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C21E44057200DCB204 /* GraphConfigViewController.swift */; };
 		C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C62B991E31935700566384 /* SpringShadow.swift */; };
 		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
 		C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636F11E2D42A400CED588 /* PhysicsScene.swift */; };
@@ -42,6 +45,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		C00017551E447C660087F226 /* AppColourscheme.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppColourscheme.swift; sourceTree = "<group>"; };
 		C037695D1E37A1E100CD70B7 /* RecordButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordButton.swift; sourceTree = "<group>"; };
 		C03CF6EC1E427BB000D2B33B /* TabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarController.swift; path = ../TabBarController.swift; sourceTree = "<group>"; };
 		C051402C1E2F656C009158CA /* Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
@@ -53,6 +57,8 @@
 		C088EBE91E41FBE10038AA94 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsViewController.swift; sourceTree = "<group>"; };
 		C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableTableViewController.swift; sourceTree = "<group>"; };
+		C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewController.swift; sourceTree = "<group>"; };
+		C09797C21E44057200DCB204 /* GraphConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphConfigViewController.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0C636EB1E2D42A400CED588 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				C0C636EB1E2D42A400CED588 /* AppDelegate.swift */,
+				C00017551E447C660087F226 /* AppColourscheme.swift */,
 				C0C636F11E2D42A400CED588 /* PhysicsScene.swift */,
 				C0C636F31E2D42A400CED588 /* PhysicsViewController.swift */,
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
@@ -139,6 +146,8 @@
 				C0C986311E429E4900D5C368 /* HelpViewController.swift */,
 				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C03CF6EC1E427BB000D2B33B /* TabBarController.swift */,
+				C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */,
+				C09797C21E44057200DCB204 /* GraphConfigViewController.swift */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
 				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
@@ -275,6 +284,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */,
+				C09797C31E44057200DCB204 /* GraphConfigViewController.swift in Sources */,
 				C0C636F21E2D42A400CED588 /* PhysicsScene.swift in Sources */,
 				C051402D1E2F656C009158CA /* Extensions.swift in Sources */,
 				C05140311E2F7721009158CA /* NodeSettingsViewController.swift in Sources */,
@@ -284,6 +294,8 @@
 				C037695E1E37A1E100CD70B7 /* RecordButton.swift in Sources */,
 				C0C637141E2D434E00CED588 /* Spring.swift in Sources */,
 				C06FB70B1E37B90B00490257 /* Pulse.swift in Sources */,
+				C09797C11E44002B00DCB204 /* RecordingsTableViewController.swift in Sources */,
+				C00017561E447C660087F226 /* AppColourscheme.swift in Sources */,
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,

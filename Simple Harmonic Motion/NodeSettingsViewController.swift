@@ -10,14 +10,35 @@ import UIKit
 import SpriteKit
 
 public struct BodyColourPalette {
-    //static let colour1 = UIColor(red:0.00, green:0.09, blue:0.15, alpha:1.0)
     static let colour1 = UIColor(red:0.45, green:0.00, blue:0.92, alpha:1.0)
-    //static let colour2 = UIColor(red:0.97, green:0.09, blue:0.21, alpha:1.0)
     static let colour2 = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
     static let colour3 = UIColor(red:0.25, green:0.92, blue:0.83, alpha:1.0)
     static let colour4 = UIColor(red:0.99, green:1.00, blue:0.99, alpha:1.0)
     static let colour5 = UIColor(red:1.00, green:0.62, blue:0.11, alpha:1.0)
     static let colour6 = UIColor(red:0.80, green:0.55, blue:0.53, alpha:1.0)
+    
+    static var random = { () -> UIColor in
+        let rand = arc4random_uniform(6)
+        
+        print(rand)
+        
+        switch rand {
+        case 0:
+            return BodyColourPalette.colour1
+        case 1:
+            return BodyColourPalette.colour2
+        case 2:
+            return BodyColourPalette.colour3
+        case 3:
+            return BodyColourPalette.colour4
+        case 4:
+            return BodyColourPalette.colour5
+        case 5:
+            return BodyColourPalette.colour6
+        default:
+            return BodyColourPalette.colour4
+        }
+    }
 }
 
 class NodeSettingsViewController: UIViewController {
