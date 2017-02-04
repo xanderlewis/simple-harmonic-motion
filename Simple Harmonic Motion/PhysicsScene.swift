@@ -11,7 +11,6 @@ import GameplayKit
 
 // Default physics constants for simulation
 public struct DefaultSimulationConstants {
-    static let bodyColour = UIColor(white: 0.9, alpha: 1)
     static let mass: CGFloat = 50
     static let damping: CGFloat = 0.02
     static let springWidth: CGFloat = 14
@@ -21,7 +20,6 @@ public struct DefaultSimulationConstants {
     static let verticalSpacing: CGFloat = 20
     static var trailLength: Int = 400
     
-    // Constants that are changable via options
     static var trailsEnabled = true
     static var trailVelocity: CGFloat = 2.5 {
         didSet {
@@ -87,6 +85,8 @@ class PhysicsScene: SKScene {
         
         // Be notified when app colour scheme changes
         NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        
+        updateColours()
     }
     
     // MARK: - Colour scheme

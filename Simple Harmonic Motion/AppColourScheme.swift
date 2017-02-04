@@ -30,6 +30,15 @@ class AppColourScheme {
     
     init(_ colourScheme: ColourScheme) {
         current = colourScheme
+        
+        // Restore previous state (if it exists)
+        if let darkThemeWasOn = UserDefaults.standard.object(forKey: "darkThemeOn") as? Bool {
+            if darkThemeWasOn {
+                current = .dark
+            } else {
+                current = .light
+            }
+        }
     }
     
     // MARK: - Views

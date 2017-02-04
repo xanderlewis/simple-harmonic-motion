@@ -16,6 +16,8 @@ class OptionsViewController: UIViewController {
 
         // Be notified when app colour scheme changes
         NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        
+        updateColours()
     }
     
     func updateColours() {

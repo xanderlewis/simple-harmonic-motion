@@ -766,6 +766,9 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                         </connections>
                     </tableView>
                     <connections>
+                        <outlet property="contentView1" destination="qTr-GC-0C2" id="SnT-BB-hJ5"/>
+                        <outlet property="contentView2" destination="CmP-yY-WCH" id="yYA-o7-byG"/>
+                        <outlet property="contentView3" destination="aqF-Mw-vEQ" id="YVc-1W-FLb"/>
                         <outlet property="darkThemeLabel" destination="qwd-b8-pve" id="YLW-Ka-Qx9"/>
                         <outlet property="darkThemeSwitch" destination="E0j-vf-Y7V" id="SWp-FA-YvZ"/>
                         <outlet property="motionTrailsLabel" destination="FSN-hn-wa5" id="TZm-Ry-UuQ"/>
