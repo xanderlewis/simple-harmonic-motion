@@ -310,7 +310,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton1Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="fWY-nA-BQX"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="Hhs-U6-GyP"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eh5-xu-iYf" userLabel="Colour 2">
@@ -318,7 +318,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="0.50196081400000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton2Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="p5M-jY-4dT"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="pfB-Wz-cOx"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Lbt-Fo-9Nw" userLabel="Colour 3">
@@ -326,7 +326,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton3Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="9do-ga-6mA"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="UfX-9o-yp3"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="and-gS-RLa" userLabel="Colour 4">
@@ -334,7 +334,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton4Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="onu-6n-Fc5"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="ZAx-0b-tCA"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0NE-gr-CuS" userLabel="Colour 5">
@@ -342,7 +342,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.50196081400000003" green="0.0" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton6Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="Myd-fH-jRy"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="oOW-aU-cvm"/>
                                                     </connections>
                                                 </button>
                                                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XIN-F0-FNM" userLabel="Colour 6">
@@ -350,7 +350,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <color key="backgroundColor" red="0.0" green="0.50196081400000003" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <connections>
-                                                        <action selector="colourButton5Pressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="98h-Gh-EN3"/>
+                                                        <action selector="colourButtonPressed:" destination="TJV-TF-aU6" eventType="touchUpInside" id="kVi-mh-kho"/>
                                                     </connections>
                                                 </button>
                                                 <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.01" minValue="0.0" maxValue="0.080000000000000002" translatesAutoresizingMaskIntoConstraints="NO" id="6of-Qu-YeM" userLabel="Damping Slider">

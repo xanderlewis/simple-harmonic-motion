@@ -229,47 +229,7 @@ class NodeSettingsViewController: UIViewController {
         }
     }
     
-    @IBAction func colourButton1Pressed(_ sender: UIButton) {
-        if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body, animated: true)
-        }
-        animateBounce()
-    }
-    
-    @IBAction func colourButton2Pressed(_ sender: UIButton) {
-        if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body, animated: true)
-        }
-        animateBounce()
-    }
-    
-    @IBAction func colourButton3Pressed(_ sender: UIButton) {
-        if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body, animated: true)
-        }
-        animateBounce()
-    }
-    
-    @IBAction func colourButton4Pressed(_ sender: UIButton) {
-        if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body, animated: true)
-        }
-        animateBounce()
-    }
-    
-    @IBAction func colourButton5Pressed(_ sender: UIButton) {
-        if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
-            updateUIColors(basedOnBody: body, animated: true)
-        }
-        animateBounce()
-    }
-    
-    @IBAction func colourButton6Pressed(_ sender: UIButton) {
+    @IBAction func colourButtonPressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
             body.fillColor = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
