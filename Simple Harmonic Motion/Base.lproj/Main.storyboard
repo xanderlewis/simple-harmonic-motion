@@ -587,6 +587,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     <tabBarItem key="tabBarItem" title="Recordings" image="line-graph" id="BKC-M2-PIK"/>
                     <connections>
                         <outlet property="tableView" destination="h8U-vy-zt8" id="hfQ-qH-WjE"/>
+                        <outlet property="titleLabel" destination="rET-WZ-thR" id="aa3-4p-P7R"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bK-ST-Eec" userLabel="First Responder" sceneMemberID="firstResponder"/>

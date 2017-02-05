@@ -161,6 +161,8 @@ class PhysicsScene: SKScene {
         // Move physics forward one 'tick'
         tickPhysics()
         
+        print(Body.totalBodies)
+        
         // Enable record button if there are bodies
         if Body.totalBodies > 0 && viewController?.recordButton?.recordingState == .disabled {
             viewController?.recordButton?.recordingState = .stopped
@@ -468,26 +470,27 @@ class PhysicsScene: SKScene {
     func longPressedScene(sender: UILongPressGestureRecognizer) {
         // Called when user taps and holds on scene for a while
         
-        // If long pressed on body, give user option to delete
-        for node in nodes(at: convertPoint(fromView: sender.location(ofTouch: 0, in: view))) {
-            if let body = node as? Body {
-                
-                let vc = UIAlertController(title: "Delete Mass", message: "Would you like to delete this mass from the world?", preferredStyle: .actionSheet)
-                
-                vc.addAction(UIAlertAction(title: "Yes, delete it", style: .destructive, handler: { (action) in
-                    // Delete body node
-                    self.removeTriplet(thatContainsBody: body)
-                }))
-                
-                vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: nil))
-                
-                vc.popoverPresentationController?.sourceView = view
-                vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x, y: convertPoint(toView: body.position).y, width: 1, height: 1)
-                
-                view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
+        // If long pressed on body and not recording, give user option to delete
+        if !recording {
+            for node in nodes(at: convertPoint(fromView: sender.location(ofTouch: 0, in: view))) {
+                if let body = node as? Body {
+                    
+                    let vc = UIAlertController(title: "Delete Mass", message: "Would you like to delete this mass from the world?", preferredStyle: .actionSheet)
+                    
+                    vc.addAction(UIAlertAction(title: "Yes, delete it", style: .destructive, handler: { (action) in
+                        // Delete body node
+                        self.removeTriplet(thatContainsBody: body)
+                    }))
+                    
+                    vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: nil))
+                    
+                    vc.popoverPresentationController?.sourceView = view
+                    vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x, y: convertPoint(toView: body.position).y, width: 1, height: 1)
+                    
+                    view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
+                }
             }
         }
-        
     }
     
     func setUpGestureRecognizers() {
