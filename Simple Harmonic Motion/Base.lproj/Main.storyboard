@@ -202,10 +202,10 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop to export the data and send it for viewing and processing elsewhere.
+                                        <mutableString key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
 
 
-</string>
+</mutableString>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
@@ -232,7 +232,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mHF-si-DSS" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Rfr-34-fBg" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="1907" y="-322"/>
+            <point key="canvasLocation" x="1883" y="-333"/>
         </scene>
         <!--Simulation-->
         <scene sceneID="tXr-a1-R10">
@@ -587,7 +587,6 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     <tabBarItem key="tabBarItem" title="Recordings" image="line-graph" id="BKC-M2-PIK"/>
                     <connections>
                         <outlet property="tableView" destination="h8U-vy-zt8" id="hfQ-qH-WjE"/>
-                        <outlet property="titleLabel" destination="rET-WZ-thR" id="5dD-E4-ctP"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0bK-ST-Eec" userLabel="First Responder" sceneMemberID="firstResponder"/>
