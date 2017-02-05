@@ -27,7 +27,7 @@ class TabBarController: UITabBarController {
         
         for item in tabBar.items! {
             if #available(iOS 10.0, *) {
-                item.badgeColor = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
+                item.badgeColor = AppColourScheme.shared.colourForUIElementTint()
             }
         }
     }

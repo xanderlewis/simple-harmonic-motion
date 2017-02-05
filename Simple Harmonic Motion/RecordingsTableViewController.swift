@@ -122,7 +122,7 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        deleteButton.backgroundColor = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
+        deleteButton.backgroundColor = AppColourScheme.shared.colourForUIElementTint()
         
         return [deleteButton]
     }
