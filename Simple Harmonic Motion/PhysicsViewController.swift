@@ -43,6 +43,9 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     func updateColours() {
         view.backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
         helpButton.tintColor = AppColourScheme.shared.colourForHelpButton()
+        
+        // Update scene's colours
+        scene.updateColours()
     }
     
     override func viewDidAppear(_ animated: Bool) {

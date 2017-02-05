@@ -83,9 +83,6 @@ class PhysicsScene: SKScene {
         backgroundLabel.name = "backgroundlabel"
         addChild(backgroundLabel)
         
-        // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
-        
         updateColours()
     }
     
@@ -133,18 +130,25 @@ class PhysicsScene: SKScene {
     func finishRecording(sender: RecordButton) {
         recording = false
         
-        // Export data
-        let csvGenerator = CSVGenerator(fromBodyDatasets: Array(bodyDatasets.values))
-        let pathToData = csvGenerator.generateFile(withFilename: "simple-harmonic-motion.csv")
+        // Generate title
+        let date = Date()
+        let formatter = DateFormatter()
+        formatter.dateFormat = "HH:mm dd.MM.yy"
+        var masses: String
+        if bodyDatasets.count == 1 {
+            masses = "1 mass"
+        } else {
+            masses = "\(bodyDatasets.count) masses"
+        }
+        let title = "\(masses) @ \(formatter.string(from: date))"
         
-        // Allow user to send the data somewhere
-        let vc = UIActivityViewController(activityItems: [pathToData], applicationActivities: [])
-        vc.excludedActivityTypes = [.postToTwitter, .postToWeibo, .postToFlickr, .postToFacebook, .postToVimeo]
+        // Save recording
+        let newRecording = Recording(title: title, bodyDatasets: Array(bodyDatasets.values))
+        let archiver = RecordingsArchiveManager()
+        archiver.add(newRecording: newRecording)
         
-        vc.popoverPresentationController?.sourceView = view
-        vc.popoverPresentationController?.sourceRect = CGRect(x: sender.frame.midX, y: sender.frame.midY, width: 1, height: 1)
-        
-        view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
+        // Empty body datasets
+        bodyDatasets = [:]
     }
     
     // MARK: - Update Loop
