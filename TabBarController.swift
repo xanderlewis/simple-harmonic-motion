@@ -9,6 +9,8 @@
 import UIKit
 
 class TabBarController: UITabBarController {
+    
+    var newRecordings = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +24,22 @@ class TabBarController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
         
         updateColours()
+        
+        for item in tabBar.items! {
+            if #available(iOS 10.0, *) {
+                item.badgeColor = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
+            }
+        }
+    }
+    
+    func incrementNewRecordings() {
+        newRecordings += 1
+        tabBar.items?[1].badgeValue = String(newRecordings)
+    }
+    
+    func clearNewRecordings() {
+        newRecordings = 0
+        tabBar.items?[1].badgeValue = nil
     }
 
     override func didReceiveMemoryWarning() {

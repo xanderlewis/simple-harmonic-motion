@@ -149,6 +149,10 @@ class PhysicsScene: SKScene {
         
         // Empty body datasets
         bodyDatasets = [:]
+        
+        // Tell tab bar to increment number of new recordings
+        let tabBarController = viewController.tabBarController as? TabBarController
+        tabBarController?.incrementNewRecordings()
     }
     
     // MARK: - Update Loop

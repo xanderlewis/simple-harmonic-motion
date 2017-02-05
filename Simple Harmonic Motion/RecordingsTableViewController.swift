@@ -18,9 +18,6 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Display an Edit button in the navigation bar for this view controller.
-        navigationItem.rightBarButtonItem = editButtonItem
         
         archiver = RecordingsArchiveManager()
         
@@ -39,6 +36,9 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
         
         loadRecordings()
+        
+        let controller = tabBarController as? TabBarController
+        controller?.clearNewRecordings()
     }
 
     override func didReceiveMemoryWarning() {
@@ -114,5 +114,16 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
         vc.popoverPresentationController?.sourceRect = CGRect(x: tableView.frame.width / 3, y: tableView.rowHeight * CGFloat(indexPath.row) + tableView.rowHeight / 2, width: 1, height: 1)
         
         view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let deleteButton = UITableViewRowAction(style: .default, title: "Delete") { (action, indexPath) in
+            self.tableView.dataSource?.tableView!(self.tableView, commit: .delete, forRowAt: indexPath)
+            return
+        }
+        
+        deleteButton.backgroundColor = UIColor(red:1.00, green:0.00, blue:0.36, alpha:1.0)
+        
+        return [deleteButton]
     }
 }
