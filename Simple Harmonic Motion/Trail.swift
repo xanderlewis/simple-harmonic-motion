@@ -50,4 +50,8 @@ class Trail: SKShapeNode {
         
         path = newPath
     }
+    
+    func reset() {
+        points = []
+    }
 }

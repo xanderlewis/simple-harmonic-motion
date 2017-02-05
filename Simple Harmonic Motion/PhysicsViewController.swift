@@ -14,9 +14,12 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     
     @IBOutlet weak var recordButton: RecordButton!
     @IBOutlet weak var helpButton: UIButton!
+    @IBOutlet weak var freezeButton: UIButton!
     
     // Keep a reference to the scene being presented
     var scene: PhysicsScene!
+    
+    var freezeView = UIView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +39,12 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         
         // Be notified when app colour scheme changes
         NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        
+        freezeView.frame = view.frame
+        freezeView.backgroundColor = UIColor.cyan
+        freezeView.alpha = 0
+        freezeView.isUserInteractionEnabled = false
+        view.addSubview(freezeView)
         
         updateColours()
     }
@@ -101,6 +110,20 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         popupVC.view.frame = view.frame
         view.addSubview(popupVC.view!)
     }
+    @IBAction func freezeButtonTapped(_ sender: Any) {
+        // Toggle physics frozen/not frozen
+        if scene.physicsIsFrozen {
+            freezeView.alpha = 0
+            
+            freezeButton.setTitle("Freeze", for: .normal)
+            scene.physicsIsFrozen = false
+        } else {
+            freezeView.alpha = 0.1
+            
+            freezeButton.setTitle("Unfreeze", for: .normal)
+            scene.physicsIsFrozen = true
+        }
+    }
     
     @IBAction func unwindFromHelp(segue: UIStoryboardSegue) {
         // don't need to do anything
@@ -109,5 +132,11 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         // Refresh spring lengths when device rotates
         scene?.refreshTripletPositions(toFit: size)
+        
+        // Make sure any background labels stays in centre
+        scene?.refreshLabelPositions(toFit: size)
+        
+        // Make sure trails react sensibly
+        scene?.refreshTrailPositions(toFit: size)
     }
 }

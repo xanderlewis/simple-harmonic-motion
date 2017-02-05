@@ -40,6 +40,7 @@ class PhysicsScene: SKScene {
     // Keep track of which bodies are being dragged, and where they were first touched (x position)
     var selectedBodies: [UITouch: Body] = [:]
     var firstTouchPoint: [Body: CGFloat] = [:]
+    var originalDisplacement: [Body: CGFloat] = [:]
     
     // Keep reference to presenting view controller
     var viewController: PhysicsViewController!
@@ -54,6 +55,8 @@ class PhysicsScene: SKScene {
     
     // Background grid
     var background: SKSpriteNode!
+    
+    var physicsIsFrozen = false
     
     // MARK: - Initialising stuff
     
@@ -89,7 +92,6 @@ class PhysicsScene: SKScene {
     // MARK: - Colour scheme
     
     func updateColours() {
-        print("updating physics colour scheme")
         backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
         
         switch AppColourScheme.shared.current {
@@ -161,8 +163,6 @@ class PhysicsScene: SKScene {
         // Move physics forward one 'tick'
         tickPhysics()
         
-        print(Body.totalBodies)
-        
         // Enable record button if there are bodies
         if Body.totalBodies > 0 && viewController?.recordButton?.recordingState == .disabled {
             viewController?.recordButton?.recordingState = .stopped
@@ -197,19 +197,21 @@ class PhysicsScene: SKScene {
     func tickPhysics() {
         
         // Apply springs forces to (non-frozen) linked bodies and update their positions
-        enumerateChildNodes(withName: "body") { (node, stop) in
-            let body = node as! Body
-            
-            if !body.isFrozen {
-                if !body.linkedSprings.isEmpty {
-                    for spring in body.linkedSprings {
-                        body.applyForce(force: spring.force)
+        if !physicsIsFrozen {
+            enumerateChildNodes(withName: "body") { (node, stop) in
+                let body = node as! Body
+                
+                if !body.isFrozen {
+                    if !body.linkedSprings.isEmpty {
+                        for spring in body.linkedSprings {
+                            body.applyForce(force: spring.force)
+                        }
                     }
+                    body.updatePosition()
                 }
-                body.updatePosition()
+                
+                body.updateTrail(velocity: DefaultSimulationConstants.trailVelocity, following: DefaultSimulationConstants.trailsEnabled)
             }
-            
-            body.updateTrail(velocity: DefaultSimulationConstants.trailVelocity, following: DefaultSimulationConstants.trailsEnabled)
         }
         
         // Deform springs based on displacement of linked bodies
@@ -343,6 +345,7 @@ class PhysicsScene: SKScene {
     }
     
     // MARK: - Refresh when device orientation changes
+    
     func refreshTripletPositions(toFit newSize: CGSize) {
         // Refresh spring lengths
         enumerateChildNodes(withName: "spring") { (node, stop) in
@@ -368,12 +371,28 @@ class PhysicsScene: SKScene {
         }
     }
     
+    func refreshLabelPositions(toFit newSize: CGSize) {
+        enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
+            let label = node as! SKLabelNode
+            
+            label.position = CGPoint(x: newSize.width / 2, y: newSize.height / 2)
+        }
+    }
+    
+    func refreshTrailPositions(toFit newSize: CGSize) {
+        enumerateChildNodes(withName: "body") { (node, stop) in
+            let body = node as! Body
+            let trail = body.trail!
+            
+            trail.reset()
+        }
+    }
+    
     // MARK: - Tap/drag handling
     // (TAP:  DOESN'T MOVE, DOWN FOR < 200ms)
     // (DRAG: MOVES, DOWN FOR >= 200ms)
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
-        
         for touch in touches {
             for node in nodes(at: touch.location(in: self)) {
                 if node.name == "body" {
@@ -385,6 +404,9 @@ class PhysicsScene: SKScene {
                     // Associate body with touch
                     selectedBodies[touch] = body
                     firstTouchPoint[body] = touch.location(in: self).x
+                    
+                    // Store original body displacement
+                    originalDisplacement[body] = body.displacement
                 }
             }
         }
@@ -392,14 +414,19 @@ class PhysicsScene: SKScene {
         // Store touch down and time
         lastTouchDownX = touches.first!.location(in: self).x
         lastTouchDownTime = event?.timestamp
+        
+        print("down")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             if let body = selectedBodies[touch] {
-                body.displacement = touch.location(in: self).x - firstTouchPoint[body]!
+                body.displacement = originalDisplacement[body]! + touch.location(in: self).x - firstTouchPoint[body]!
+                print(body.displacement)
+                print("\(touch.location(in: self).x) - \(firstTouchPoint[body]!)")
             }
         }
+        print("moved")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -413,6 +440,8 @@ class PhysicsScene: SKScene {
         }
         for touch in touches {
             if let body = selectedBodies[touch] {
+                body.velocity = 0
+                body.acceleration = 0
                 body.isFrozen = false
                 selectedBodies.removeValue(forKey: touch)
             }
@@ -482,7 +511,9 @@ class PhysicsScene: SKScene {
                         self.removeTriplet(thatContainsBody: body)
                     }))
                     
-                    vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: nil))
+                    vc.addAction(UIAlertAction(title: "No, wait!", style: .cancel, handler: { (action) in
+                        body.isFrozen = false
+                    }))
                     
                     vc.popoverPresentationController?.sourceView = view
                     vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x, y: convertPoint(toView: body.position).y, width: 1, height: 1)

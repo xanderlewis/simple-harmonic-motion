@@ -202,10 +202,10 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <mutableString key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
+                                        <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
 
 
-</mutableString>
+</string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
@@ -265,10 +265,26 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                     <segue destination="nhP-Op-V0V" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="eWv-l8-aKv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-RM-oCU">
+                                <rect key="frame" x="247" y="86" width="56" height="34"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="56" id="1tY-uH-nqU"/>
+                                    <constraint firstAttribute="height" constant="34" id="pid-rI-8al"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Light" family="Helvetica Neue" pointSize="13"/>
+                                <state key="normal" title="Freeze">
+                                    <color key="titleColor" red="0.50196081400000003" green="0.50196081400000003" blue="0.50196081400000003" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="freezeButtonTapped:" destination="BV1-FR-VrT" eventType="touchUpInside" id="EyH-AB-0T9"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.20000000300000001" green="0.20000000300000001" blue="0.20000000300000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
+                            <constraint firstItem="RDW-RM-oCU" firstAttribute="top" secondItem="CUm-p3-QEA" secondAttribute="bottom" constant="12" id="DGQ-M0-cbv"/>
                             <constraint firstAttribute="trailing" secondItem="CUm-p3-QEA" secondAttribute="trailing" constant="32" id="Fta-Zh-gbN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="RDW-RM-oCU" secondAttribute="trailing" constant="1" id="mpU-KA-Kvq"/>
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="18" id="sI6-fA-YwA"/>
                             <constraint firstItem="ER0-kK-bMo" firstAttribute="leading" secondItem="3se-qz-xqx" secondAttribute="leading" constant="18" id="urg-Ed-FQu"/>
                             <constraint firstItem="CUm-p3-QEA" firstAttribute="top" secondItem="8aa-yV-Osq" secondAttribute="bottom" constant="32" id="wIp-GH-Gk6"/>
@@ -276,6 +292,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     </view>
                     <tabBarItem key="tabBarItem" title="Simulation" image="atom" id="dcr-x8-sUA"/>
                     <connections>
+                        <outlet property="freezeButton" destination="RDW-RM-oCU" id="SXp-VS-mFl"/>
                         <outlet property="helpButton" destination="CUm-p3-QEA" id="lSm-2W-kA3"/>
                         <outlet property="recordButton" destination="ER0-kK-bMo" id="7BB-B0-oe5"/>
                     </connections>
