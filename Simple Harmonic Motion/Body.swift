@@ -9,7 +9,7 @@
 import Foundation
 import SpriteKit
 
-class Body: SKShapeNode {
+class Body: SKSpriteNode {
     
     static var totalBodies = 0
     
@@ -18,7 +18,7 @@ class Body: SKShapeNode {
     var mass: CGFloat {
         didSet {
             // Change size when mass changes
-            path = UIBezierPath(roundedRect: CGRect(x: -mass/2, y: -mass/2, width: mass, height: mass), cornerRadius: 0).cgPath
+            size = CGSize(width: mass, height: mass)
             
             // Update mass label when mass changes
             massLabel.text = String(describing: mass)
@@ -43,16 +43,16 @@ class Body: SKShapeNode {
     
     var trail: Trail?
     
-    override var fillColor: UIColor {
+    override var color: UIColor {
         didSet {
-            // Change trail colour when fill colour changes
+            // Change trail colour when colour changes
             if trail != nil {
-                trail!.strokeColor = fillColor
+                trail!.strokeColor = color
             }
             
             // If new colour dark, change label colour to white
             var r: CGFloat = 0, g: CGFloat = 0, b: CGFloat = 0, a: CGFloat = 0
-            fillColor.getRed(&r, green: &g, blue: &b, alpha: &a)
+            color.getRed(&r, green: &g, blue: &b, alpha: &a)
             if r < 0.3 && g < 0.3 && b < 0.3 {
                 // White
                 massLabel.fontColor = UIColor.white
@@ -61,7 +61,7 @@ class Body: SKShapeNode {
                 massLabel.fontColor = UIColor.black
             } else {
                 // Change mass label colour to slightly darker
-                massLabel.fontColor = fillColor.darker(40)!
+                massLabel.fontColor = color.darker(40)!
             }
         }
     }
@@ -96,16 +96,14 @@ class Body: SKShapeNode {
         massLabel.position = CGPoint.zero
         
         // Initialise node properties
-        super.init()
-        path = UIBezierPath(roundedRect: CGRect(x: -m/2, y: -m/2, width: m, height: m), cornerRadius: 0).cgPath
+        super.init(texture: nil, color: c, size: CGSize(width: m, height: m))
         
         addChild(massLabel)
-        
-        lineWidth = 0
-        strokeColor = c.darker(70.0)!
-        fillColor = c
+
+        color = c
         position = p
         zPosition = 100
+        anchorPoint = CGPoint(x: 0.5, y: 0.5)
         name = "body"
     }
     

@@ -53,117 +53,64 @@ Quick Help
                                     <fragment content="▫︎">
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="LucidaGrande"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="LucidaGrande"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Tap to create a mass
+                                        <string key="content"> Tap to create a mass
+
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="▫︎">
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="LucidaGrande"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="LucidaGrande"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Tap on an existing mass or spring to edit it
-</string>
+                                        <string key="content"> Tap on an existing mass or spring to edit it
+ </string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="▫︎">
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="LucidaGrande"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content=" ">
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="LucidaGrande"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content">Press and hold on an existing mass to delete it
+                                        <string key="content"> Press and hold on an existing mass to delete it
+
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment>
-                                        <string key="content" base64-UTF8="YES">
-Cg
-</string>
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
                                     <fragment content="▫︎">
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="LucidaGrande"/>
+                                            <font key="NSFont" size="11" name="LucidaGrande"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
-                                    <fragment content=" ">
+                                    <fragment content=" Drag across a mass to displace it">
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
-                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
-                                        </attributes>
-                                    </fragment>
-                                    <fragment content="Drag across a mass to displace it">
-                                        <attributes>
-                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
-                                            <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
+                                            <font key="NSFont" size="11" name="HelveticaNeue"/>
                                             <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
                                         </attributes>
                                     </fragment>
@@ -186,7 +133,15 @@ Cg
                                     <fragment>
                                         <string key="content">(When you create a new mass, it is automatically attached to both sides of the screen by springs.)
 
-Have a go at changing the mass, damping, stiffness properties to see how they affect the motion.   
+Have a go at changing the mass, damping, stiffness properties to see how they affect the motion. </string>
+                                        <attributes>
+                                            <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
+                                            <font key="NSFont" size="12" name="HelveticaNeue-Light"/>
+                                            <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0" allowsDefaultTighteningForTruncation="NO"/>
+                                        </attributes>
+                                    </fragment>
+                                    <fragment>
+                                        <string key="content">  
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -202,10 +157,10 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
+                                        <mutableString key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
 
 
-</string>
+</mutableString>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="13" name="HelveticaNeue-Light"/>

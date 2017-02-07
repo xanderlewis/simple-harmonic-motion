@@ -56,8 +56,6 @@ class CSVGenerator {
             stringToWrite += "\(i),"
             // Add each dataset to line
             for dataset in bodyDatasets {
-                print(dataset.mass)
-                print(dataset.mass.count)
                 stringToWrite += "\(dataset.mass[i]),"
                 stringToWrite += "\(dataset.damping[i]),"
                 stringToWrite += "\(dataset.displacement[i]),"

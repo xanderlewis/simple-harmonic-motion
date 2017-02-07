@@ -268,7 +268,7 @@ class PhysicsScene: SKScene {
                                  sections: DefaultSimulationConstants.springSections)
         
         // Create trail for body
-        let trail = Trail(colour: body.fillColor, length: DefaultSimulationConstants.trailLength)
+        let trail = Trail(colour: body.color, length: DefaultSimulationConstants.trailLength)
         
         // Add trail to body
         body.trail = trail
@@ -414,19 +414,14 @@ class PhysicsScene: SKScene {
         // Store touch down and time
         lastTouchDownX = touches.first!.location(in: self).x
         lastTouchDownTime = event?.timestamp
-        
-        print("down")
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch in touches {
             if let body = selectedBodies[touch] {
                 body.displacement = originalDisplacement[body]! + touch.location(in: self).x - firstTouchPoint[body]!
-                print(body.displacement)
-                print("\(touch.location(in: self).x) - \(firstTouchPoint[body]!)")
             }
         }
-        print("moved")
     }
     
     override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {

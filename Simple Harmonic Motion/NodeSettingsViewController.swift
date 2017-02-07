@@ -81,6 +81,10 @@ class NodeSettingsViewController: UIViewController {
         bodySettingsView.alpha = 0
         springSettingsView.alpha = 0
         
+        // Set rounded corners
+        //bodySettingsView.layer.cornerRadius = 10
+        //springSettingsView.layer.cornerRadius = 10
+        
         // Set up colour buttons
         colour1Button.backgroundColor = BodyColourPalette.colour1
         colour2Button.backgroundColor = BodyColourPalette.colour2
@@ -101,7 +105,7 @@ class NodeSettingsViewController: UIViewController {
     
     private func updateUIColors(basedOnBody body: Body, animated: Bool) {
         
-        let colour = body.fillColor
+        let colour = body.color
         var duration: TimeInterval
         
         if animated {
@@ -231,7 +235,7 @@ class NodeSettingsViewController: UIViewController {
     
     @IBAction func colourButtonPressed(_ sender: UIButton) {
         if let body = sourceNode as? Body {
-            body.fillColor = sender.backgroundColor!
+            body.color = sender.backgroundColor!
             updateUIColors(basedOnBody: body, animated: true)
         }
         animateBounce()
