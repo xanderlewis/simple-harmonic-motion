@@ -20,8 +20,6 @@ public struct BodyColourPalette {
     static var random = { () -> UIColor in
         let rand = arc4random_uniform(6)
         
-        print(rand)
-        
         switch rand {
         case 0:
             return BodyColourPalette.colour1
@@ -44,7 +42,7 @@ public struct BodyColourPalette {
 class NodeSettingsViewController: UIViewController {
     @IBOutlet var tapRecogniser: UITapGestureRecognizer!
     
-    @IBOutlet weak var visualEffectView: UIVisualEffectView!
+    var visualEffectView: UIVisualEffectView!
     let settingsViewSpacer: CGFloat = 4
     var settingsView: UIView!
     var sourceNode: SKNode!
@@ -69,6 +67,8 @@ class NodeSettingsViewController: UIViewController {
     @IBOutlet weak var springSettingsView: UIView!
     @IBOutlet weak var springSettingsLabel: UILabel!
     @IBOutlet weak var stiffnessLabel: UILabel!
+    
+    // MARK: -
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -93,8 +93,24 @@ class NodeSettingsViewController: UIViewController {
         colour5Button.backgroundColor = BodyColourPalette.colour5
         colour6Button.backgroundColor = BodyColourPalette.colour6
         
-        // Hide blur view
-        self.visualEffectView.alpha = 0
+        // Be notified when app colour scheme changes
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        
+        setUpBlur()
+    }
+    
+    func updateColours() {
+        setUpBlur()
+    }
+    
+    private func setUpBlur() {
+        // Set up blurred background
+        let blurEffect = UIBlurEffect(style: AppColourScheme.shared.styleForBlurEffect())
+        visualEffectView = UIVisualEffectView(effect: blurEffect)
+        visualEffectView.layer.opacity = 0
+        visualEffectView.frame = view.bounds
+        visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        view.insertSubview(visualEffectView, belowSubview: bodySettingsView)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -155,7 +171,7 @@ class NodeSettingsViewController: UIViewController {
     
     func showSettings(forObject node: SKNode) {
         
-        // Disable to touches to the node's scene while popup is showing
+        // Disable touches to the node's scene while popup is showing
         node.scene?.isUserInteractionEnabled = false
         
         // Store node as property
@@ -187,10 +203,10 @@ class NodeSettingsViewController: UIViewController {
         }
         
         // Add layout constraints for settings view
-        //settingsView.translatesAutoresizingMaskIntoConstraints = false
-        //let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.width)
-        //let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.height)
-        //let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
+        settingsView.translatesAutoresizingMaskIntoConstraints = false
+        let widthConstraint = NSLayoutConstraint(item: settingsView, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.width)
+        let heightConstraint = NSLayoutConstraint(item: settingsView, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1, constant: settingsView.frame.height)
+        let xConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerX, relatedBy: .equal, toItem: view, attribute: .centerX, multiplier: 1, constant: 0)
 
         var yConstraintConstant = nodePosition.y
         
@@ -207,7 +223,7 @@ class NodeSettingsViewController: UIViewController {
         
         let yConstraint = NSLayoutConstraint(item: settingsView, attribute: .centerY, relatedBy: .equal, toItem: view, attribute: .top, multiplier: 1, constant: yConstraintConstant)
         
-        NSLayoutConstraint.activate([yConstraint])
+        NSLayoutConstraint.activate([widthConstraint, heightConstraint, xConstraint, yConstraint])
         
         // Animate the view to appear
         animateAppear(from: sourceNode.position.toView(withHeight: view.frame.height))
@@ -249,7 +265,7 @@ class NodeSettingsViewController: UIViewController {
         view.backgroundColor = UIColor(white: 0, alpha: 0)
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.6, initialSpringVelocity: 20, options: [], animations: {
             self.view.backgroundColor = UIColor(white: 0, alpha: 0.2)
-            self.visualEffectView.alpha = 1
+            self.visualEffectView.layer.opacity = 1
             self.settingsView.alpha = 1
             self.settingsView.transform = CGAffineTransform(scaleX: 1, y: 1)
         }, completion: nil)
@@ -260,7 +276,7 @@ class NodeSettingsViewController: UIViewController {
             self.settingsView.transform = CGAffineTransform(scaleX: 1.1, y: 1.1)
         }) { (finished) in
             UIView.animate(withDuration: 0.3, animations: {
-                self.settingsView.alpha = 0
+                self.settingsView.layer.opacity = 0
                 self.settingsView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2).concatenating(CGAffineTransform(translationX: finalPosition.x - self.view.frame.width/2, y: 0))
                 self.view.backgroundColor = UIColor(white: 0, alpha: 0.0)
                 self.visualEffectView.alpha = 0

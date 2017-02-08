@@ -21,6 +21,8 @@
 		C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */; };
 		C09797C11E44002B00DCB204 /* RecordingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */; };
 		C09797C31E44057200DCB204 /* GraphConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C21E44057200DCB204 /* GraphConfigViewController.swift */; };
+		C09DC7811E4B13D900BC1E87 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DC7801E4B13D900BC1E87 /* GraphView.swift */; };
+		C09DC7831E4B24BD00BC1E87 /* GraphViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DC7821E4B24BD00BC1E87 /* GraphViewController.swift */; };
 		C0BC11711E4675F2004CFB9E /* RecordingsArchiveManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0BC11701E4675F1004CFB9E /* RecordingsArchiveManager.swift */; };
 		C0C62B9A1E31935700566384 /* SpringShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C62B991E31935700566384 /* SpringShadow.swift */; };
 		C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C0C636EB1E2D42A400CED588 /* AppDelegate.swift */; };
@@ -60,6 +62,8 @@
 		C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionsTableTableViewController.swift; sourceTree = "<group>"; };
 		C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsTableViewController.swift; sourceTree = "<group>"; };
 		C09797C21E44057200DCB204 /* GraphConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphConfigViewController.swift; sourceTree = "<group>"; };
+		C09DC7801E4B13D900BC1E87 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		C09DC7821E4B24BD00BC1E87 /* GraphViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphViewController.swift; sourceTree = "<group>"; };
 		C0BC11701E4675F1004CFB9E /* RecordingsArchiveManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordingsArchiveManager.swift; sourceTree = "<group>"; };
 		C0C62B991E31935700566384 /* SpringShadow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SpringShadow.swift; path = "Simple Harmonic Motion/SpringShadow.swift"; sourceTree = "<group>"; };
 		C0C636E81E2D42A400CED588 /* Simple Harmonic Motion.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Simple Harmonic Motion.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,6 +155,8 @@
 				C03CF6EC1E427BB000D2B33B /* TabBarController.swift */,
 				C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */,
 				C09797C21E44057200DCB204 /* GraphConfigViewController.swift */,
+				C09DC7821E4B24BD00BC1E87 /* GraphViewController.swift */,
+				C09DC7801E4B13D900BC1E87 /* GraphView.swift */,
 				C051402C1E2F656C009158CA /* Extensions.swift */,
 				C0C636F51E2D42A400CED588 /* Main.storyboard */,
 				C0C636F81E2D42A400CED588 /* Assets.xcassets */,
@@ -303,9 +309,11 @@
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
 				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,
+				C09DC7811E4B13D900BC1E87 /* GraphView.swift in Sources */,
 				C0C986321E429E4900D5C368 /* HelpViewController.swift in Sources */,
 				C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */,
 				C0C636EC1E2D42A400CED588 /* AppDelegate.swift in Sources */,
+				C09DC7831E4B24BD00BC1E87 /* GraphViewController.swift in Sources */,
 				C0C637121E2D434A00CED588 /* Body.swift in Sources */,
 				C051402F1E2F6727009158CA /* Trail.swift in Sources */,
 			);

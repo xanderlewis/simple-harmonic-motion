@@ -29,9 +29,15 @@ extension UIColor {
     }
 }
 
-// Convert scene coordinates to view coordinates
+
 extension CGPoint {
+    // Convert scene coordinates to view coordinates
     func toView(withHeight height: CGFloat) -> CGPoint {
         return CGPoint(x: self.x, y: height - self.y)
+    }
+    
+    // Add points
+    static func +(left: CGPoint, right: CGPoint) -> CGPoint {
+        return CGPoint(x: left.x + right.x, y: left.y + right.y)
     }
 }
