@@ -17,11 +17,11 @@ class GraphView: UIView {
     var plotLayer: CAShapeLayer!
     
     var axesColour = UIColor(white: 0.25, alpha: 1)
-    var gridColour = UIColor(white: 0.15, alpha: 1)
+    var gridColour = UIColor(white: 0.12, alpha: 1)
     
     var xColour = AppColourScheme.shared.colourForUIElementTint()
     
-    var xData: [Float]! {
+    private var xData: [Float]! {
         didSet {
             if yData != nil && xData != nil {
                 plotData()
@@ -29,7 +29,7 @@ class GraphView: UIView {
         }
     }
     
-    var yData: [Float]! {
+    private var yData: [Float]! {
         didSet {
             if xData != nil && yData != nil {
                 plotData()
@@ -41,7 +41,7 @@ class GraphView: UIView {
     var yAxisMargin: CGFloat = 45
     
     var origin: CGPoint {
-        return CGPoint(x: yAxisMargin, y: xAxisMargin)
+        return CGPoint(x: yAxisMargin, y: xAxisMargin + xLength)
     }
     
     var xPointsShowing: Int {
@@ -80,8 +80,11 @@ class GraphView: UIView {
         
         backgroundColor = UIColor(white: 0.1, alpha: 1)
         
-        layer.addSublayer(createGridLayer())
-        layer.addSublayer(createAxesLayer())
+        gridLayer = createGridLayer()
+        axesLayer = createAxesLayer()
+        
+        layer.addSublayer(gridLayer)
+        layer.insertSublayer(axesLayer, above: gridLayer)
         
         addLabels()
     }
@@ -100,18 +103,23 @@ class GraphView: UIView {
         yData = data
     }
     
-    func clearData() {
-        // Remove data
-        xData = []
-        yData = []
+    func clear() {
+        plotLayer.removeFromSuperlayer()
+        plotLayer = nil
+        xData = nil
+        yData = nil
     }
     
     private func plotData() {
         // Redraw grid
-        layer.addSublayer(createGridLayer())
+        gridLayer = createGridLayer()
+        layer.addSublayer(gridLayer)
+        axesLayer = createAxesLayer()
+        layer.insertSublayer(axesLayer, above: gridLayer)
         
         // Plot data
-        layer.addSublayer(createPlotLayer())
+        plotLayer = createPlotLayer()
+        layer.insertSublayer(plotLayer, above: gridLayer)
     }
     
     // MARK: - Set up labels
@@ -144,7 +152,7 @@ class GraphView: UIView {
                                     toItem: self,
                                     attribute: .top,
                                     multiplier: 1,
-                                    constant: origin.y + yLength + xAxisMargin/2)
+                                    constant: origin.y + xAxisMargin/2)
         
         NSLayoutConstraint.activate([xC, yC])
     }
@@ -160,8 +168,20 @@ class GraphView: UIView {
         
         addSubview(label)
         
-        let xC = NSLayoutConstraint(item: label, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .left, multiplier: 1, constant: yAxisMargin/2)
-        let yC = NSLayoutConstraint(item: label, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .top, multiplier: 1, constant: origin.y + yLength/2)
+        let xC = NSLayoutConstraint(item: label,
+                                    attribute: .centerX,
+                                    relatedBy: .equal,
+                                    toItem: self,
+                                    attribute: .left,
+                                    multiplier: 1,
+                                    constant: yAxisMargin/2)
+        let yC = NSLayoutConstraint(item: label,
+                                    attribute: .centerY,
+                                    relatedBy: .equal,
+                                    toItem: self,
+                                    attribute: .top,
+                                    multiplier: 1,
+                                    constant: origin.y - yLength/2)
         
         NSLayoutConstraint.activate([xC, yC])
     }
@@ -172,7 +192,7 @@ class GraphView: UIView {
         let axesLayer = CAShapeLayer()
         let axesPath = CGMutablePath()
         
-        axesPath.move(to: CGPoint(x: origin.x, y: origin.y + yLength))
+        axesPath.move(to: CGPoint(x: origin.x, y: origin.y - yLength))
         axesPath.addLine(to: origin)
         axesPath.addLine(to: origin + CGPoint(x: xLength, y: 0))
         
@@ -195,7 +215,7 @@ class GraphView: UIView {
             gridPath.addLine(to: CGPoint(x: x, y: xAxisMargin + yLength))
         }
         // Create rows
-        for y in stride(from: origin.y + yPointInterval, to: origin.y + yLength + yPointInterval, by: yPointInterval) {
+        for y in stride(from: origin.y - yPointInterval, to: origin.y - yLength - yPointInterval, by: -yPointInterval) {
             gridPath.move(to: CGPoint(x: yAxisMargin, y: y))
             gridPath.addLine(to: CGPoint(x: yAxisMargin + xLength, y: y))
         }
@@ -214,11 +234,11 @@ class GraphView: UIView {
         let plotPath = CGMutablePath()
         
         // Move to first point
-        plotPath.move(to: CGPoint(x: yAxisMargin + xPointInterval * CGFloat(xData[0]), y: xAxisMargin + yPointInterval * CGFloat(yData[0])))
+        plotPath.move(to: CGPoint(x: origin.x + xPointInterval * CGFloat(xData[0]), y: origin.y - yPointInterval * CGFloat(yData[0])))
         
         for i in 0..<xData.count {
             // Calculate next point
-            let nextPoint = CGPoint(x: yAxisMargin + xPointInterval * CGFloat(xData[i]), y: xAxisMargin + yPointInterval * CGFloat(yData[i]))
+            let nextPoint = CGPoint(x: origin.x + xPointInterval * CGFloat(xData[i]), y: origin.y - yPointInterval * CGFloat(yData[i]))
             
             // Add line to next point
             plotPath.addLine(to: nextPoint)

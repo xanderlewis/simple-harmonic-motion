@@ -9,24 +9,25 @@
 import UIKit
 
 class GraphViewController: UIViewController {
+    
+    var graphView: GraphView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Generate test data
-        var testXData: [Float] = []
-        var testYData: [Float] = []
-        
-        for _ in 0..<20 {
-            testXData.append(Float(arc4random_uniform(20-1))+1)
-            testYData.append(Float(arc4random_uniform(20-1))+1)
-        }
-        
-        let graphView = GraphView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width))
-        graphView.add(xData: testXData)
-        graphView.add(yData: testYData)
+
+        graphView = GraphView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width))
+        graphView.add(xData: generateTestData())
+        graphView.add(yData: generateTestData())
         
         view.addSubview(graphView)
+    }
+    
+    private func generateTestData() -> [Float] {
+        var data: [Float] = []
+        for _ in 0..<40 {
+            data.append(Float(arc4random_uniform(40-1))+1)
+        }
+        return data
     }
 
     override func didReceiveMemoryWarning() {
