@@ -16,6 +16,9 @@ class GraphView: UIView {
     var axesLayer: CAShapeLayer!
     var plotLayer: CAShapeLayer!
     
+    var xLabel = UILabel()
+    var yLabel = UILabel()
+    
     var axesColour = UIColor(white: 0.25, alpha: 1)
     var gridColour = UIColor(white: 0.12, alpha: 1)
     
@@ -130,23 +133,22 @@ class GraphView: UIView {
     }
     
     private func addXLabel() {
-        let label = UILabel()
-        label.text = "X variable"
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
+        xLabel.text = "X variable"
+        xLabel.font = UIFont.systemFont(ofSize: 10)
+        xLabel.textColor = UIColor.white
+        xLabel.textAlignment = .center
+        xLabel.translatesAutoresizingMaskIntoConstraints = false
         
-        addSubview(label)
+        addSubview(xLabel)
         
-        let xC = NSLayoutConstraint(item: label,
+        let xC = NSLayoutConstraint(item: xLabel,
                                     attribute: .centerX,
                                     relatedBy: .equal,
                                     toItem: self,
                                     attribute: .left,
                                     multiplier: 1,
                                     constant: origin.x + xLength/2)
-        let yC = NSLayoutConstraint(item: label,
+        let yC = NSLayoutConstraint(item: xLabel,
                                     attribute: .centerY,
                                     relatedBy: .equal,
                                     toItem: self,
@@ -158,24 +160,23 @@ class GraphView: UIView {
     }
     
     private func addYLabel() {
-        let label = UILabel()
-        label.text = "Y variable"
-        label.font = UIFont.systemFont(ofSize: 10)
-        label.textColor = UIColor.white
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.transform = CGAffineTransform(rotationAngle: CGFloat(3*M_PI/2))
+        yLabel.text = "Y variable"
+        yLabel.font = UIFont.systemFont(ofSize: 10)
+        yLabel.textColor = UIColor.white
+        yLabel.textAlignment = .center
+        yLabel.translatesAutoresizingMaskIntoConstraints = false
+        yLabel.transform = CGAffineTransform(rotationAngle: CGFloat(3*M_PI/2))
         
-        addSubview(label)
+        addSubview(yLabel)
         
-        let xC = NSLayoutConstraint(item: label,
+        let xC = NSLayoutConstraint(item: yLabel,
                                     attribute: .centerX,
                                     relatedBy: .equal,
                                     toItem: self,
                                     attribute: .left,
                                     multiplier: 1,
                                     constant: yAxisMargin/2)
-        let yC = NSLayoutConstraint(item: label,
+        let yC = NSLayoutConstraint(item: yLabel,
                                     attribute: .centerY,
                                     relatedBy: .equal,
                                     toItem: self,
@@ -233,8 +234,14 @@ class GraphView: UIView {
         let plotLayer = CAShapeLayer()
         let plotPath = CGMutablePath()
         
+        // Calculate min, max data values
+        let xRange = xData.max()! - xData.min()!
+        let yRange = yData.max()! - yData.min()!
+        
         // Move to first point
         plotPath.move(to: CGPoint(x: origin.x + xPointInterval * CGFloat(xData[0]), y: origin.y - yPointInterval * CGFloat(yData[0])))
+        
+        //plotPath.move(to: CGPoint(x: origin.x + xData[0] / xRange, y: origin.y - yData[0]))
         
         for i in 0..<xData.count {
             // Calculate next point

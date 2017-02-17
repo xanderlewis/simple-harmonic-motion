@@ -16,16 +16,27 @@ class GraphViewController: UIViewController {
         super.viewDidLoad()
 
         graphView = GraphView(frame: CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.width))
-        graphView.add(xData: generateTestData())
-        graphView.add(yData: generateTestData())
+        //graphView.add(xData: generateTestData())
+        //graphView.add(yData: generateTestData())
+        
+        graphView.add(xData: [0,1,2,3,4,5,6,7,8,9])
+        
+        var yData: [Float] = []
+        for i in 0..<10 {
+            yData.append(sin(Float(i)))
+        }
+        graphView.add(yData: yData)
+        
+        graphView.xLabel.text = "Time"
+        graphView.yLabel.text = "Displacement"
         
         view.addSubview(graphView)
     }
     
     private func generateTestData() -> [Float] {
         var data: [Float] = []
-        for _ in 0..<40 {
-            data.append(Float(arc4random_uniform(40-1))+1)
+        for _ in 0..<10 {
+            data.append(Float(arc4random_uniform(10-1))+1)
         }
         return data
     }
