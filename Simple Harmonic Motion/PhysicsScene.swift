@@ -66,7 +66,7 @@ class PhysicsScene: SKScene {
         setUpGestureRecognizers()
         
         // Set background colour
-        backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
+        backgroundColor = AppColourSchemeDelegate.shared.colourForSimulationBackground()
         
         // Set up background grid
         background = SKSpriteNode(imageNamed: "darkGrid")
@@ -92,9 +92,9 @@ class PhysicsScene: SKScene {
     // MARK: - Colour scheme
     
     func updateColours() {
-        backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
+        backgroundColor = AppColourSchemeDelegate.shared.colourForSimulationBackground()
         
-        switch AppColourScheme.shared.current {
+        switch AppColourSchemeDelegate.shared.current {
         case .light:
             background.texture = SKTexture(imageNamed: "lightGrid")
         case .dark:
@@ -103,14 +103,14 @@ class PhysicsScene: SKScene {
         
         enumerateChildNodes(withName: "spring") { (node, stop) in
             let spring = node as! Spring
-            spring.strokeColor = AppColourScheme.shared.colourForSpring()
-            spring.shadow?.strokeColor = AppColourScheme.shared.colourForSpringShadow()
+            spring.strokeColor = AppColourSchemeDelegate.shared.colourForSpring()
+            spring.shadow?.strokeColor = AppColourSchemeDelegate.shared.colourForSpringShadow()
         }
         
         enumerateChildNodes(withName: "backgroundlabel") { (node, stop) in
             let label = node as! SKLabelNode
             
-            label.fontColor = AppColourScheme.shared.colourForBackgroundLabel()
+            label.fontColor = AppColourSchemeDelegate.shared.colourForBackgroundLabel()
         }
     }
     
@@ -250,7 +250,7 @@ class PhysicsScene: SKScene {
         // Create left spring instance
         let leftSpring = Spring(position: CGPoint(x: 0,
                                                   y: body.position.y - DefaultSimulationConstants.springWidth / 2),
-                                colour: AppColourScheme.shared.colourForSpring(),
+                                colour: AppColourSchemeDelegate.shared.colourForSpring(),
                                 orientation: .facingRight,
                                 length: body.position.x,
                                 width: DefaultSimulationConstants.springWidth,
@@ -260,7 +260,7 @@ class PhysicsScene: SKScene {
         // Create right spring instance
         let rightSpring = Spring(position: CGPoint(x: frame.width,
                                                    y: body.position.y - DefaultSimulationConstants.springWidth / 2),
-                                 colour: AppColourScheme.shared.colourForSpring(),
+                                 colour: AppColourSchemeDelegate.shared.colourForSpring(),
                                  orientation: .facingLeft,
                                  length: body.position.x,
                                  width: DefaultSimulationConstants.springWidth,

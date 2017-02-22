@@ -15,7 +15,7 @@ class AboutViewController: UIViewController {
         super.viewDidLoad()
 
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         updateColours()
     }
@@ -31,8 +31,8 @@ class AboutViewController: UIViewController {
     }
     
     func updateColours() {
-        view.backgroundColor = AppColourScheme.shared.colourForViewBackground()
-        textView.textColor = AppColourScheme.shared.colourForAboutViewText()
+        view.backgroundColor = AppColourSchemeDelegate.shared.colourForViewBackground()
+        textView.textColor = AppColourSchemeDelegate.shared.colourForAboutViewText()
     }
     
 

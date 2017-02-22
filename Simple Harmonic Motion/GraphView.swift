@@ -22,7 +22,7 @@ class GraphView: UIView {
     var axesColour = UIColor(white: 0.25, alpha: 1)
     var gridColour = UIColor(white: 0.12, alpha: 1)
     
-    var xColour = AppColourScheme.shared.colourForUIElementTint()
+    var xColour = AppColourSchemeDelegate.shared.colourForUIElementTint()
     
     private var xData: [Float]! {
         didSet {

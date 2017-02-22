@@ -22,7 +22,7 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
         archiver = RecordingsArchiveManager()
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         updateColours()
     }
@@ -47,10 +47,10 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
     }
     
     func updateColours() {
-        view.backgroundColor = AppColourScheme.shared.colourForTableViewBackground()
-        titleLabel.textColor = AppColourScheme.shared.colourForTableViewText()
-        tableView.backgroundColor = AppColourScheme.shared.colourForTableViewBackground()
-        tableView.separatorColor = AppColourScheme.shared.colourForTableViewSeparator()
+        view.backgroundColor = AppColourSchemeDelegate.shared.colourForTableViewBackground()
+        titleLabel.textColor = AppColourSchemeDelegate.shared.colourForTableViewText()
+        tableView.backgroundColor = AppColourSchemeDelegate.shared.colourForTableViewBackground()
+        tableView.separatorColor = AppColourSchemeDelegate.shared.colourForTableViewSeparator()
     }
 
     // MARK: - Table view data source
@@ -70,8 +70,8 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
             cell = UITableViewCell(style: .default, reuseIdentifier: "recordingCell")
         }
         
-        cell?.contentView.backgroundColor = AppColourScheme.shared.colourForTableViewCellBackground()
-        cell?.textLabel?.textColor = AppColourScheme.shared.colourForTableViewText()
+        cell?.contentView.backgroundColor = AppColourSchemeDelegate.shared.colourForTableViewCellBackground()
+        cell?.textLabel?.textColor = AppColourSchemeDelegate.shared.colourForTableViewText()
         cell?.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         
         cell?.textLabel?.text = recordings[indexPath.row].title
@@ -122,7 +122,7 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
             return
         }
         
-        deleteButton.backgroundColor = AppColourScheme.shared.colourForUIElementTint()
+        deleteButton.backgroundColor = AppColourSchemeDelegate.shared.colourForUIElementTint()
         
         return [deleteButton]
     }

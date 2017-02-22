@@ -1,5 +1,5 @@
 //
-//  AppColourscheme.swift
+//  AppColourschemeDelegate.swift
 //  Simple Harmonic Motion
 //
 //  Created by Xander Lewis on 03/02/2017.
@@ -14,13 +14,13 @@ enum ColourScheme {
     case dark
 }
 
-class AppColourScheme {
-    static let shared = AppColourScheme(.dark) // (default colourscheme is dark)
+class AppColourSchemeDelegate {
+    static let shared = AppColourSchemeDelegate(.dark) // (default colourscheme is dark)
     var current: ColourScheme {
         didSet {
             if current != oldValue {
                 // Post notification to indicate that the colour scheme has changed for the whole app
-                NotificationCenter.default.post(name: AppColourScheme.changed, object: nil)
+                NotificationCenter.default.post(name: AppColourSchemeDelegate.changed, object: nil)
             }
         }
     }

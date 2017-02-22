@@ -38,7 +38,7 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         recordButton.delegate = self
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         freezeView.frame = view.frame
         freezeView.backgroundColor = UIColor.cyan
@@ -50,8 +50,8 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
     }
     
     func updateColours() {
-        view.backgroundColor = AppColourScheme.shared.colourForSimulationBackground()
-        helpButton.tintColor = AppColourScheme.shared.colourForHelpButton()
+        view.backgroundColor = AppColourSchemeDelegate.shared.colourForSimulationBackground()
+        helpButton.tintColor = AppColourSchemeDelegate.shared.colourForHelpButton()
         
         // Update scene's colours
         scene.updateColours()

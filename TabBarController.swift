@@ -21,13 +21,13 @@ class TabBarController: UITabBarController {
         }
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         updateColours()
         
         for item in tabBar.items! {
             if #available(iOS 10.0, *) {
-                item.badgeColor = AppColourScheme.shared.colourForUIElementTint()
+                item.badgeColor = AppColourSchemeDelegate.shared.colourForUIElementTint()
             }
         }
     }
@@ -48,6 +48,6 @@ class TabBarController: UITabBarController {
     }
     
     func updateColours() {
-        tabBar.barStyle = AppColourScheme.shared.styleForTabBar()
+        tabBar.barStyle = AppColourSchemeDelegate.shared.styleForTabBar()
     }
 }

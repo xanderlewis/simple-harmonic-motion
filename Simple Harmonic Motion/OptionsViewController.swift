@@ -15,15 +15,15 @@ class OptionsViewController: UIViewController {
         super.viewDidLoad()
 
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         updateColours()
     }
     
     func updateColours() {
         UIView.animate(withDuration: 0.2, delay: 0, options: .curveEaseInOut, animations: { 
-            self.view.backgroundColor = AppColourScheme.shared.colourForTableViewBackground()
-            self.titleLabel.textColor = AppColourScheme.shared.colourForTableViewText()
+            self.view.backgroundColor = AppColourSchemeDelegate.shared.colourForTableViewBackground()
+            self.titleLabel.textColor = AppColourSchemeDelegate.shared.colourForTableViewText()
         }, completion: nil)
     }
 

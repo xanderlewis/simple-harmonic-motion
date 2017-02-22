@@ -94,7 +94,7 @@ class NodeSettingsViewController: UIViewController {
         colour6Button.backgroundColor = BodyColourPalette.colour6
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourScheme.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         setUpBlur()
     }
@@ -105,7 +105,7 @@ class NodeSettingsViewController: UIViewController {
     
     private func setUpBlur() {
         // Set up blurred background
-        let blurEffect = UIBlurEffect(style: AppColourScheme.shared.styleForBlurEffect())
+        let blurEffect = UIBlurEffect(style: AppColourSchemeDelegate.shared.styleForBlurEffect())
         visualEffectView = UIVisualEffectView(effect: blurEffect)
         visualEffectView.layer.opacity = 0
         visualEffectView.frame = view.bounds

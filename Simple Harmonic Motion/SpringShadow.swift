@@ -37,7 +37,7 @@ class SpringShadow: SKShapeNode {
         position = p
         zPosition = 0
         name = "spring"
-        strokeColor = AppColourScheme.shared.colourForSpringShadow()
+        strokeColor = AppColourSchemeDelegate.shared.colourForSpringShadow()
         lineWidth = 2
         lineCap = .round
         
