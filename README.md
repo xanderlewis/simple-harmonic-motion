@@ -12,4 +12,4 @@ This project aims to create a tool that enhances the teaching of this topic to s
 - Adjust stiffness (spring constant) and appearance of springs
 - Toggle 'motion trails' that travel up the screen for bodies 
 - Record and export simulation data as file 
-- Some useful information about the actual physics **[in development]**
+- Some useful information about the actual physics
