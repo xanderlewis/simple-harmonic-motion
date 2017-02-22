@@ -9,7 +9,7 @@
 import SpriteKit
 import GameplayKit
 
-// Default physics constants for simulation
+// Default constants for simulation
 public struct DefaultSimulationConstants {
     static let mass: CGFloat = 50
     static let damping: CGFloat = 0.02

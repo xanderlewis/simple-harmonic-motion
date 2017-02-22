@@ -19,7 +19,7 @@ class AppColourScheme {
     var current: ColourScheme {
         didSet {
             if current != oldValue {
-                // Post notification to indicated that the colour scheme has changed for the whole app
+                // Post notification to indicate that the colour scheme has changed for the whole app
                 NotificationCenter.default.post(name: AppColourScheme.changed, object: nil)
             }
         }
@@ -83,9 +83,9 @@ class AppColourScheme {
     func colourForHelpViewText() -> UIColor {
         switch current {
         case .light:
-            return UIColor(white: 0.2, alpha: 1.0)
+            return UIColor(white: 0.3, alpha: 1.0)
         case .dark:
-            return UIColor(white: 0.8, alpha: 1.0)
+            return UIColor(white: 0.7, alpha: 1.0)
         }
     }
     

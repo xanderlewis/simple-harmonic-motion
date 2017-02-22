@@ -25,7 +25,11 @@ class HelpViewController: UIViewController {
     func updateColours() {
         setUpBlur()
         
-        textView.attributedText = NSAttributedString(string: textView.text, attributes: [NSStrokeColorAttributeName: AppColourScheme.shared.colourForHelpViewText(), NSForegroundColorAttributeName: AppColourScheme.shared.colourForHelpViewText()])
+        var mutableString = NSMutableAttributedString(attributedString: textView.attributedText)
+        
+        mutableString.addAttribute(NSForegroundColorAttributeName, value: AppColourScheme.shared.colourForHelpViewText(), range: NSRange(location: 0, length: mutableString.length))
+        
+        textView.attributedText = mutableString
     }
     
     func setUpBlur() {

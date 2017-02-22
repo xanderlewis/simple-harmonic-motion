@@ -35,7 +35,7 @@
                                     </fragment>
                                     <fragment>
                                         <string key="content">
-Quick Help
+Quick Tips
 </string>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -157,10 +157,10 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                         </attributes>
                                     </fragment>
                                     <fragment>
-                                        <string key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
+                                        <mutableString key="content"> Tapping the record button will start recording data about the current state of the simulation. When you've finished recording, press stop. You can find recordings you've made in the 'recordings' tab at the bottom of the screen. From there, you can export the data and send it for viewing and/or processing elsewhere.
 
 
-</string>
+</mutableString>
                                         <attributes>
                                             <color key="NSColor" red="0.80000001190000003" green="0.80000001190000003" blue="0.80000001190000003" alpha="1" colorSpace="calibratedRGB"/>
                                             <font key="NSFont" size="13" name="HelveticaNeue-Light"/>
@@ -217,7 +217,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                                 <rect key="frame" x="266" y="52" width="22" height="22"/>
                                 <color key="tintColor" red="0.7019608021" green="0.7019608021" blue="0.7019608021" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
-                                    <segue destination="nhP-Op-V0V" kind="presentation" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="eWv-l8-aKv"/>
+                                    <segue destination="nhP-Op-V0V" kind="presentation" identifier="HelpViewSegue" modalPresentationStyle="overFullScreen" modalTransitionStyle="coverVertical" id="eWv-l8-aKv"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RDW-RM-oCU">
@@ -436,7 +436,7 @@ Have a go at changing the mass, damping, stiffness properties to see how they af
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="2070" y="125.70422535211267"/>
+            <point key="canvasLocation" x="2177" y="339"/>
         </scene>
         <!--Tab Bar Controller-->
         <scene sceneID="IS0-xb-OqJ">
