@@ -67,22 +67,22 @@ class OptionsTableViewController: UITableViewController {
     
     @IBAction func motionTrailsSwitchChanged(_ sender: UISwitch) {
         if sender.isOn {
-            DefaultSimulationConstants.trailsEnabled = true
+            PhysicsSceneSettings.trailsEnabled = true
         } else {
-            DefaultSimulationConstants.trailsEnabled = false
+            PhysicsSceneSettings.trailsEnabled = false
         }
     }
     
     @IBAction func trailSpeedSwitchChanged(_ sender: UISegmentedControl) {
         switch sender.selectedSegmentIndex {
         case 0:
-            DefaultSimulationConstants.trailVelocity = 1.5
+            PhysicsSceneSettings.trailVelocity = 1.5
         case 1:
-            DefaultSimulationConstants.trailVelocity = 2.5
+            PhysicsSceneSettings.trailVelocity = 2.5
         case 2:
-            DefaultSimulationConstants.trailVelocity = 6
+            PhysicsSceneSettings.trailVelocity = 6
         default:
-            DefaultSimulationConstants.trailVelocity = 2.5
+            PhysicsSceneSettings.trailVelocity = 2.5
         }
     }
     

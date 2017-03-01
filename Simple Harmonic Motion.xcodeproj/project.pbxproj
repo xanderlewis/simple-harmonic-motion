@@ -18,7 +18,7 @@
 		C06FB70F1E37EF2500490257 /* PhysicsDatasets.swift in Sources */ = {isa = PBXBuildFile; fileRef = C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */; };
 		C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBE91E41FBE10038AA94 /* AboutViewController.swift */; };
 		C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */; };
-		C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */; };
+		C088EBEE1E422D890038AA94 /* OptionsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C088EBED1E422D890038AA94 /* OptionsTableViewController.swift */; };
 		C09797C11E44002B00DCB204 /* RecordingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */; };
 		C09797C31E44057200DCB204 /* GraphConfigViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09797C21E44057200DCB204 /* GraphConfigViewController.swift */; };
 		C09DC7811E4B13D900BC1E87 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C09DC7801E4B13D900BC1E87 /* GraphView.swift */; };
@@ -59,7 +59,7 @@
 		C06FB70E1E37EF2500490257 /* PhysicsDatasets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhysicsDatasets.swift; sourceTree = "<group>"; };
 		C088EBE91E41FBE10038AA94 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AboutViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OptionsViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
-		C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OptionsTableTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		C088EBED1E422D890038AA94 /* OptionsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = OptionsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C09797C01E44002A00DCB204 /* RecordingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RecordingsTableViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		C09797C21E44057200DCB204 /* GraphConfigViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraphConfigViewController.swift; sourceTree = "<group>"; };
 		C09DC7801E4B13D900BC1E87 /* GraphView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = GraphView.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -149,7 +149,7 @@
 				C05140301E2F7721009158CA /* NodeSettingsViewController.swift */,
 				C088EBE91E41FBE10038AA94 /* AboutViewController.swift */,
 				C088EBEB1E41FD990038AA94 /* OptionsViewController.swift */,
-				C088EBED1E422D890038AA94 /* OptionsTableTableViewController.swift */,
+				C088EBED1E422D890038AA94 /* OptionsTableViewController.swift */,
 				C0C986311E429E4900D5C368 /* HelpViewController.swift */,
 				C037695D1E37A1E100CD70B7 /* RecordButton.swift */,
 				C03CF6EC1E427BB000D2B33B /* TabBarController.swift */,
@@ -308,7 +308,7 @@
 				C00017561E447C660087F226 /* AppColourSchemeDelegate.swift in Sources */,
 				C088EBEC1E41FD990038AA94 /* OptionsViewController.swift in Sources */,
 				C0C636F41E2D42A400CED588 /* PhysicsViewController.swift in Sources */,
-				C088EBEE1E422D890038AA94 /* OptionsTableTableViewController.swift in Sources */,
+				C088EBEE1E422D890038AA94 /* OptionsTableViewController.swift in Sources */,
 				C09DC7811E4B13D900BC1E87 /* GraphView.swift in Sources */,
 				C0C986321E429E4900D5C368 /* HelpViewController.swift in Sources */,
 				C088EBEA1E41FBE10038AA94 /* AboutViewController.swift in Sources */,

@@ -7,7 +7,6 @@
 //
 
 import SpriteKit
-import GameplayKit
 
 // Default constants for simulation
 public struct DefaultSimulationConstants {
@@ -18,9 +17,11 @@ public struct DefaultSimulationConstants {
     static let springSections: Int = 22
     static let springToBodyContactZone: CGFloat = 2
     static let verticalSpacing: CGFloat = 20
-    static var trailLength: Int = 400
-    
+}
+
+public struct PhysicsSceneSettings {
     static var trailsEnabled = true
+    static var trailLength: Int = 400
     static var trailVelocity: CGFloat = 2.5 {
         didSet {
             // Change trail length depending on velocity to make sure it stays on the screen
@@ -29,12 +30,9 @@ public struct DefaultSimulationConstants {
     }
 }
 
-typealias bodyID = Int
-
 class PhysicsScene: SKScene {
     
-    // Gesture recognisers
-    //var tapRec: UITapGestureRecognizer!
+    // Gesture recogniser
     var longPressRec: UILongPressGestureRecognizer!
     
     // Keep track of which bodies are being dragged, and where they were first touched (x position)
@@ -50,6 +48,7 @@ class PhysicsScene: SKScene {
     var lastTouchDownTime: TimeInterval!
     
     // Data recording
+    typealias bodyID = Int
     var recording = false
     var bodyDatasets: [bodyID: BodyDataset] = [:]
     
@@ -210,7 +209,7 @@ class PhysicsScene: SKScene {
                     body.updatePosition()
                 }
                 
-                body.updateTrail(velocity: DefaultSimulationConstants.trailVelocity, following: DefaultSimulationConstants.trailsEnabled)
+                body.updateTrail(velocity: PhysicsSceneSettings.trailVelocity, following: PhysicsSceneSettings.trailsEnabled)
             }
         }
         
@@ -268,7 +267,7 @@ class PhysicsScene: SKScene {
                                  sections: DefaultSimulationConstants.springSections)
         
         // Create trail for body
-        let trail = Trail(colour: body.color, length: DefaultSimulationConstants.trailLength)
+        let trail = Trail(colour: body.color, length: PhysicsSceneSettings.trailLength)
         
         // Add trail to body
         body.trail = trail
@@ -482,7 +481,9 @@ class PhysicsScene: SKScene {
 
         } else {
             // User tried to create a body whilst recording
-            let vc = UIAlertController(title: "Hang on!", message: "We're recording some data at the moment. Stop recording if you want to add a new mass.", preferredStyle: .alert)
+            let vc = UIAlertController(title: "Hang on!",
+                                       message: "We're recording some data at the moment. Stop recording if you want to add a new mass.",
+                                       preferredStyle: .alert)
             vc.addAction(UIAlertAction(title: "Okay! 😌", style: .default, handler: nil))
             
             view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
@@ -499,7 +500,9 @@ class PhysicsScene: SKScene {
             for node in nodes(at: convertPoint(fromView: sender.location(ofTouch: 0, in: view))) {
                 if let body = node as? Body {
                     
-                    let vc = UIAlertController(title: "Delete Mass", message: "Would you like to delete this mass from the world?", preferredStyle: .actionSheet)
+                    let vc = UIAlertController(title: "Delete Mass",
+                                               message: "Would you like to delete this mass from the experiment?",
+                                               preferredStyle: .actionSheet)
                     
                     vc.addAction(UIAlertAction(title: "Yes, delete it", style: .destructive, handler: { (action) in
                         // Delete body node
@@ -511,7 +514,10 @@ class PhysicsScene: SKScene {
                     }))
                     
                     vc.popoverPresentationController?.sourceView = view
-                    vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x, y: convertPoint(toView: body.position).y, width: 1, height: 1)
+                    vc.popoverPresentationController?.sourceRect = CGRect(x: convertPoint(toView: body.position).x,
+                                                                          y: convertPoint(toView: body.position).y,
+                                                                          width: 1,
+                                                                          height: 1)
                     
                     view?.window?.rootViewController?.present(vc, animated: true, completion: nil)
                 }

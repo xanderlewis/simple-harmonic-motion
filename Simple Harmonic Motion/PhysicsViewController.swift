@@ -26,8 +26,6 @@ class PhysicsViewController: UIViewController, RecordButtonDelegate {
         
         let skView = view as! SKView
         skView.ignoresSiblingOrder = true
-        //skView.showsFPS = true
-        //skView.showsNodeCount = true
         
         scene = PhysicsScene(size: view.bounds.size)
         scene.scaleMode = .resizeFill
