@@ -81,10 +81,6 @@ class NodeSettingsViewController: UIViewController {
         bodySettingsView.alpha = 0
         springSettingsView.alpha = 0
         
-        // Set rounded corners
-        //bodySettingsView.layer.cornerRadius = 10
-        //springSettingsView.layer.cornerRadius = 10
-        
         // Set up colour buttons
         colour1Button.backgroundColor = BodyColourPalette.colour1
         colour2Button.backgroundColor = BodyColourPalette.colour2
@@ -94,7 +90,8 @@ class NodeSettingsViewController: UIViewController {
         colour6Button.backgroundColor = BodyColourPalette.colour6
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateColours),
+                                               name: AppColourSchemeDelegate.changed, object: nil)
         
         setUpBlur()
     }
@@ -139,7 +136,12 @@ class NodeSettingsViewController: UIViewController {
             self.dampingSlider.minimumTrackTintColor = colour.darker(70)!
             self.dampingSlider.maximumTrackTintColor = colour.darker(30)!
             
-            let buttons = [self.colour1Button, self.colour2Button, self.colour3Button, self.colour4Button, self.colour5Button, self.colour6Button]
+            let buttons = [self.colour1Button,
+                           self.colour2Button,
+                           self.colour3Button,
+                           self.colour4Button,
+                           self.colour5Button,
+                           self.colour6Button]
             
             for button in buttons {
                 button?.layer.borderWidth = 1

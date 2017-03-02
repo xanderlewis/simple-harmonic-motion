@@ -24,12 +24,6 @@ class TabBarController: UITabBarController {
         NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
         
         updateColours()
-        
-        for item in tabBar.items! {
-            if #available(iOS 10.0, *) {
-                item.badgeColor = AppColourSchemeDelegate.shared.colourForUIElementTint()
-            }
-        }
     }
     
     func incrementNewRecordings() {
@@ -49,5 +43,12 @@ class TabBarController: UITabBarController {
     
     func updateColours() {
         tabBar.barStyle = AppColourSchemeDelegate.shared.styleForTabBar()
+        
+        for item in tabBar.items! {
+            if #available(iOS 10.0, *) {
+                item.badgeColor = AppColourSchemeDelegate.shared.colourForUIElementTint()
+            }
+        }
     }
 }
+

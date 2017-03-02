@@ -14,11 +14,6 @@ enum RecordButtonRecordingState {
     case disabled
 }
 
-enum SpinDirection {
-    case left
-    case right
-}
-
 protocol RecordButtonDelegate {
     func recordButtonTapped()
     func stopButtonTapped(sender: RecordButton)
@@ -63,7 +58,10 @@ class RecordButton: UIButton {
         recordingState = .stopped
 
         layer.add(animateCornerRadius(from: 0, to: frame.width/2, withDuration: 0.3), forKey: "cornerRadius")
-        layer.add(animateBorderColour(from: layer.borderColor!, to: (recordingColour.darker(50)?.cgColor)!, withDuration: 0.3), forKey: "borderColor")
+        layer.add(animateBorderColour(from: layer.borderColor!,
+                                      to: (recordingColour.darker(50)?.cgColor)!,
+                                      withDuration: 0.3),
+                                      forKey: "borderColor")
         
         UIView.animate(withDuration: 0.3) {
             self.backgroundColor = self.recordingColour
@@ -79,7 +77,10 @@ class RecordButton: UIButton {
         recordingState = .recording
         
         layer.add(animateCornerRadius(from: frame.width / 2, to: 0, withDuration: 0.3), forKey: "cornerRadius")
-        layer.add(animateBorderColour(from: layer.borderColor!, to: (stopColour.darker()?.cgColor)!, withDuration: 0.3), forKey: "borderColor")
+        layer.add(animateBorderColour(from: layer.borderColor!,
+                                      to: (stopColour.darker()?.cgColor)!,
+                                      withDuration: 0.3),
+                                      forKey: "borderColor")
         
         // Animate background colour
         UIView.animate(withDuration: 0.3) {
@@ -103,7 +104,9 @@ class RecordButton: UIButton {
             becomeStopButton()
             
             // Pulse effect
-            let pulse = Pulse(numberOfPulses: 1, radius: bounds.width * 24, position: CGPoint(x: bounds.midX, y: bounds.midY))
+            let pulse = Pulse(numberOfPulses: 1,
+                              radius: bounds.width * 24,
+                              position: CGPoint(x: bounds.midX, y: bounds.midY))
             pulse.backgroundColor = recordingColour.cgColor
             layer.insertSublayer(pulse, below: nil)
             
@@ -115,7 +118,9 @@ class RecordButton: UIButton {
             
         case .disabled:
             // Tell the user why they can't press record
-            let vc = UIAlertController(title: "Hold on!", message: "Recording nothing wouldn't be particularly useful, would it? You should probably add a mass or two first.", preferredStyle: .alert)
+            let vc = UIAlertController(title: "Hold on!",
+                                       message: "Recording nothing wouldn't be particularly useful, would it? You should probably add a mass or two first.",
+                                       preferredStyle: .alert)
             vc.addAction(UIAlertAction(title: "Fine 🙄", style: .default, handler: nil))
             window?.rootViewController?.present(vc, animated: true, completion: nil)
         }
@@ -145,23 +150,6 @@ class RecordButton: UIButton {
         anim.isRemovedOnCompletion = false
         
         return anim
-    }
-    
-    private func spin(_ direction: SpinDirection) {
-        var angle: CGFloat = 0
-        if direction == .left {
-            angle = CGFloat(M_PI)
-        } else if direction == .right {
-            angle = CGFloat(-M_PI)
-        }
-        
-        UIView.animate(withDuration: 0.2, animations: {
-            self.transform = CGAffineTransform(rotationAngle: angle)
-        }) { (finished) in
-            UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 10, options: [], animations: {
-                self.transform = CGAffineTransform(rotationAngle: 0)
-            }, completion: nil)
-        }
     }
 
     //MARK: -

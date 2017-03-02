@@ -22,7 +22,10 @@ class RecordingsTableViewController: UIViewController, UITableViewDataSource, UI
         archiver = RecordingsArchiveManager()
         
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateColours),
+                                               name: AppColourSchemeDelegate.changed,
+                                               object: nil)
         
         updateColours()
     }

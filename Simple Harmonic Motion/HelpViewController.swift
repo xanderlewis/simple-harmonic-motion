@@ -17,7 +17,10 @@ class HelpViewController: UIViewController {
         super.viewDidLoad()
 
         // Be notified when app colour scheme changes
-        NotificationCenter.default.addObserver(self, selector: #selector(updateColours), name: AppColourSchemeDelegate.changed, object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(updateColours),
+                                               name: AppColourSchemeDelegate.changed,
+                                               object: nil)
         
         updateColours()
     }
@@ -27,7 +30,9 @@ class HelpViewController: UIViewController {
         
         var mutableString = NSMutableAttributedString(attributedString: textView.attributedText)
         
-        mutableString.addAttribute(NSForegroundColorAttributeName, value: AppColourSchemeDelegate.shared.colourForHelpViewText(), range: NSRange(location: 0, length: mutableString.length))
+        mutableString.addAttribute(NSForegroundColorAttributeName,
+                                   value: AppColourSchemeDelegate.shared.colourForHelpViewText(),
+                                   range: NSRange(location: 0, length: mutableString.length))
         
         textView.attributedText = mutableString
     }
