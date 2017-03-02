@@ -5,7 +5,7 @@ A little iOS app to help you understand [simple harmonic motion](https://en.wiki
 
 This project aims to create a tool that enhances the teaching of this topic to students by allowing them to experiment with simple harmonic motion in a world that is physically accurate, whilst remaining free from the complexity and chaos of the real world.
 
-![](images/shm_6_1.png)
+![](images/shm6_2.png)
 
 ## Feature List
 - Add/remove bodies on screen, suspended by two connecting springs 
